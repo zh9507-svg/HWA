@@ -1,0 +1,3622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Houston Wellness Aesthetics — CRM Build Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fcfcfc;
+      --bg2: rgba(252, 252, 252, 0.94);
+      --bg3: #f4f8f4;
+      --bg4: #edf4ee;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: rgba(255, 255, 255, 0.98);
+      --border: rgba(15, 23, 42, 0.08);
+      --border2: rgba(15, 23, 42, 0.05);
+      --teal: #3CBFBF;
+      --teal-dim: rgba(60,191,191,0.10);
+      --teal-border: rgba(60,191,191,0.20);
+      --green: #688E45;
+      --green-dim: rgba(104,142,69,0.10);
+      --amber: #d6aa57;
+      --amber-dim: rgba(214,170,87,0.12);
+      --amber-border: rgba(214,170,87,0.24);
+      --white: #0f172a;
+      --muted: #5f6c80;
+      --muted2: #8b97aa;
+      --sidebar-w: 240px;
+      --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Manrope', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at top left, rgba(60,191,191,0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(104,142,69,0.08), transparent 22%),
+        linear-gradient(180deg, #fffdfa 0%, #fcfcfc 45%, #f4f8f4 100%);
+    }
+
+    /* ── TOP NAV BAR ── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: auto;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 100;
+      overflow-x: auto;
+      gap: 24px;
+    }
+
+    .sidebar-brand {
+      padding: 14px 0;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+      padding-right: 24px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand .brand-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2px;
+    }
+
+    .sidebar-brand .brand-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .sidebar-brand .brand-name br { display: none; }
+
+    .sidebar-brand .brand-sub {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav-list li { margin-bottom: 0; }
+
+    .nav-list a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-list a:hover,
+    .nav-list a.active {
+      color: var(--white);
+      background: var(--teal-dim);
+    }
+
+    .nav-list a.active { color: var(--teal); }
+
+    .nav-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--teal);
+      opacity: 0.6;
+      font-family: 'IBM Plex Mono', monospace;
+      min-width: 16px;
+    }
+
+    .nav-list a.active .nav-num { opacity: 1; }
+
+    .nav-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--muted2);
+      flex-shrink: 0;
+    }
+
+    .nav-list a.active .nav-dot { background: var(--teal); }
+
+    .sidebar-footer {
+      margin-top: 0;
+      margin-left: auto;
+      padding: 0;
+      border-top: none;
+      border-left: 1px solid var(--border);
+      padding-left: 24px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer p {
+      font-size: 10px;
+      color: var(--muted2);
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      margin-left: 0;
+      padding-top: 70px;
+      min-height: 100vh;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 249, 245, 0.96)),
+        radial-gradient(circle at top left, rgba(60,191,191,0.12), transparent 35%);
+      border-bottom: 1px solid var(--border);
+      padding: 58px 24px 54px;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.55), transparent 35%),
+        radial-gradient(circle at 82% 18%, rgba(104,142,69,0.12), transparent 16%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.9fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .page-header .doc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-kicker {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(38px, 5.5vw, 78px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.045em;
+      line-height: 0.97;
+      margin-bottom: 18px;
+    }
+
+    .page-header h1 span { color: var(--teal); }
+
+    .hero-deck {
+      font-size: 16px;
+      color: #334155;
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .page-header .header-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 150px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .meta-item .meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-item .meta-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,244,0.98));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-panel-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .hero-panel h2 {
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-panel p {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero-stat {
+      padding: 14px;
+      background: rgba(248,250,252,0.95);
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+      margin-bottom: 2px;
+    }
+
+    .hero-stat span {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .mini-index {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-index li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border2);
+      font-size: 13px;
+      color: #1f2937;
+    }
+
+    .mini-index li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .mini-index span {
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 78px 24px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section > * {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      inset: 18px 24px;
+      border: 1px solid rgba(15,23,42,0.05);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(244,248,244,0.6));
+      pointer-events: none;
+    }
+
+    .section-watermark {
+      position: absolute;
+      top: 34px; left: max(36px, calc(50% - 548px));
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 900;
+      color: rgba(15,23,42,0.045);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.04em;
+    }
+
+    .section-header { position: relative; margin-bottom: 48px; }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--teal);
+      margin: 16px 0 0;
+      border-radius: 2px;
+    }
+
+    /* ── CONTENT ELEMENTS ── */
+
+    /* Info blocks */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .info-card .card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .info-card .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .info-card p, .info-card li {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.65;
+    }
+
+    .info-card ul {
+      padding-left: 16px;
+      margin-top: 6px;
+    }
+
+    .info-card ul li { margin-bottom: 3px; }
+
+    /* Warning card */
+    .warning-card {
+      background: var(--amber-dim);
+      border: 1px solid var(--amber-border);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-top: 32px;
+    }
+
+    .warning-card .warn-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .warn-icon {
+      width: 28px; height: 28px;
+      background: var(--amber);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .warn-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .warning-card p {
+      font-size: 14px;
+      color: #7a5d22;
+      line-height: 1.7;
+    }
+
+    /* Sales process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 28px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    .step-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40px;
+      flex-shrink: 0;
+    }
+
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .step-connector {
+      width: 1px;
+      flex: 1;
+      min-height: 20px;
+      background: var(--border);
+      margin: 4px 0;
+    }
+
+    .process-step:last-child .step-connector { display: none; }
+
+    .step-body {
+      padding: 0 0 20px 16px;
+      flex: 1;
+    }
+
+    .step-body p {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.6;
+      padding-top: 4px;
+    }
+
+    /* Team & Leads grid */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    /* ── PIPELINE STAGES ── */
+    .stages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .stage-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stage-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--teal);
+      opacity: 0.4;
+    }
+
+    .stage-num {
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--teal);
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .stage-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .stage-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-auto {
+      background: var(--teal-dim);
+      color: var(--teal);
+      border: 1px solid var(--teal-border);
+    }
+
+    .badge-manual {
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── TABLES ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    thead th {
+      padding: 12px 18px;
+      text-align: left;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border2);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:nth-child(even) { background: rgba(248,250,252,0.78); }
+
+    tbody tr:hover { background: var(--teal-dim); }
+
+    tbody td {
+      padding: 12px 18px;
+      font-size: 13px;
+      color: #334155;
+      vertical-align: top;
+    }
+
+    .code-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--teal);
+      background: var(--teal-dim);
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* ── WORKFLOW CARDS ── */
+    .workflow-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.025);
+    }
+
+    .wf-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .wf-icon {
+      width: 44px; height: 44px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .wf-meta { flex: 1; }
+
+    .wf-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      opacity: 0.7;
+      margin-bottom: 3px;
+    }
+
+    .wf-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .wf-trigger {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .wf-trigger span {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .wf-steps { padding-left: 0; list-style: none; }
+
+    .wf-steps li {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: 13px;
+      color: #334155;
+      align-items: flex-start;
+    }
+
+    .wf-steps li:last-child { border-bottom: none; }
+
+    .wf-step-arrow {
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .wf-note {
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 16px;
+      font-size: 12.5px;
+      color: #245c5c;
+      line-height: 1.6;
+    }
+
+    .wf-note strong { color: var(--teal); }
+
+    /* ── SERVICE TABS ── */
+    .service-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .service-tab-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      color: var(--muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .service-tab-btn:hover { color: var(--white); border-color: var(--teal-border); }
+
+    .service-tab-btn.active {
+      background: var(--teal-dim);
+      border-color: var(--teal-border);
+      color: var(--teal);
+    }
+
+    .service-panel { display: none; }
+    .service-panel.active { display: block; }
+
+    /* ── SMS + EMAIL SCRIPTS ── */
+    .script-card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 0;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .script-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .script-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .script-timing {
+      font-size: 11px;
+      background: rgba(245,166,35,0.12);
+      border: 1px solid var(--amber-border);
+      color: var(--amber);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .script-body { padding: 24px; }
+
+    .msg-block {
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .msg-block:last-child { margin-bottom: 0; }
+
+    .msg-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sms-block {
+      background: #f4fbfb;
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .sms-block .msg-label { color: var(--teal); }
+
+    .sms-block pre {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: #1f2937;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .email-block {
+      background: var(--bg4);
+      border: 1px solid var(--border);
+    }
+
+    .email-block .msg-label { color: #64748b; }
+
+    .email-subject {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .email-subject span { color: var(--white); }
+
+    .email-block pre {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12.5px;
+      color: #334155;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* ── CHECKLIST ── */
+    .phase-block {
+      margin-bottom: 36px;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px 8px 0 0;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .phase-letter {
+      width: 28px; height: 28px;
+      background: var(--teal);
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .phase-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .checklist-items {
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border2);
+      transition: background 0.15s;
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    .checklist-item:hover { background: rgba(248,250,252,0.75); }
+
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      position: relative;
+    }
+
+    .check-box:hover {
+      border-color: var(--teal-border);
+      background: rgba(60,191,191,0.08);
+    }
+
+    .check-box.checked {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .check-box.checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 0px;
+      width: 5px;
+      height: 10px;
+      border: solid #051018;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .checklist-item.is-complete .check-text {
+      color: #7b8798;
+      text-decoration: line-through;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .check-text {
+      flex: 1;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .check-owner {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted2);
+      background: rgba(248,250,252,0.95);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    .check-owner.owner-dual {
+      color: var(--amber);
+      border-color: rgba(245,166,35,0.25);
+      background: rgba(245,166,35,0.06);
+    }
+
+    .check-owner.owner-client {
+      color: var(--green);
+      border-color: rgba(104,142,69,0.22);
+      background: rgba(104,142,69,0.08);
+    }
+
+    /* ── SUBSECTION LABELS ── */
+    .subsection-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 36px 0 6px;
+    }
+
+    .subsection-title:first-of-type { margin-top: 0; }
+
+    .subsection-sub {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-left: 0;
+      background: rgba(7, 9, 13, 0.95);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11.5px;
+      color: var(--muted2);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    footer p span { color: var(--teal); }
+
+    /* ── MISC ── */
+    .section-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    strong { color: var(--white); font-weight: 600; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 16px;
+        gap: 0;
+        height: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .sidebar::-webkit-scrollbar { display: none; }
+      .sidebar-brand { border-right: 1px solid var(--border); padding-right: 12px; margin-right: 4px; flex-shrink: 0; }
+      .sidebar-brand .brand-name br { display: none; }
+      .sidebar-brand .brand-name { font-size: 11px; }
+      .sidebar-brand .brand-tag, .sidebar-brand .brand-sub { display: none; }
+      .nav-list { flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 2px; }
+      .nav-list a { padding: 6px 10px; font-size: 11px; white-space: nowrap; }
+      .sidebar-footer { display: none; }
+      .main { padding-top: 56px; }
+      footer { padding: 20px 24px; }
+      .section { padding: 56px 24px; }
+      .page-header { padding: 40px 24px 32px; }
+      .header-inner { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .stages-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .stages-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .script-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+      .section::before { inset: 14px 14px; }
+      .section-watermark { left: 22px; }
+    }
+
+    /* Mobile nav toggle */
+    .mobile-nav-toggle { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-tag">CRM Build Brief</div>
+    <div class="brand-name">Houston Wellness<br>Aesthetics</div>
+    <div class="brand-sub">GoHighLevel · 2026</div>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a href="#section-01" class="active">
+        <span class="nav-num">01</span>
+        Client Brief
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#section-02">
+        <span class="nav-num">02</span>
+        Pipeline
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#section-03">
+        <span class="nav-num">03</span>
+        Automations
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#section-04">
+        <span class="nav-num">04</span>
+        SMS + Email Scripts
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#section-05">
+        <span class="nav-num">05</span>
+        Custom Fields
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#section-06">
+        <span class="nav-num">06</span>
+        Build Checklist
+        <span class="nav-dot"></span>
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-footer">
+    <p>NurtureSol LLC<br>Confidential · 2026</p>
+  </div>
+</nav>
+
+<!-- MOBILE NAV TOGGLE -->
+<button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="hero-copy">
+        <div class="doc-tag">⬡ GHL Build Document · NurtureSol LLC</div>
+        <div class="hero-kicker">CRM Build Brief</div>
+        <h1>Houston Wellness<br><span>Aesthetics</span></h1>
+        <p class="hero-deck">A complete GoHighLevel CRM architecture document for a premium Houston med spa, covering pipeline design, automation logic, service-specific messaging, data architecture, and the exact build order for implementation.</p>
+        <div class="header-meta">
+          <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">Houston Wellness Aesthetics</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">GoHighLevel</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Built by</span>
+            <span class="meta-value">NurtureSol LLC (Zaid)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value" style="color:var(--amber);">Greenfield Build</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Year</span>
+            <span class="meta-value">2026</span>
+          </div>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="hero-panel-label">Build Snapshot</div>
+        <h2>One premium brief, six chapters, zero guesswork.</h2>
+        <p>This page is structured to read like an implementation spec: high-context at the top, operational detail in the middle, and handoff-ready checklist at the end.</p>
+        <div class="hero-stat-grid">
+          <div class="hero-stat">
+            <strong>12</strong>
+            <span>Pipeline Stages</span>
+          </div>
+          <div class="hero-stat">
+            <strong>8</strong>
+            <span>Core Workflows</span>
+          </div>
+          <div class="hero-stat">
+            <strong>11</strong>
+            <span>Service Tracks</span>
+          </div>
+          <div class="hero-stat">
+            <strong>6</strong>
+            <span>Build Sections</span>
+          </div>
+        </div>
+        <ul class="mini-index">
+          <li><span>01</span> Client context and lead journey</li>
+          <li><span>02</span> Pipeline stages and rules</li>
+          <li><span>03</span> Automation workflow map</li>
+          <li><span>04</span> Service-specific scripts</li>
+          <li><span>05</span> Data architecture</li>
+          <li><span>06</span> Build checklist and handoff</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 01 — CLIENT BRIEF -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-01">
+    <div class="section-watermark">01</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 01</div>
+      <h2>Who You're Building For</h2>
+      <p class="section-subtitle">Read this before touching anything in GoHighLevel.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="card-label">The Company</div>
+        <div class="card-title">Houston Wellness Aesthetics</div>
+        <p>A premium med spa and aesthetic wellness clinic owned and operated by <strong>Dr. Faye</strong>. Services span <strong>11 distinct categories</strong> across the "Look Amazing" and "Feel Amazing" offers — each with its own dedicated booking link stored as a Custom Value in GHL.</p>
+        <ul style="margin-top:12px;">
+          <li>Injectables</li>
+          <li>Facial Care</li>
+          <li>Laser &amp; Light Treatments</li>
+          <li>Body Contouring &amp; Chin</li>
+          <li>Vein Treatment</li>
+          <li>Hair Removal</li>
+          <li>Hair Restoration</li>
+          <li>Hormone Optimization</li>
+          <li>Sexual Health</li>
+          <li>Weight Loss</li>
+          <li>IV Therapy</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Target Client</div>
+        <div class="card-title">Women &amp; Men, Ages 28–60</div>
+        <p>Houston metro area. Health-conscious, results-driven, and willing to invest in premium treatments.</p>
+        <ul style="margin-top:12px;">
+          <li>Referred by friends &amp; family</li>
+          <li>Instagram &amp; Facebook Ads</li>
+          <li>Google search</li>
+          <li>Repeat visits + memberships = core revenue</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Average Deal Value</div>
+        <div class="card-title">High LTV Business</div>
+        <ul>
+          <li><strong>Single visit:</strong> $250–$1,500</li>
+          <li><strong>Package/membership:</strong> $300–$800/mo</li>
+          <li><strong>Lifetime value:</strong> $5,000–$20,000+</li>
+        </ul>
+        <p style="margin-top:10px;">Every lead counts — retention and reactivation are as important as acquisition.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-card">
+        <div class="card-label">Team Members</div>
+        <ul>
+          <li><strong>Dr. Faye</strong> — Owner, lead provider, face of the brand</li>
+          <li><strong>Front Desk</strong> — Call handling, appointment confirmations, daily pipeline management</li>
+          <li><strong>NurtureSol LLC (Zaid)</strong> — CRM architecture, automations, ongoing optimization</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Lead Sources</div>
+        <ul>
+          <li>Facebook &amp; Instagram Ads (Meta Lead Gen Forms)</li>
+          <li>Google Ads (landing page → GHL webhook)</li>
+          <li>Website Contact Form (GHL embedded form)</li>
+          <li>Referrals and walk-ins (manually entered)</li>
+        </ul>
+        <p style="margin-top:10px;">All sources tagged for channel-level ROI tracking.</p>
+      </div>
+    </div>
+
+    <div class="info-card" style="margin-bottom:28px;">
+      <div class="card-label">Current State</div>
+      <div class="card-title">Greenfield Build — Starting from Zero</div>
+      <p>No active CRM. Leads tracked via notes and DMs. No automated follow-up. Calendar managed via phone calls. All 11 service booking links are already created as Custom Values in GHL.</p>
+    </div>
+
+    <div class="info-card" style="margin-bottom:28px;">
+      <div class="card-label">The Sales Process</div>
+      <div class="card-title">12-Stage Lead Journey</div>
+      <div class="process-steps" style="margin-top:16px;">
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">1</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Lead comes in via Facebook/Instagram Ad, Google Ad, or Website Contact Form</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">2</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Lead enters the pipeline in <strong>New Lead</strong> and the team attempts contact within <strong>5 minutes</strong></p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">3</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>If outreach starts, move to <strong>Contact Attempted</strong>; if unanswered, route to <strong>No Answer</strong></p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">4</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>No-answer leads enter <strong>Follow Up Sequence Active</strong> and receive service-specific SMS/email + before/after proof</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">5</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>If the client is interested but not yet booked, move to <strong>Appointment Requested/Pending</strong></p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">6</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Booked clients move into <strong>Booked Appointment</strong> and receive reminder messaging</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">7</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Attended visits are marked <strong>Arrived at Salon</strong> for fulfillment and post-visit follow-up</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">8</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Operational exceptions are handled via <strong>No show</strong>, <strong>Reschedule</strong>, and <strong>Incorrect number</strong></p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">9</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Non-buyers are categorized as <strong>Lead Not Interested</strong> or <strong>Not eligible due to medical condition</strong></p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">10</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Any lead who still does not respond after the sequence is parked in <strong>No Answer</strong> for reactivation logic</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">11</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Post-visit review, rebooking, and nurture messaging fire after attended appointments</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-num">12</div><div class="step-connector"></div></div>
+          <div class="step-body"><p>Active and lost leads remain segmented for future promotions, before/after proof, and reactivation outreach</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="warning-card">
+      <div class="warn-header">
+        <div class="warn-icon">⚠</div>
+        <div class="warn-title">Critical Context — Read Before Building</div>
+      </div>
+      <p>This is a <strong style="color:var(--amber);">trust-first business.</strong> Dr. Faye's reputation is everything. Every automated message must feel like it came from her team directly — warm, professional, and human. <strong style="color:var(--amber);">Speed matters:</strong> first SMS + email within 5 minutes of a new lead. <strong style="color:var(--amber);">Personalization matters:</strong> every service gets its own message set so a Botox inquiry never gets a Hair Removal email.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 02 — PIPELINE -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-02">
+    <div class="section-watermark">02</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 02</div>
+      <h2>The Client Journey — Start to Finish</h2>
+      <p class="section-subtitle">One master pipeline. 12 stages. Every stage maps directly to the screenshot you shared.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="stages-grid">
+      <div class="stage-card">
+        <div class="stage-num">STAGE 01</div>
+        <div class="stage-name">New Lead</div>
+        <div class="stage-desc">Call attempt begins immediately</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 02</div>
+        <div class="stage-name">Contact Attempted</div>
+        <div class="stage-desc">Initial manual outreach has been made</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 03</div>
+        <div class="stage-name">Follow Up Sequence Active</div>
+        <div class="stage-desc">Automated nurture sequence is actively running</div>
+        <span class="stage-badge badge-auto">Auto</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 04</div>
+        <div class="stage-name">Appointment Requested/Pending</div>
+        <div class="stage-desc">Interested lead has not fully locked a slot</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 05</div>
+        <div class="stage-name">Booked Appointment</div>
+        <div class="stage-desc">Booked via service calendar link</div>
+        <span class="stage-badge badge-auto">Auto</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 06</div>
+        <div class="stage-name">Arrived at Salon</div>
+        <div class="stage-desc">Front desk confirms attended visit</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 07</div>
+        <div class="stage-name">No show</div>
+        <div class="stage-desc">Missed appointment rebook sequence starts</div>
+        <span class="stage-badge badge-auto">Auto</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 08</div>
+        <div class="stage-name">Lead Not Interested</div>
+        <div class="stage-desc">Lead explicitly opts out or declines</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 09</div>
+        <div class="stage-name">Not eligible due to medical condition</div>
+        <div class="stage-desc">Lead is medically screened out of treatment</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 10</div>
+        <div class="stage-name">Incorrect number</div>
+        <div class="stage-desc">Bad contact information detected</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 11</div>
+        <div class="stage-name">Reschedule</div>
+        <div class="stage-desc">Needs a new appointment slot</div>
+        <span class="stage-badge badge-manual">Manual</span>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">STAGE 12</div>
+        <div class="stage-name">No Answer</div>
+        <div class="stage-desc">No response after repeated attempts</div>
+        <span class="stage-badge badge-auto">Auto</span>
+      </div>
+    </div>
+
+    <div class="subsection-title">Stage Transition Rules</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Transition</th>
+            <th>Trigger</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 → 2</strong></td>
+            <td>Manual — front desk or team attempts the first call/text touch</td>
+            <td><span class="stage-badge badge-manual">Manual</span></td>
+          </tr>
+          <tr>
+            <td><strong>2 → 3</strong></td>
+            <td>Auto — if no live pickup, follow-up sequence activates</td>
+            <td><span class="stage-badge badge-auto">Auto</span></td>
+          </tr>
+          <tr>
+            <td><strong>3 → 4</strong></td>
+            <td>Manual — interested but not booked yet, awaiting appointment confirmation</td>
+            <td><span class="stage-badge badge-manual">Manual</span></td>
+          </tr>
+          <tr>
+            <td><strong>4 → 5</strong></td>
+            <td>Auto — booking via calendar link</td>
+            <td><span class="stage-badge badge-auto">Auto</span></td>
+          </tr>
+          <tr>
+            <td><strong>5 → 6</strong></td>
+            <td>Manual — front desk marks arrival after the visit begins</td>
+            <td><span class="stage-badge badge-manual">Manual</span></td>
+          </tr>
+          <tr>
+            <td><strong>5 → 7</strong></td>
+            <td>Auto/manual — appointment missed and moved into no-show recovery</td>
+            <td><span class="stage-badge badge-auto">Auto</span></td>
+          </tr>
+          <tr>
+            <td><strong>→ 8 / 9 / 10</strong></td>
+            <td>Manual — disposition applied for not interested, medically ineligible, or bad number</td>
+            <td><span class="stage-badge badge-manual">Manual</span></td>
+          </tr>
+          <tr>
+            <td><strong>→ 11</strong></td>
+            <td>Manual — client requests a new time after booking or no-show</td>
+            <td><span class="stage-badge badge-manual">Manual</span></td>
+          </tr>
+          <tr>
+            <td><strong>→ 12</strong></td>
+            <td>Auto — after final follow-up with no response</td>
+            <td><span class="stage-badge badge-auto">Auto</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 03 — AUTOMATIONS -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-03">
+    <div class="section-watermark">03</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 03</div>
+      <h2>Every Workflow That Needs to Be Built</h2>
+      <p class="section-subtitle">8 workflows. Each built as a separate GHL automation. Label them exactly as named.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- WF 1 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">📲</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 01</div>
+          <div class="wf-name">New Lead Welcome (Facebook/Instagram)</div>
+          <div class="wf-trigger">Trigger: <span>Meta lead form submitted</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Create contact → move to Stage 1</li>
+        <li><span class="wf-step-arrow">→</span>Tag "source: Facebook Ad"</li>
+        <li><span class="wf-step-arrow">→</span>Identify service interest from form field</li>
+        <li><span class="wf-step-arrow">→</span>Route to service-specific sub-workflow</li>
+        <li><span class="wf-step-arrow">→</span>Notify front desk via internal notification</li>
+        <li><span class="wf-step-arrow">→</span>Wait 2 minutes → Send SMS #1 (service-personalized) + Email #1 (service-personalized)</li>
+      </ul>
+    </div>
+
+    <!-- WF 2 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">🌐</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 02</div>
+          <div class="wf-name">New Lead Welcome (Google / Website)</div>
+          <div class="wf-trigger">Trigger: <span>Website or landing page form submitted</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Create contact → move to Stage 1</li>
+        <li><span class="wf-step-arrow">→</span>Tag "source: Google/Website"</li>
+        <li><span class="wf-step-arrow">→</span>Identify service interest → route to service-specific sub-workflow</li>
+        <li><span class="wf-step-arrow">→</span>Notify team via internal notification</li>
+        <li><span class="wf-step-arrow">→</span>Wait 2 minutes → Send SMS #1 (website variant) + Email #1 (website variant)</li>
+      </ul>
+      <div class="wf-note">
+        <strong>Service Routing Note:</strong> Each of the 11 services has its own dedicated booking link stored as a Custom Value. The welcome message must dynamically insert the correct <code style="color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:11px;">{{custom_values.booking_link__[service]}}</code> based on what the lead expressed interest in.
+      </div>
+    </div>
+
+    <!-- WF 3 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">🔁</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 03</div>
+          <div class="wf-name">No Answer Follow-Up Sequence</div>
+          <div class="wf-trigger">Trigger: <span>Lead moved to Stage 2</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Immediately → SMS #2 + Email #2 (service-personalized, personal tone from Dr. Faye's team)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 24 hours → SMS #3 + Email #3 (social proof message)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 48 hours → SMS #4 + Email #4 (final attempt, booking link)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 48 hours → no response → move to Stage 9, tag "No Response - [Service]"</li>
+      </ul>
+      <div class="wf-note">
+        <strong>Stop Condition:</strong> Any reply OR booking → pause sequence immediately → move to Stage 4.
+      </div>
+    </div>
+
+    <!-- WF 4 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">📅</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 04</div>
+          <div class="wf-name">Appointment Reminder Sequence</div>
+          <div class="wf-trigger">Trigger: <span>Appointment booked via any service calendar (Stage 5)</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Immediately → SMS confirmation + Email confirmation (includes service name, date, time, location)</li>
+        <li><span class="wf-step-arrow">→</span>24 hours before → SMS reminder + Email reminder</li>
+        <li><span class="wf-step-arrow">→</span>2 hours before → SMS final reminder</li>
+        <li><span class="wf-step-arrow">→</span>60 min after appointment time with no stage change → no-show SMS + email fires</li>
+      </ul>
+    </div>
+
+    <!-- WF 5 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">🔄</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 05</div>
+          <div class="wf-name">No-Show Re-booking</div>
+          <div class="wf-trigger">Trigger: <span>Appointment marked No-Show OR 60 min past appointment with no stage change</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Immediately → SMS #5 + Email #5 (warm, zero guilt, reschedule link)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 24 hours → SMS #6 + Email #6 (second gentle attempt)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 48 hours → no rebooking → move to Stage 9, tag "No Show Lost"</li>
+      </ul>
+    </div>
+
+    <!-- WF 6 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">⭐</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 06</div>
+          <div class="wf-name">Post-Visit: Review + Rebooking</div>
+          <div class="wf-trigger">Trigger: <span>Lead moved to Stage 8 (Won)</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Immediately → SMS thank you + Email thank you (personalized by service)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 3 days → SMS review request + Email review request (Google Review link)</li>
+        <li><span class="wf-step-arrow">→</span>Wait 7 days → SMS rebooking nudge + Email with next recommended treatment</li>
+      </ul>
+    </div>
+
+    <!-- WF 7 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">♻️</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 07</div>
+          <div class="wf-name">30-Day Reactivation</div>
+          <div class="wf-trigger">Trigger: <span>Contact has been in Stage 9 for 30 days</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Day 30 → SMS promo offer + Email with before/after social proof (service-relevant)</li>
+        <li><span class="wf-step-arrow">→</span>Day 37 → no response → follow-up Email with limited-time offer</li>
+        <li><span class="wf-step-arrow">→</span>Day 44 → final SMS + Email: "Last chance" message</li>
+        <li><span class="wf-step-arrow">→</span>After final attempt → tag "Reactivation Exhausted"</li>
+      </ul>
+    </div>
+
+    <!-- WF 8 -->
+    <div class="workflow-card">
+      <div class="wf-header">
+        <div class="wf-icon">📣</div>
+        <div class="wf-meta">
+          <div class="wf-num">Workflow 08</div>
+          <div class="wf-name">Monthly Broadcast (Existing Clients)</div>
+          <div class="wf-trigger">Trigger: <span>Manual send or scheduled monthly</span></div>
+        </div>
+      </div>
+      <ul class="wf-steps">
+        <li><span class="wf-step-arrow">→</span>Send branded email newsletter with current promos, new services, and a rebooking CTA</li>
+        <li><span class="wf-step-arrow">→</span>SMS version: short teaser + link</li>
+      </ul>
+      <div class="wf-note">
+        <strong>Segments:</strong> Active Clients · Lapsed Clients (Stage 9) · Inquiry-Only (never visited)
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 04 — SMS + EMAIL SCRIPTS -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-04">
+    <div class="section-watermark">04</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 04</div>
+      <h2>Copy-Paste Ready — Load These Directly into GHL</h2>
+      <p class="section-subtitle">Select a service to view its fully written SMS + Email script set. All messages are personalized per treatment — copy and paste directly into GHL. Replace <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">[Google Review Link]</code> with your Google Business Profile review URL before loading.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="service-tabs">
+      <button class="service-tab-btn active" data-service="injectables">💉 Injectables</button>
+      <button class="service-tab-btn" data-service="facial">🧖 Facial Care</button>
+      <button class="service-tab-btn" data-service="hair-removal">🦵 Hair Removal</button>
+      <button class="service-tab-btn" data-service="hair-restoration">💇 Hair Restoration</button>
+      <button class="service-tab-btn" data-service="laser">✨ Laser &amp; Light</button>
+      <button class="service-tab-btn" data-service="vein">🩺 Vein Treatment</button>
+      <button class="service-tab-btn" data-service="hormone">🧬 Hormone Optimization</button>
+      <button class="service-tab-btn" data-service="sexual">❤️ Sexual Health</button>
+      <button class="service-tab-btn" data-service="weight">⚖️ Weight Loss</button>
+      <button class="service-tab-btn" data-service="iv">💧 IV Therapy</button>
+      <button class="service-tab-btn" data-service="body">🏋️ Body Contouring &amp; Chin</button>
+    </div>
+
+    <!-- ═══ SERVICE PANELS ═══ -->
+    <div class="service-panel active" id="service-script-panel"></div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 05 — CUSTOM FIELDS & VALUES -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-05">
+    <div class="section-watermark">05</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 05</div>
+      <h2>GHL Data Architecture</h2>
+      <p class="section-subtitle">Custom Values are already created. Custom Fields must be built before any leads are imported.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="subsection-title">A — Custom Values (Already Live in GHL)</div>
+    <p class="subsection-sub">These are set up. Reference them in workflows using the keys shown.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>GHL Key</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Booking Link – Facial Care</td>
+            <td><span class="code-val">{{custom_values.booking_link__facial_care}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Hair Removal</td>
+            <td><span class="code-val">{{custom_values.booking_link__hair_removal}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Hair Restoration</td>
+            <td><span class="code-val">{{custom_values.booking_link__hair_restoration}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Injectables</td>
+            <td><span class="code-val">{{custom_values.booking_link__injectables}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Laser and Light Treatments</td>
+            <td><span class="code-val">{{custom_values.booking_link__laser_and_light_treatments}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Vein Treatment</td>
+            <td><span class="code-val">{{custom_values.booking_link__vein_treatment}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Weight Loss</td>
+            <td><span class="code-val">{{custom_values.booking_link__weight_loss}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Hormone Optimization</td>
+            <td><span class="code-val">{{custom_values.booking_link__hormone_optimization}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Sexual Health</td>
+            <td><span class="code-val">{{custom_values.booking_link__sexual_health}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – IV Therapy</td>
+            <td><span class="code-val">{{custom_values.booking_link__iv_therapy}}</span></td>
+          </tr>
+          <tr>
+            <td>Booking Link – Body Contouring and Chin</td>
+            <td><span class="code-val">{{custom_values.booking_link__body_contouring_and_chin}}</span></td>
+          </tr>
+          <tr>
+            <td>Houston Wellness &amp; Aesthetics (Brand Name)</td>
+            <td><span class="code-val">{{custom_values.houston_wellness__aesthetics}}</span></td>
+          </tr>
+          <tr>
+            <td>Meta Access Token</td>
+            <td><span class="code-val">{{custom_values.meta_access_token}}</span></td>
+          </tr>
+          <tr>
+            <td>Meta Pixel</td>
+            <td><span class="code-val">{{custom_values.meta_pixel}}</span></td>
+          </tr>
+          <tr>
+            <td>Phone No</td>
+            <td><span class="code-val">{{custom_values.phone_no}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">B — Custom Contact Fields (Must Be Built)</div>
+    <p class="subsection-sub">Create these in GHL Settings → Custom Fields before importing any leads.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Type</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Service Interest</strong></td>
+            <td>Dropdown</td>
+            <td>Which service the lead inquired about. Options: Injectables / Facial Care / Laser &amp; Light Treatments / Body Contouring &amp; Chin / Vein Treatment / Hair Removal / Hair Restoration / Hormone Optimization / Sexual Health / Weight Loss / IV Therapy / Multiple / Not Sure</td>
+          </tr>
+          <tr>
+            <td><strong>Lead Source</strong></td>
+            <td>Dropdown</td>
+            <td>Facebook Ad / Instagram Ad / Google Ad / Website Form / Referral / Walk-In / Other</td>
+          </tr>
+          <tr>
+            <td><strong>Consultation Type</strong></td>
+            <td>Dropdown</td>
+            <td>In-Person / Virtual</td>
+          </tr>
+          <tr>
+            <td><strong>Appointment Date</strong></td>
+            <td>Date</td>
+            <td>Actual appointment date for reporting accuracy</td>
+          </tr>
+          <tr>
+            <td><strong>Treatment Notes</strong></td>
+            <td>Text Area</td>
+            <td>Summary of service discussed or delivered</td>
+          </tr>
+          <tr>
+            <td><strong>Estimated Visit Value</strong></td>
+            <td>Currency</td>
+            <td>Expected revenue for the appointment</td>
+          </tr>
+          <tr>
+            <td><strong>Package Interest</strong></td>
+            <td>Dropdown</td>
+            <td>Single Visit / Monthly Membership / Treatment Package / Unknown</td>
+          </tr>
+          <tr>
+            <td><strong>Membership Status</strong></td>
+            <td>Dropdown</td>
+            <td>Not a Member / Active Member / Lapsed Member</td>
+          </tr>
+          <tr>
+            <td><strong>Assigned To</strong></td>
+            <td>Dropdown</td>
+            <td>Dr. Faye / Front Desk / NurtureSol (Zaid)</td>
+          </tr>
+          <tr>
+            <td><strong>Review Requested</strong></td>
+            <td>Checkbox</td>
+            <td>Prevents duplicate review SMS/email from firing</td>
+          </tr>
+          <tr>
+            <td><strong>Reactivation Sent</strong></td>
+            <td>Checkbox</td>
+            <td>Prevents duplicate reactivation sequence from triggering</td>
+          </tr>
+          <tr>
+            <td><strong>Referral Source Name</strong></td>
+            <td>Text</td>
+            <td>Name of referring client for thank-you outreach</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SECTION 06 — BUILD CHECKLIST -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="section-06">
+    <div class="section-watermark">06</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Section 06</div>
+      <h2>Complete in Order — Don't Skip Steps</h2>
+      <p class="section-subtitle">Estimated build time: 3–4 days. Each phase depends on the previous.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Phase A -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">A</div>
+        <div class="phase-name">Account &amp; User Setup</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Create GHL sub-account for Houston Wellness Aesthetics</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Create user accounts: Dr. Faye (Admin), Front Desk (User), Zaid (Admin)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Purchase Houston area code (713 or 832) for SMS sending</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Verify all 12 Custom Values are correctly populated with live URLs and data</div>
+          <div class="check-owner owner-dual">NurtureSol + Client</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Connect Meta Access Token and Meta Pixel in GHL Settings</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Connect business email domain for outbound emails</div>
+          <div class="check-owner owner-client">Client</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase B -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">B</div>
+        <div class="phase-name">Pipeline &amp; Custom Fields</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build all 12 custom contact fields (see Section 05B)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Create the 12-stage pipeline with the exact names from the shared screenshot</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Pin priority fields to top of contact view: Name, Phone, Service Interest, Lead Source, Assigned To</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase C -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">C</div>
+        <div class="phase-name">Calendars (11 Service Calendars)</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Create separate GHL calendar for each service: Injectables, Facial Care, Laser &amp; Light Treatments, Body Contouring &amp; Chin, Vein Treatment, Hair Removal, Hair Restoration, Hormone Optimization, Sexual Health, Weight Loss, IV Therapy</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Configure availability, buffers, and advance booking for each calendar</div>
+          <div class="check-owner owner-dual">Dr. Faye / Client</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Confirm each calendar's booking link matches the corresponding Custom Value</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Test each booking flow — confirm Stage 5 move + confirmation SMS + email fires</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase D -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">D</div>
+        <div class="phase-name">Lead Source Integrations</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Connect Facebook &amp; Instagram Lead Ads via GHL native Meta integration (use saved Meta Access Token + Pixel)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Map all Meta form fields to GHL contact fields including service interest</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Connect Google Ads landing page form via webhook to GHL</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Embed GHL contact form on website with service interest dropdown</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Test all 3 lead sources with live test submissions — confirm tag, stage, and routing</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase E -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">E</div>
+        <div class="phase-name">Workflows (8 Automations)</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 1 — New Lead Welcome (Facebook/Instagram) with service routing logic</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 2 — New Lead Welcome (Google/Website) with service routing logic</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 3 — No Answer Follow-Up Sequence (SMS + Email, service-personalized)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 4 — Appointment Reminder Sequence (SMS + Email for all 11 calendars)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 5 — No-Show Re-booking (SMS + Email, 2 attempts)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 6 — Post-Visit Review + Rebooking (SMS + Email)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 7 — 30-Day Reactivation Sequence (SMS + Email, service-personalized)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Build Workflow 8 — Monthly Broadcast (Email + SMS, segmented by client status)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase F -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-letter">F</div>
+        <div class="phase-name">QA, Training &amp; Handoff</div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Full end-to-end test of every workflow using a test contact for each of the 11 services</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Confirm all Custom Values populate correctly in SMS and email previews</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Import existing leads — clean data, tag as "Pre-CRM Import", assign to correct service stage</div>
+          <div class="check-owner owner-client">Client</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Record Loom walkthrough for Dr. Faye and front desk (pipeline, booking, manual tasks)</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+        <div class="checklist-item">
+          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
+          <div class="check-text">Deliver final build documentation: workflow list, custom value keys, login credentials</div>
+          <div class="check-owner">NurtureSol</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <span>NurtureSol LLC</span> · Houston Wellness Aesthetics CRM Brief · <span>GoHighLevel</span> · 2026 · Confidential
+    </p>
+  </footer>
+
+</div><!-- /.main -->
+
+<script>
+  // Smooth scroll + active nav
+  const navLinks = document.querySelectorAll('.nav-list a');
+  const sections = document.querySelectorAll('section[id]');
+
+  function onScroll() {
+    const scrollY = window.scrollY + 120;
+    let current = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('mobile-open');
+    toggle.textContent = sidebar.classList.contains('mobile-open') ? '✕' : '☰';
+  });
+
+  // Close sidebar on nav link click (mobile)
+  navLinks.forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        sidebar.classList.remove('mobile-open');
+        toggle.textContent = '☰';
+      }
+    });
+  });
+
+  // Service-specific script renderer
+  const serviceTabButtons = document.querySelectorAll('.service-tab-btn');
+  const serviceScriptPanel = document.getElementById('service-script-panel');
+  const beforeAfterGalleryLink = 'https://drive.google.com/drive/u/0/folders/1CKNJq7EP4wPNlqH14L5Rxql3tRbxW6h_';
+
+  const serviceScripts = {
+    injectables: {
+      label: 'Injectables',
+      focus: 'Botox, filler, and facial balancing',
+      bookingKey: '{{custom_values.booking_link__injectables}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! This is Houston Wellness Aesthetics. Thanks for reaching out about injectables. Dr. Faye specializes in natural-looking Botox and filler plans that keep you refreshed, never overdone. We’ll give you a quick call shortly, or you can book here: {{custom_values.booking_link__injectables}}`,
+          subject: 'Your injectables consultation with Dr. Faye',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out to Houston Wellness Aesthetics about injectables.
+
+Whether you're considering Botox, filler, or a full-face balancing plan, Dr. Faye takes a conservative, natural approach designed to enhance your features without making you look "done."
+
+Someone from our team will reach out shortly. If you want to lock in a time now, you can book your injectables consultation here:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Warmly,
+Houston Wellness Aesthetics
+{{custom_values.phone_no}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried giving you a quick call about injectables. No worries at all. If you're still thinking about Botox or filler, reply here anytime or grab a consultation spot: {{custom_values.booking_link__injectables}}`,
+          subject: 'Still interested in injectables?',
+          email: `Hi {{contact.first_name}},
+
+We tried giving you a quick call regarding injectables and didn’t want to leave you hanging.
+
+If you're still curious about Botox, filler, lip enhancement, or facial balancing, we’d be happy to guide you through the best option for your goals.
+
+You can schedule here whenever it’s convenient:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Houston Wellness Aesthetics
+{{custom_values.phone_no}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many of our injectables clients come in wanting subtle, polished results and leave feeling like the best version of themselves. If that’s what you’re after, book here: {{custom_values.booking_link__injectables}}`,
+          subject: 'Natural-looking injectables results our clients love',
+          email: `Hi {{contact.first_name}},
+
+One of the biggest reasons clients choose Dr. Faye for injectables is her eye for balance, restraint, and natural beauty.
+
+Our patients often tell us they still look like themselves, just more rested, lifted, and confident.
+
+If that kind of result is what you're looking for, we'd love to meet you:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Talk soon,
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If injectables are still on your mind, we’d love to help you build the right plan. Here’s the booking link whenever you’re ready: {{custom_values.booking_link__injectables}}`,
+          subject: 'Whenever you’re ready for injectables',
+          email: `Hi {{contact.first_name}},
+
+This will be our last follow-up for now.
+
+If you’re still considering injectables, we’d love to help you create a treatment plan that feels thoughtful, safe, and tailored to your features.
+
+Whenever the timing feels right, you can book here:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Take care,
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, looks like we missed you for your injectables visit today. No problem at all. Here’s the link to reschedule when you’re ready: {{custom_values.booking_link__injectables}}`,
+          subject: 'Let’s reschedule your injectables visit',
+          email: `Hi {{contact.first_name}},
+
+It looks like we missed you for your injectables appointment today.
+
+No worries at all. If you’d like, you can pick a new time here and we’ll get you back on the calendar:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still happy to help whenever you’re ready, {{contact.first_name}}. If you’d like to rebook your injectables appointment, use this link: {{custom_values.booking_link__injectables}}`,
+          subject: 'Still here for your injectables appointment',
+          email: `Hi {{contact.first_name}},
+
+Just a gentle check-in in case you still want to come in for injectables.
+
+You can choose a new appointment time here:
+
+👉 {{custom_values.booking_link__injectables}}
+
+We’d love to see you when the timing works better.
+
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if you’re still thinking about Botox or filler, this is a great time to come in. We’d love to create a personalized injectables plan for you: {{custom_values.booking_link__injectables}}`,
+          subject: 'A fresh chance to book your injectables consultation',
+          email: `Hi {{contact.first_name}},
+
+If injectables are still on your radar, we’d love to welcome you in.
+
+Dr. Faye creates personalized treatment plans based on movement, facial structure, and the kind of result you want, whether that’s smoothing, balancing, or subtle restoration.
+
+Book here whenever you're ready:
+
+👉 {{custom_values.booking_link__injectables}}
+
+With care,
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, we hope you’re loving your injectables results. If you have a quick minute, leaving a review would mean a lot to Dr. Faye and our team: [Google Review Link]`,
+          subject: 'How are you loving your injectables results?',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for trusting Dr. Faye with your injectables treatment.
+
+We hope you’re loving how refreshed and confident you feel. If you have a minute, we’d be so grateful for a quick Google review:
+
+👉 [Google Review Link]
+
+It means a lot to our team.
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    facial: {
+      label: 'Facial Care',
+      focus: 'custom facials, skin health, and glow-focused treatments',
+      bookingKey: '{{custom_values.booking_link__facial_care}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about facial care at Houston Wellness Aesthetics. We’d love to help you improve your skin, texture, and glow with the right treatment plan. Book here anytime: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Your facial care consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about facial care.
+
+Whether you're dealing with dullness, congestion, dehydration, or just want healthier, brighter skin, Dr. Faye and the team can recommend the right plan for your goals.
+
+You can book your consultation here:
+
+👉 {{custom_values.booking_link__facial_care}}
+
+Warm regards,
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about your facial care inquiry. No rush at all. If you’d like help choosing the best skin treatment, reply here or book here: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Still interested in facial care?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about facial care and wanted to follow up.
+
+If you want help choosing between glow treatments, hydration-focused facials, acne support, or anti-aging options, we’d be happy to guide you.
+
+Book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__facial_care}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, our facial care clients love how customized every visit feels. If you want healthier, smoother, more radiant skin, here’s the booking link: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Customized facial care that actually fits your skin',
+          email: `Hi {{contact.first_name}},
+
+One thing clients love most about our facial care treatments is that nothing feels one-size-fits-all.
+
+We tailor each visit to your skin condition, goals, and how you want your skin to look and feel after treatment.
+
+If that sounds like what you’re looking for, book here:
+
+👉 {{custom_values.booking_link__facial_care}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If facial care is still on your list, we’d love to help you get started with the right treatment plan: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Whenever you’re ready for healthier skin',
+          email: `Hi {{contact.first_name}},
+
+This is our last check-in for now.
+
+If you still want support with your skin and would like a personalized facial care plan, you can book whenever it feels right:
+
+👉 {{custom_values.booking_link__facial_care}}
+
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your facial care appointment today. No problem at all. You can reschedule here whenever you’re ready: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Let’s reschedule your facial care visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you at your facial care appointment today.
+
+If you'd like to get back on the calendar, use the link below to choose a new time:
+
+👉 {{custom_values.booking_link__facial_care}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. If you want to rebook your facial care visit, here’s the link: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Still here for your facial care visit',
+          email: `Hi {{contact.first_name}},
+
+Just a friendly follow-up in case you still want to come in for facial care.
+
+You can rebook here:
+
+👉 {{custom_values.booking_link__facial_care}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if better skin is still a goal this season, we’d love to help with a facial care plan that fits you. Book here: {{custom_values.booking_link__facial_care}}`,
+          subject: 'Ready to get your skin back on track?',
+          email: `Hi {{contact.first_name}},
+
+If you’re still thinking about improving your skin, this is a great time to come in.
+
+We can help with hydration, texture, brightness, and overall skin health through a customized facial care plan.
+
+Book here:
+
+👉 {{custom_values.booking_link__facial_care}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, we hope your skin is feeling fresh and glowing after your facial care visit. If you have a minute, we’d love your review: [Google Review Link]`,
+          subject: 'How is your skin feeling after your visit?',
+          email: `Hi {{contact.first_name}},
+
+Thank you for coming in for facial care with us.
+
+We hope your skin is feeling refreshed, healthy, and radiant. If you’d be open to leaving a quick review, we’d truly appreciate it:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    'hair-removal': {
+      label: 'Hair Removal',
+      focus: 'laser hair removal and smooth-skin maintenance',
+      bookingKey: '{{custom_values.booking_link__hair_removal}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for your interest in hair removal at Houston Wellness Aesthetics. We’d love to help you simplify your routine with a treatment plan built around your skin and hair type. Book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Your hair removal consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about hair removal.
+
+If you’re tired of shaving, waxing, or dealing with irritation and ingrown hairs, we’d love to help you create a plan for smoother skin with less maintenance.
+
+Book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about hair removal. No worries at all. If you want to talk through areas, sessions, or expected results, just reply here or book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Still interested in hair removal?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about hair removal and wanted to check back in.
+
+We’d be happy to answer questions about treatment areas, session timing, and what kind of results to expect.
+
+You can book here:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many of our hair removal clients love how much time and hassle they save once they start treatment. If that sounds good to you, book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Less shaving, less hassle, smoother skin',
+          email: `Hi {{contact.first_name}},
+
+Hair removal is one of those treatments clients wish they started sooner.
+
+They love spending less time shaving, feeling more comfortable in their skin, and not having to plan around constant upkeep.
+
+If that’s what you’re after, book here:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If you still want to start hair removal, we’d love to help. Here’s your booking link: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Whenever you’re ready for hair removal',
+          email: `Hi {{contact.first_name}},
+
+This is our last check-in for now.
+
+If hair removal is still something you want to move forward with, you can book here any time:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your hair removal appointment today. No problem. You can pick a new time here: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Reschedule your hair removal appointment',
+          email: `Hi {{contact.first_name}},
+
+It looks like we missed you for your hair removal appointment today.
+
+If you'd like to reschedule, use the link below:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still happy to help, {{contact.first_name}}. If you’d like to rebook your hair removal visit, here’s the link: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Still here for your hair removal visit',
+          email: `Hi {{contact.first_name}},
+
+Just checking in in case you still want to rebook your hair removal appointment.
+
+You can choose a new time here:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if smoother, lower-maintenance skin is still on your list, we’d love to help you start hair removal. Book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: 'Ready to restart your hair removal plan?',
+          email: `Hi {{contact.first_name}},
+
+If you’re still considering hair removal, we’d love to help you get started.
+
+We can build a plan around your goals, treatment area, and schedule.
+
+Book here:
+
+👉 {{custom_values.booking_link__hair_removal}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you again for trusting us with your hair removal treatment. If you have a minute, we’d love your review: [Google Review Link]`,
+          subject: 'Thank you for visiting us for hair removal',
+          email: `Hi {{contact.first_name}},
+
+Thank you for coming in for hair removal with us.
+
+If you have a moment, we’d really appreciate a quick Google review about your experience:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    'hair-restoration': {
+      label: 'Hair Restoration',
+      focus: 'hair thinning, regrowth support, and confidence restoration',
+      bookingKey: '{{custom_values.booking_link__hair_restoration}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hair restoration. We know hair thinning can feel personal, and we’d love to help you explore the right treatment options with Dr. Faye. Book here: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Your hair restoration consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about hair restoration.
+
+We know concerns around thinning or shedding can feel deeply personal, and our goal is to help you understand your options clearly and confidently.
+
+You can book your consultation here:
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about your hair restoration inquiry. If you’d still like help with thinning or regrowth options, reply here or book here: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Still interested in hair restoration?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about hair restoration and wanted to follow up.
+
+If you still want help understanding your options for thinning, shedding, or regrowth support, we’d love to help.
+
+Book here:
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many hair restoration clients tell us the biggest win is feeling hopeful again. If you want a personalized plan, book here: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'A thoughtful plan for hair thinning and regrowth',
+          email: `Hi {{contact.first_name}},
+
+Hair restoration is about more than appearance. For many clients, it’s about confidence, hope, and finally taking action with a plan that makes sense.
+
+If you’d like a personalized consultation, you can book here:
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last quick note, {{contact.first_name}}. If hair restoration is still something you want to explore, we’d be happy to help when the time feels right: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Whenever you’re ready to explore hair restoration',
+          email: `Hi {{contact.first_name}},
+
+This is our final follow-up for now.
+
+If you still want to explore hair restoration, you can schedule here any time:
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your hair restoration appointment today. No worries at all. Here’s the reschedule link: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Let’s reschedule your hair restoration visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your hair restoration visit today.
+
+If you’d like to rebook, you can choose a new time here:
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. If you’d like to rebook your hair restoration consultation, use this link: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Still here for your hair restoration consultation',
+          email: `Hi {{contact.first_name}},
+
+Just checking in one more time in case you still want to rebook your hair restoration consultation.
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if hair restoration is still on your mind, we’d love to help you take the next step with a personalized plan: {{custom_values.booking_link__hair_restoration}}`,
+          subject: 'Ready to revisit your hair restoration options?',
+          email: `Hi {{contact.first_name}},
+
+If hair restoration is still something you’re thinking about, we’d love to reconnect.
+
+A personalized consultation can help you understand the right next step without pressure.
+
+👉 {{custom_values.booking_link__hair_restoration}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your hair restoration care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
+          subject: 'Thank you for trusting us with your hair restoration care',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for visiting us for hair restoration care.
+
+If you’d be open to sharing your experience, we’d truly appreciate a quick review:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    laser: {
+      label: 'Laser & Light Treatments',
+      focus: 'tone, texture, pigmentation, and advanced rejuvenation',
+      bookingKey: '{{custom_values.booking_link__laser_and_light_treatments}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for your interest in laser and light treatments. We’d love to help you improve tone, texture, sun damage, or redness with the right plan. Book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Your laser and light consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about laser and light treatments.
+
+If you're looking to improve pigment, texture, redness, or overall skin quality, we’d love to help you choose the treatment that fits your goals best.
+
+Book here:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried reaching you about laser and light treatments. If you still want help choosing the right option, reply here or book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Still interested in laser and light treatments?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about laser and light treatments and wanted to follow up.
+
+We’d be happy to walk you through the best option for concerns like sun damage, redness, uneven tone, or texture.
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, clients love what laser and light treatments can do for clarity, brightness, and smoother-looking skin. If you want to explore your options, book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Brighter, clearer skin with the right laser plan',
+          email: `Hi {{contact.first_name}},
+
+Laser and light treatments can be incredibly effective when matched to the right skin concern.
+
+Clients often come in wanting brighter tone, less discoloration, smoother texture, or a more even complexion.
+
+If that’s what you’re looking for, book here:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If laser or light treatments are still on your list, we’d love to help you build the right treatment plan: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Whenever you’re ready for laser and light treatments',
+          email: `Hi {{contact.first_name}},
+
+This is our final follow-up for now.
+
+If you’d still like to explore laser and light treatments, you can book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your laser treatment appointment today. No worries. You can reschedule here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Reschedule your laser and light visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your laser and light appointment today.
+
+If you’d like to pick a new time, you can do that here:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here if you want to rebook, {{contact.first_name}}. Your laser and light booking link is here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Still here for your laser and light visit',
+          email: `Hi {{contact.first_name}},
+
+Just a quick follow-up in case you still want to rebook your laser and light appointment.
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if clearer, brighter skin is still your goal, we’d love to help you with a laser and light treatment plan: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: 'Ready to revisit laser and light treatments?',
+          email: `Hi {{contact.first_name}},
+
+If laser and light treatments are still on your radar, we’d love to help you revisit the right option for your skin.
+
+Book here when you’re ready:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your laser and light treatment. If you have a moment, we’d love your review: [Google Review Link]`,
+          subject: 'Thank you for visiting us for laser and light care',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for coming in for your laser and light treatment.
+
+If you’d be open to sharing your experience, we’d truly appreciate a review:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    vein: {
+      label: 'Vein Treatment',
+      focus: 'spider veins, visible veins, and smoother-looking skin',
+      bookingKey: '{{custom_values.booking_link__vein_treatment}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about vein treatment. We’d love to help you explore the best option for visible veins and smoother-looking skin. Book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Your vein treatment consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about vein treatment.
+
+If visible veins are bothering you, we’d love to help you explore the right treatment plan with clarity and confidence.
+
+Book here:
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about vein treatment. If you’d still like to talk through your options, reply here or book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Still interested in vein treatment?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about vein treatment and wanted to check back in.
+
+If you’d still like to talk through your options and what results to expect, we’d be happy to help.
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many vein treatment clients come in wanting to feel more confident showing their legs or skin again. If that’s your goal, book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Feel more confident with a vein treatment plan',
+          email: `Hi {{contact.first_name}},
+
+For many clients, vein treatment is about feeling more comfortable and confident in their skin again.
+
+If that’s what you’re looking for, we’d love to help you build the right plan.
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If vein treatment is still something you want to explore, here’s your booking link: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Whenever you’re ready for vein treatment',
+          email: `Hi {{contact.first_name}},
+
+This is our final follow-up for now.
+
+If you still want to explore vein treatment, you can book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your vein treatment appointment today. No problem. You can reschedule here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Let’s reschedule your vein treatment visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your vein treatment appointment today.
+
+If you’d like to choose a new time, use this link:
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still happy to help whenever you’re ready, {{contact.first_name}}. Here’s the vein treatment reschedule link: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Still here for your vein treatment visit',
+          email: `Hi {{contact.first_name}},
+
+Just a gentle follow-up in case you still want to rebook your vein treatment visit.
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if visible veins are still something you want to address, we’d love to help you take the next step: {{custom_values.booking_link__vein_treatment}}`,
+          subject: 'Ready to revisit vein treatment?',
+          email: `Hi {{contact.first_name}},
+
+If vein treatment is still on your mind, we’d love to help you revisit your options.
+
+You can book here any time:
+
+👉 {{custom_values.booking_link__vein_treatment}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you again for trusting us with your vein treatment care. If you have a minute, we’d love your review: [Google Review Link]`,
+          subject: 'Thank you for visiting us for vein treatment',
+          email: `Hi {{contact.first_name}},
+
+Thank you for coming in for vein treatment with us.
+
+If you’d be open to sharing your experience, we’d really appreciate a quick review:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    hormone: {
+      label: 'Hormone Optimization',
+      focus: 'energy, mood, metabolic support, and whole-body balance',
+      bookingKey: '{{custom_values.booking_link__hormone_optimization}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hormone optimization. We’d love to help you feel more balanced, energized, and supported with a personalized consultation. Book here: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Your hormone optimization consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about hormone optimization.
+
+If you’ve been dealing with fatigue, low drive, mood shifts, or feeling unlike yourself, we’d love to help you explore a personalized path forward.
+
+Book here:
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about hormone optimization. If you still want to explore your options, reply here or book here: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Still interested in hormone optimization?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about hormone optimization and wanted to follow up.
+
+If you still want support around energy, focus, metabolism, or hormonal balance, we’d love to help.
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many hormone optimization clients tell us they finally feel like themselves again once they have the right plan. Book here if you want to explore it: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'A hormone optimization plan built around how you feel',
+          email: `Hi {{contact.first_name}},
+
+Hormone optimization can have a meaningful impact on how clients feel day to day, from energy and sleep to motivation and overall wellbeing.
+
+If you’d like to explore a customized plan, book here:
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last quick note, {{contact.first_name}}. If hormone optimization is still on your mind, we’d be happy to help whenever you’re ready: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Whenever you’re ready for hormone optimization',
+          email: `Hi {{contact.first_name}},
+
+This is our last follow-up for now.
+
+If hormone optimization is still something you want to explore, you can book here any time:
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your hormone optimization appointment today. No worries. You can reschedule here: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Let’s reschedule your hormone optimization consultation',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your hormone optimization visit today.
+
+If you’d like to rebook, you can choose a new time here:
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the hormone optimization rebooking link: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Still here for your hormone optimization visit',
+          email: `Hi {{contact.first_name}},
+
+Just checking in one more time in case you still want to rebook your hormone optimization visit.
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if hormone optimization is still on your list, we’d love to help you feel better with a personalized plan: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: 'Ready to revisit hormone optimization?',
+          email: `Hi {{contact.first_name}},
+
+If hormone optimization is still something you’re considering, we’d love to reconnect and help you take the next step.
+
+👉 {{custom_values.booking_link__hormone_optimization}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your hormone optimization care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
+          subject: 'Thank you for trusting us with your care',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for coming in for hormone optimization care.
+
+If you’d be open to leaving a quick review, we’d really appreciate it:
+
+👉 [Google Review Link]`
+        }
+      ]
+    },
+    sexual: {
+      label: 'Sexual Health',
+      focus: 'confidence, intimacy support, and medically guided solutions',
+      bookingKey: '{{custom_values.booking_link__sexual_health}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about sexual health services. We know this can feel personal, and our team is here to make the process comfortable and private. Book here: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Your private sexual health consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about sexual health services.
+
+We know this topic can feel personal, and our goal is to provide a private, respectful, and supportive experience from the very beginning.
+
+Book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried reaching you about sexual health services. If you still want to talk through your options privately, reply here or book here: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Still interested in sexual health support?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about sexual health support and wanted to follow up.
+
+If you still want to explore your options in a private, judgment-free setting, we’d be happy to help.
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many clients tell us the biggest relief is finally having a private space to talk openly and get real options. If that’s what you need, book here: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Private, respectful support for sexual health concerns',
+          email: `Hi {{contact.first_name}},
+
+For many clients, the biggest step is simply having a trusted place to ask questions and understand the right options.
+
+If that kind of support would help, we’d love to meet you.
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If sexual health support is still something you want to explore, here’s the booking link whenever you’re ready: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Whenever you’re ready for private support',
+          email: `Hi {{contact.first_name}},
+
+This is our last follow-up for now.
+
+If you still want to explore sexual health support, you can book here whenever it feels right:
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your sexual health consultation today. No worries at all. You can reschedule privately here: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Let’s reschedule your private consultation',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your sexual health consultation today.
+
+If you’d like to choose a new time, you can do that here:
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the private rebooking link: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Still here for your private consultation',
+          email: `Hi {{contact.first_name}},
+
+Just a gentle follow-up in case you still want to rebook your private consultation.
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if sexual health support is still something you want to explore, we’re here whenever you’re ready: {{custom_values.booking_link__sexual_health}}`,
+          subject: 'Ready to revisit your sexual health options?',
+          email: `Hi {{contact.first_name}},
+
+If sexual health support is still on your mind, we’d love to offer a private, respectful space to revisit your options.
+
+👉 {{custom_values.booking_link__sexual_health}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
+          subject: 'Thank you for trusting us',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for trusting us with your care.
+
+If you’d be open to leaving a quick review about your experience, we’d truly appreciate it:
+
+👉 [Google Review Link]`
+        }
+      ]
+    },
+    weight: {
+      label: 'Weight Loss',
+      focus: 'medical weight loss, accountability, and sustainable progress',
+      bookingKey: '{{custom_values.booking_link__weight_loss}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about weight loss support. We’d love to help you create a realistic, medically guided plan that fits your goals. Book here: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Your weight loss consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about weight loss support.
+
+We know this journey is personal, and our goal is to help you build a plan that feels realistic, supportive, and sustainable.
+
+You can book your consultation here:
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about weight loss support. If you’re still interested, reply here anytime or book here: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Still interested in weight loss support?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about weight loss support and wanted to check back in.
+
+If you still want help creating a structured plan with medical guidance and accountability, we’d love to help.
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many of our weight loss clients tell us the biggest difference is finally having a plan they can stick with. If that sounds right for you, book here: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'A weight loss plan built to be realistic and sustainable',
+          email: `Hi {{contact.first_name}},
+
+One of the biggest reasons clients succeed is because they finally have structure, support, and a plan that feels doable.
+
+If you want that kind of weight loss guidance, we’d love to meet you.
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last quick note, {{contact.first_name}}. If weight loss support is still something you want, here’s the booking link whenever you’re ready: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Whenever you’re ready for weight loss support',
+          email: `Hi {{contact.first_name}},
+
+This is our last follow-up for now.
+
+If you still want support with weight loss, you can schedule here whenever the time feels right:
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your weight loss consultation today. No worries. You can rebook here: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Let’s reschedule your weight loss consultation',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your weight loss consultation today.
+
+If you’d like to choose a new time, you can do that here:
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. If you want to rebook your weight loss consultation, here’s the link: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Still here for your weight loss consultation',
+          email: `Hi {{contact.first_name}},
+
+Just a friendly follow-up in case you still want to rebook your weight loss consultation.
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if you’re ready to restart your weight loss goals with a plan and real support, we’d love to help: {{custom_values.booking_link__weight_loss}}`,
+          subject: 'Ready to restart your weight loss goals?',
+          email: `Hi {{contact.first_name}},
+
+If your weight loss goals are still important to you, we’d love to help you restart with the right support and structure.
+
+Book here whenever you're ready:
+
+👉 {{custom_values.booking_link__weight_loss}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your weight loss journey. If you have a minute, we’d really appreciate your review: [Google Review Link]`,
+          subject: 'Thank you for trusting us with your journey',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for trusting us with your weight loss care.
+
+If you’d be open to leaving a quick review about your experience, we’d truly appreciate it:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    },
+    iv: {
+      label: 'IV Therapy',
+      focus: 'hydration, recovery, immunity, and wellness support',
+      bookingKey: '{{custom_values.booking_link__iv_therapy}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about IV therapy. We’d love to help you feel better, recover faster, and choose the right drip for your goals. Book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Your IV therapy consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about IV therapy.
+
+Whether you’re looking for hydration, recovery, immune support, or an overall wellness boost, we’d love to help you choose the right option.
+
+Book here:
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about IV therapy. If you still want help choosing the right drip, reply here or book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Still interested in IV therapy?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about IV therapy and wanted to follow up.
+
+If you still want help choosing the right IV option for your goals, we’d be happy to help.
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, many IV therapy clients love how quickly they feel refreshed and recharged after the right drip. If you want to explore it, book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Feel refreshed and supported with IV therapy',
+          email: `Hi {{contact.first_name}},
+
+IV therapy is a great fit for clients who want hydration, recovery support, and a fast wellness reset.
+
+If that sounds like what you need, book here:
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If IV therapy is still on your list, here’s the booking link whenever you’re ready: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Whenever you’re ready for IV therapy',
+          email: `Hi {{contact.first_name}},
+
+This is our last follow-up for now.
+
+If IV therapy is still something you want to book, you can do that here whenever you’re ready:
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your IV therapy visit today. No worries. You can reschedule here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Let’s reschedule your IV therapy visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your IV therapy appointment today.
+
+If you’d like to choose a new time, use the link below:
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the IV therapy rebooking link: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Still here for your IV therapy visit',
+          email: `Hi {{contact.first_name}},
+
+Just a quick follow-up in case you still want to rebook your IV therapy visit.
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if IV therapy is still something you want to try, we’d love to help you get scheduled: {{custom_values.booking_link__iv_therapy}}`,
+          subject: 'Ready to revisit IV therapy?',
+          email: `Hi {{contact.first_name}},
+
+If IV therapy is still on your list, we’d love to help you revisit the best option for your goals.
+
+👉 {{custom_values.booking_link__iv_therapy}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for visiting us for IV therapy. If you have a moment, we’d love your review: [Google Review Link]`,
+          subject: 'Thank you for visiting us for IV therapy',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for coming in for IV therapy.
+
+If you’d be open to leaving a quick review, we’d truly appreciate it:
+
+👉 [Google Review Link]`
+        }
+      ]
+    },
+    body: {
+      label: 'Body Contouring & Chin',
+      focus: 'sculpting, contour refinement, and profile confidence',
+      bookingKey: '{{custom_values.booking_link__body_contouring_and_chin}}',
+      scripts: [
+        {
+          title: 'SMS #1 + Email #1 — Instant Welcome',
+          timing: '⏱ 2 min after form submit',
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about body contouring and chin treatments. We’d love to help you refine shape, definition, and confidence with the right plan. Book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Your body contouring consultation',
+          email: `Hi {{contact.first_name}},
+
+Thank you for reaching out about body contouring and chin treatments.
+
+If you want more definition, better contour, or a treatment plan tailored to your goals, we’d love to help you explore the right option.
+
+Book here:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hey {{contact.first_name}}, we tried calling about body contouring and chin treatments. If you still want to explore your options, reply here or book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Still interested in body contouring?',
+          email: `Hi {{contact.first_name}},
+
+We tried reaching you about body contouring and chin treatments and wanted to check back in.
+
+If you’d still like help understanding your options and what kind of contouring result may be possible, we’d be happy to help.
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
+          timing: '⏱ 24 hrs after SMS #2',
+          sms: `{{contact.first_name}}, clients love how body contouring can help them feel more confident in photos, clothes, and everyday life. If you want to explore it, book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'A more sculpted, confident look starts with the right plan',
+          email: `Hi {{contact.first_name}},
+
+Body contouring is often about those subtle changes that make you feel more confident in your shape and profile.
+
+If you want to explore what’s possible, we’d love to guide you through it.
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Last note from us, {{contact.first_name}}. If body contouring is still something you want to explore, here’s your booking link: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Whenever you’re ready for body contouring',
+          email: `Hi {{contact.first_name}},
+
+This is our final follow-up for now.
+
+If body contouring or chin refinement is still on your list, you can book here whenever you’re ready:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #5 + Email #5 — No-Show Re-book',
+          timing: '⏱ 60 min after missed appointment',
+          sms: `Hey {{contact.first_name}}, we missed you for your contouring appointment today. No problem at all. You can reschedule here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Let’s reschedule your contouring visit',
+          email: `Hi {{contact.first_name}},
+
+We missed you for your body contouring and chin consultation today.
+
+If you’d like to choose a new time, use the link below:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #6 + Email #6 — Second No-Show Attempt',
+          timing: '⏱ 24 hrs after SMS #5',
+          sms: `Still happy to help when you’re ready, {{contact.first_name}}. Here’s the link to rebook your contouring visit: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Still here for your contouring consultation',
+          email: `Hi {{contact.first_name}},
+
+Just checking in one more time in case you still want to rebook your body contouring consultation.
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
+          timing: '⏱ Day 30 in Lost / Archived',
+          sms: `Hey {{contact.first_name}}, if body contouring is still one of your goals, we’d love to help you take the next step with a personalized plan: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: 'Ready to revisit body contouring?',
+          email: `Hi {{contact.first_name}},
+
+If body contouring or chin refinement is still something you’re considering, we’d love to help you revisit your options.
+
+Book here whenever the time feels right:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+        },
+        {
+          title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
+          timing: '⏱ 3 days after Stage 8 (Won)',
+          sms: `Hi {{contact.first_name}}, thank you for trusting us with your contouring treatment. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
+          subject: 'Thank you for visiting us for contouring care',
+          email: `Hi {{contact.first_name}},
+
+Thank you again for coming in for body contouring care.
+
+If you’d be open to leaving a quick review, we’d truly appreciate it:
+
+👉 [Google Review Link]
+
+Houston Wellness Aesthetics`
+        }
+      ]
+    }
+  };
+
+  function renderServiceScripts(serviceKey) {
+    const service = serviceScripts[serviceKey];
+    if (!service || !serviceScriptPanel) return;
+
+    const cards = service.scripts.map((script) => {
+      const shouldAddGallery = script.title.includes('Social Proof') || script.title.includes('Reactivation');
+      const smsText = shouldAddGallery ? `${script.sms}\nBefore/after gallery: ${beforeAfterGalleryLink}` : script.sms;
+      const emailText = shouldAddGallery ? `${script.email}\n\nBefore/after gallery:\n${beforeAfterGalleryLink}` : script.email;
+
+      return `
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-num">${script.title}</div>
+          <div class="script-timing">${script.timing}</div>
+        </div>
+        <div class="script-body">
+          <div class="msg-block sms-block">
+            <div class="msg-label">📱 SMS</div>
+            <pre>${smsText}</pre>
+          </div>
+          <div class="msg-block email-block">
+            <div class="msg-label">✉️ Email</div>
+            <div class="email-subject">Subject: <span>${script.subject}</span></div>
+            <pre>${emailText}</pre>
+          </div>
+        </div>
+      </div>
+    `;
+    }).join('');
+
+    serviceScriptPanel.innerHTML = `
+      <div class="info-card" style="margin-bottom:24px;">
+        <div class="card-label">${service.label}</div>
+        <div class="card-title">${service.focus}</div>
+        <p>These messages are written specifically for <strong>${service.label}</strong> leads and use the matching booking link key: <span class="code-val">${service.bookingKey}</span></p>
+        <p style="margin-top:10px;">Before/after gallery used in social proof and reactivation messages: <a href="${beforeAfterGalleryLink}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">${beforeAfterGalleryLink}</a></p>
+      </div>
+      ${cards}
+    `;
+  }
+
+  serviceTabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      serviceTabButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+      renderServiceScripts(button.dataset.service);
+    });
+  });
+
+  renderServiceScripts('injectables');
+
+  // Interactive checklist with local persistence
+  const checklistStorageKey = 'hwa-checklist-state';
+  const checklistBoxes = document.querySelectorAll('.check-box');
+
+  function syncChecklistItem(box, checked) {
+    const item = box.closest('.checklist-item');
+    box.classList.toggle('checked', checked);
+    box.setAttribute('aria-pressed', checked ? 'true' : 'false');
+    if (item) item.classList.toggle('is-complete', checked);
+  }
+
+  function saveChecklistState() {
+    const state = Array.from(checklistBoxes).map(box => box.classList.contains('checked'));
+    localStorage.setItem(checklistStorageKey, JSON.stringify(state));
+  }
+
+  function loadChecklistState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(checklistStorageKey) || '[]');
+      checklistBoxes.forEach((box, index) => {
+        syncChecklistItem(box, Boolean(saved[index]));
+      });
+    } catch (error) {
+      checklistBoxes.forEach(box => syncChecklistItem(box, false));
+    }
+  }
+
+  checklistBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const nextState = !box.classList.contains('checked');
+      syncChecklistItem(box, nextState);
+      saveChecklistState();
+    });
+  });
+
+  loadChecklistState();
+</script>
+</body>
+</html>
