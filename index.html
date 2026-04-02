@@ -229,22 +229,23 @@
     }
 
     .page-header h1 {
-      font-size: clamp(38px, 5.5vw, 78px);
+      font-size: clamp(42px, 5.8vw, 84px);
       font-weight: 800;
       color: var(--white);
       letter-spacing: -0.045em;
-      line-height: 0.97;
+      line-height: 0.94;
       margin-bottom: 18px;
     }
 
     .page-header h1 span { color: var(--teal); }
 
     .hero-deck {
-      font-size: 16px;
-      color: #334155;
+      font-size: 18px;
+      color: #1f2937;
       max-width: 700px;
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 22px;
+      font-weight: 500;
     }
 
     .page-header .header-meta {
@@ -275,8 +276,8 @@
     }
 
     .meta-item .meta-value {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       color: var(--white);
     }
 
@@ -298,16 +299,18 @@
     }
 
     .hero-panel h2 {
-      font-size: 24px;
-      line-height: 1.15;
+      font-size: 28px;
+      line-height: 1.12;
       letter-spacing: -0.03em;
       margin-bottom: 12px;
+      color: var(--white);
     }
 
     .hero-panel p {
-      font-size: 14px;
-      color: #475569;
+      font-size: 15px;
+      color: #334155;
       margin-bottom: 20px;
+      line-height: 1.75;
     }
 
     .hero-stat-grid {
@@ -326,7 +329,7 @@
 
     .hero-stat strong {
       display: block;
-      font-size: 24px;
+      font-size: 28px;
       letter-spacing: -0.03em;
       margin-bottom: 2px;
     }
@@ -351,8 +354,9 @@
       gap: 12px;
       padding-top: 10px;
       border-top: 1px solid var(--border2);
-      font-size: 13px;
-      color: #1f2937;
+      font-size: 14px;
+      color: #0f172a;
+      font-weight: 600;
     }
 
     .mini-index li:first-child {
@@ -419,7 +423,7 @@
     }
 
     .section-header h2 {
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(32px, 3.8vw, 48px);
       font-weight: 800;
       color: var(--white);
       letter-spacing: -0.04em;
@@ -427,9 +431,11 @@
     }
 
     .section-subtitle {
-      font-size: 15px;
-      color: var(--muted);
+      font-size: 17px;
+      color: #334155;
       font-style: normal;
+      line-height: 1.7;
+      max-width: 860px;
     }
 
     .section-divider {
@@ -468,16 +474,17 @@
     }
 
     .info-card .card-title {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 19px;
+      font-weight: 800;
       color: var(--white);
       margin-bottom: 10px;
+      line-height: 1.35;
     }
 
     .info-card p, .info-card li {
-      font-size: 13.5px;
+      font-size: 15px;
       color: #334155;
-      line-height: 1.65;
+      line-height: 1.8;
     }
 
     .info-card ul {
@@ -523,9 +530,10 @@
     }
 
     .warning-card p {
-      font-size: 14px;
+      font-size: 15px;
       color: #7a5d22;
-      line-height: 1.7;
+      line-height: 1.8;
+      font-weight: 500;
     }
 
     /* Sales process steps */
@@ -581,9 +589,9 @@
     }
 
     .step-body p {
-      font-size: 13.5px;
+      font-size: 15px;
       color: #334155;
-      line-height: 1.6;
+      line-height: 1.8;
       padding-top: 4px;
     }
 
@@ -631,16 +639,17 @@
     }
 
     .stage-name {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 800;
       color: var(--white);
       margin-bottom: 8px;
+      line-height: 1.4;
     }
 
     .stage-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.65;
       margin-bottom: 10px;
     }
 
@@ -710,9 +719,10 @@
 
     tbody td {
       padding: 12px 18px;
-      font-size: 13px;
-      color: #334155;
+      font-size: 14px;
+      color: #1f2937;
       vertical-align: top;
+      line-height: 1.7;
     }
 
     .code-val {
@@ -767,15 +777,17 @@
     }
 
     .wf-name {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       color: var(--white);
       margin-bottom: 4px;
+      line-height: 1.35;
     }
 
     .wf-trigger {
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.65;
     }
 
     .wf-trigger span {
@@ -790,9 +802,10 @@
       gap: 10px;
       padding: 8px 0;
       border-bottom: 1px solid var(--border2);
-      font-size: 13px;
-      color: #334155;
+      font-size: 14.5px;
+      color: #1f2937;
       align-items: flex-start;
+      line-height: 1.7;
     }
 
     .wf-steps li:last-child { border-bottom: none; }
@@ -811,9 +824,10 @@
       border-radius: 8px;
       padding: 14px 18px;
       margin-top: 16px;
-      font-size: 12.5px;
+      font-size: 14px;
       color: #245c5c;
-      line-height: 1.6;
+      line-height: 1.75;
+      font-weight: 500;
     }
 
     .wf-note strong { color: var(--teal); }
@@ -871,10 +885,11 @@
     }
 
     .script-num {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--teal);
       font-family: 'IBM Plex Mono', monospace;
+      line-height: 1.5;
     }
 
     .script-timing {
@@ -918,9 +933,9 @@
 
     .sms-block pre {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
+      font-size: 12.5px;
       color: #1f2937;
-      line-height: 1.65;
+      line-height: 1.75;
       white-space: pre-wrap;
       word-break: break-word;
     }
@@ -933,8 +948,8 @@
     .email-block .msg-label { color: #64748b; }
 
     .email-subject {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       color: var(--muted);
       margin-bottom: 10px;
       padding-bottom: 10px;
@@ -945,9 +960,9 @@
 
     .email-block pre {
       font-family: 'Manrope', sans-serif;
-      font-size: 12.5px;
-      color: #334155;
-      line-height: 1.75;
+      font-size: 14px;
+      color: #1f2937;
+      line-height: 1.85;
       white-space: pre-wrap;
       word-break: break-word;
     }
@@ -982,8 +997,8 @@
     }
 
     .phase-name {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 800;
       color: var(--white);
     }
 
@@ -1049,9 +1064,9 @@
 
     .check-text {
       flex: 1;
-      font-size: 13px;
-      color: #334155;
-      line-height: 1.5;
+      font-size: 14.5px;
+      color: #1f2937;
+      line-height: 1.75;
     }
 
     .check-owner {
@@ -1081,8 +1096,8 @@
 
     /* ── SUBSECTION LABELS ── */
     .subsection-title {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 800;
       color: var(--white);
       margin: 36px 0 6px;
     }
@@ -1090,9 +1105,10 @@
     .subsection-title:first-of-type { margin-top: 0; }
 
     .subsection-sub {
-      font-size: 12.5px;
-      color: var(--muted);
+      font-size: 14px;
+      color: #475569;
       margin-bottom: 16px;
+      line-height: 1.7;
     }
 
     /* ── FOOTER ── */
@@ -1105,10 +1121,11 @@
     }
 
     footer p {
-      font-size: 11.5px;
+      font-size: 12.5px;
       color: var(--muted2);
       font-family: 'IBM Plex Mono', monospace;
       letter-spacing: 0.05em;
+      line-height: 1.7;
     }
 
     footer p span { color: var(--teal); }
