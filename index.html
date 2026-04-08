@@ -1780,7 +1780,7 @@
     <div class="section-header">
       <div class="section-eyebrow">Section 04</div>
       <h2>Copy-Paste Ready — Load These Directly into GHL</h2>
-      <p class="section-subtitle">Select a service to view its fully written SMS + Email script set. All messages are personalized per treatment — copy and paste directly into GHL. Replace <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">[Google Review Link]</code> with your Google Business Profile review URL before loading.</p>
+      <p class="section-subtitle">Select a service to view its fully written SMS + Email script set. Every message now uses the real GHL custom fields <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.interested_in }}</code> and <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.when_are_you_looking_to_get_started }}</code> so outreach stays personalized by sub-service and timing. Replace <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">[Google Review Link]</code> with your Google Business Profile review URL before loading.</p>
       <div class="section-divider"></div>
     </div>
 
@@ -1903,9 +1903,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Service Interest</strong></td>
+            <td><strong>Interested In</strong><br><span class="code-val">{{ contact.interested_in }}</span></td>
+            <td>Text</td>
+            <td>Primary personalization field coming from the form. This stores the exact sub-service selected by the lead and should drive service routing and message personalization. Supported values include Botox, Dermal Fillers, Lip Enhancement, Hydrafacial, Dermaplaning, Chemical Peels, Microneedling And Collagen Remodeling, IPL Photofacial Using Cynosure Icon, Laser Hair Removal, PRP Therapy For Hair Restoration, Bioidentical Hormone Therapy, Sexual Health For Women, GLP-1 Weight Loss, Semaglutide, Tirzepatide Weight Loss, SculpSure, and all other sub-services listed in Section 04.</td>
+          </tr>
+          <tr>
+            <td><strong>When Are You Looking To Get Started?</strong><br><span class="code-val">{{ contact.when_are_you_looking_to_get_started }}</span></td>
+            <td>Text</td>
+            <td>Intent / urgency field captured on submit. Use this inside welcome, follow-up, and reactivation messaging so the copy reflects whether the lead wants to start ASAP, this month, or is just researching.</td>
+          </tr>
+          <tr>
+            <td><strong>Main Service Category</strong></td>
             <td>Dropdown</td>
-            <td>Which service the lead inquired about. Options: Injectables / Facial Care / Laser &amp; Light Treatments / Body Contouring &amp; Chin / Vein Treatment / Hair Removal / Hair Restoration / Hormone Optimization / Sexual Health / Weight Loss / IV Therapy / Multiple / Not Sure</td>
+            <td>Internal routing field for the top-level service bucket: Injectables / Facial Care / Laser &amp; Light Treatments / Body Contouring &amp; Chin / Vein Treatment / Hair Removal / Hair Restoration / Hormone Optimization / Sexual Health / Weight Loss / IV Therapy / Multiple / Not Sure</td>
           </tr>
           <tr>
             <td><strong>Lead Source</strong></td>
@@ -2028,7 +2038,7 @@
       <div class="checklist-items">
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build all 12 custom contact fields (see Section 05B)</div>
+          <div class="check-text">Build all required custom contact fields from Section 05B, including Interested In and When Are You Looking To Get Started?</div>
           <div class="check-owner">NurtureSol</div>
         </div>
         <div class="checklist-item">
@@ -2038,7 +2048,7 @@
         </div>
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Pin priority fields to top of contact view: Name, Phone, Service Interest, Lead Source, Assigned To</div>
+          <div class="check-text">Pin priority fields to top of contact view: Name, Phone, Interested In, Main Service Category, When Are You Looking To Get Started?, Lead Source, Assigned To</div>
           <div class="check-owner">NurtureSol</div>
         </div>
       </div>
@@ -2247,6 +2257,103 @@
   const serviceTabButtons = document.querySelectorAll('.service-tab-btn');
   const serviceScriptPanel = document.getElementById('service-script-panel');
   const beforeAfterGalleryLink = 'https://drive.google.com/drive/u/0/folders/1CKNJq7EP4wPNlqH14L5Rxql3tRbxW6h_';
+  const interestedInField = '{{ contact.interested_in }}';
+  const startTimingField = '{{ contact.when_are_you_looking_to_get_started }}';
+  const serviceSubOptions = {
+    injectables: [
+      'Botox',
+      'Dermal Fillers',
+      'Lip Enhancement',
+      'Facial Volume Restoration',
+      'Wrinkles And Fine Lines'
+    ],
+    facial: [
+      'Hydrafacial',
+      'Dermaplaning',
+      'Chemical Peels',
+      'Custom Facials',
+      'Microneedling And Collagen Remodeling',
+      'SkinPen Microneedling'
+    ],
+    laser: [
+      'IPL Photofacial Using Cynosure Icon',
+      'Laser Facials',
+      'Hyperpigmentation Treatment',
+      'Acne And Acne Scarring Treatment',
+      'Vein Treatment (Spider Veins)'
+    ],
+    body: [
+      'Double Chin Treatment',
+      'Kybella'
+    ],
+    vein: [
+      'Laser Vein Treatment',
+      'Sclerotherapy'
+    ],
+    'hair-removal': [
+      'Laser Hair Removal',
+      'Hair Removal Areas We Treat',
+      'Pre And Post Care For Laser Hair Removal'
+    ],
+    'hair-restoration': [
+      'Hair Loss Treatment',
+      'PRP Therapy For Hair Restoration'
+    ],
+    hormone: [
+      'Bioidentical Hormone Therapy',
+      'Hormone Pellet Therapy',
+      'Testosterone Replacement Therapy',
+      'Andropause Treatment',
+      'Hormone Therapy For Women',
+      'Menopause Treatment',
+      'Peptide Therapy'
+    ],
+    sexual: [
+      'Sexual Health For Women',
+      'Sexual Health For Men'
+    ],
+    weight: [
+      'Medical Weight Loss Program',
+      'GLP-1 Weight Loss',
+      'Semaglutide',
+      'Tirzepatide Weight Loss',
+      'SculpSure'
+    ],
+    iv: [
+      'IV Therapy'
+    ]
+  };
+
+  function getMessageContext(scriptTitle) {
+    if (scriptTitle.includes('Post-Visit')) {
+      return {
+        sms: `This note is tied to your ${interestedInField} visit.`,
+        email: `Your record shows you came in for ${interestedInField}.`
+      };
+    }
+
+    if (scriptTitle.includes('No-Show')) {
+      return {
+        sms: `I still have you down for ${interestedInField}.`,
+        email: `We still have your requested treatment listed as ${interestedInField}.`
+      };
+    }
+
+    return {
+      sms: `I saw you were interested in ${interestedInField} and wanted to get started ${startTimingField}.`,
+      email: `I saw that you were interested in ${interestedInField}, and that you wanted to get started ${startTimingField}.`
+    };
+  }
+
+  function buildPersonalizedSms(script) {
+    const context = getMessageContext(script.title);
+    return `${context.sms} ${script.sms}`;
+  }
+
+  function buildPersonalizedEmail(script) {
+    const context = getMessageContext(script.title);
+    return `${context.email}\n\n${script.email}`;
+  }
 
   const serviceScripts = {
     injectables: {
@@ -3544,11 +3651,14 @@ Houston Wellness Aesthetics`
   function renderServiceScripts(serviceKey) {
     const service = serviceScripts[serviceKey];
     if (!service || !serviceScriptPanel) return;
+    const subservices = serviceSubOptions[serviceKey] || [];
 
     const cards = service.scripts.map((script) => {
       const shouldAddGallery = script.title.includes('Social Proof') || script.title.includes('Reactivation');
-      const smsText = shouldAddGallery ? `${script.sms}\nBefore/after gallery: ${beforeAfterGalleryLink}` : script.sms;
-      const emailText = shouldAddGallery ? `${script.email}\n\nBefore/after gallery:\n${beforeAfterGalleryLink}` : script.email;
+      const personalizedSms = buildPersonalizedSms(script);
+      const personalizedEmail = buildPersonalizedEmail(script);
+      const smsText = shouldAddGallery ? `${personalizedSms}\nBefore/after gallery: ${beforeAfterGalleryLink}` : personalizedSms;
+      const emailText = shouldAddGallery ? `${personalizedEmail}\n\nBefore/after gallery:\n${beforeAfterGalleryLink}` : personalizedEmail;
 
       return `
       <div class="script-card">
@@ -3576,6 +3686,8 @@ Houston Wellness Aesthetics`
         <div class="card-label">${service.label}</div>
         <div class="card-title">${service.focus}</div>
         <p>These messages are written specifically for <strong>${service.label}</strong> leads and use the matching booking link key: <span class="code-val">${service.bookingKey}</span></p>
+        <p style="margin-top:10px;">Personalization merge fields used in every message: <span class="code-val">${interestedInField}</span> + <span class="code-val">${startTimingField}</span></p>
+        <p style="margin-top:10px;"><strong>Sub-services captured under this category:</strong> ${subservices.join(' · ')}</p>
         <p style="margin-top:10px;">Before/after gallery used in social proof and reactivation messages: <a href="${beforeAfterGalleryLink}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">${beforeAfterGalleryLink}</a></p>
       </div>
       ${cards}
