@@ -1329,7 +1329,7 @@
       <div class="info-card">
         <div class="card-label">The Company</div>
         <div class="card-title">Houston Wellness Aesthetics</div>
-        <p>A premium med spa and aesthetic wellness clinic owned and operated by <strong>Dr. Faye</strong>. Services span <strong>11 distinct categories</strong> across the "Look Amazing" and "Feel Amazing" offers — each with its own dedicated booking link stored as a Custom Value in GHL.</p>
+        <p>A premium med spa and aesthetic wellness clinic owned and operated by <strong>Dr. Foye</strong>. Services span <strong>11 distinct categories</strong> across the "Look Amazing" and "Feel Amazing" offers — each with its own dedicated booking link stored as a Custom Value in GHL.</p>
         <ul style="margin-top:12px;">
           <li>Injectables</li>
           <li>Facial Care</li>
@@ -1371,7 +1371,7 @@
       <div class="info-card">
         <div class="card-label">Team Members</div>
         <ul>
-          <li><strong>Dr. Faye</strong> — Owner, lead provider, face of the brand</li>
+          <li><strong>Dr. Foye</strong> — Owner, lead provider, face of the brand</li>
           <li><strong>Front Desk</strong> — Call handling, appointment confirmations, daily pipeline management</li>
           <li><strong>NurtureSol LLC (Zaid)</strong> — CRM architecture, automations, ongoing optimization</li>
         </ul>
@@ -1454,7 +1454,7 @@
         <div class="warn-icon">⚠</div>
         <div class="warn-title">Critical Context — Read Before Building</div>
       </div>
-      <p>This is a <strong style="color:var(--amber);">trust-first business.</strong> Dr. Faye's reputation is everything. Every automated message must feel like it came from her team directly — warm, professional, and human. <strong style="color:var(--amber);">Speed matters:</strong> first SMS + email within 5 minutes of a new lead. <strong style="color:var(--amber);">Personalization matters:</strong> every service gets its own message set so a Botox inquiry never gets a Hair Removal email.</p>
+      <p>This is a <strong style="color:var(--amber);">trust-first business.</strong> Dr. Foye's reputation is everything. Every automated message must feel like it came from her team directly — warm, professional, and human. <strong style="color:var(--amber);">Speed matters:</strong> first SMS + email within 5 minutes of a new lead. <strong style="color:var(--amber);">Personalization matters:</strong> every service gets its own message set so a Botox inquiry never gets a Hair Removal email.</p>
     </div>
   </section>
 
@@ -1671,7 +1671,7 @@
         </div>
       </div>
       <ul class="wf-steps">
-        <li><span class="wf-step-arrow">→</span>Immediately → SMS #2 + Email #2 (service-personalized, personal tone from Dr. Faye's team)</li>
+        <li><span class="wf-step-arrow">→</span>Immediately → SMS #2 + Email #2 (service-personalized, personal tone from Dr. Foye's team)</li>
         <li><span class="wf-step-arrow">→</span>Wait 24 hours → SMS #3 + Email #3 (social proof message)</li>
         <li><span class="wf-step-arrow">→</span>Wait 48 hours → SMS #4 + Email #4 (final attempt, booking link)</li>
         <li><span class="wf-step-arrow">→</span>Wait 48 hours → no response → move to Stage 9, tag "No Response - [Service]"</li>
@@ -1955,7 +1955,7 @@
           <tr>
             <td><strong>Assigned To</strong></td>
             <td>Dropdown</td>
-            <td>Dr. Faye / Front Desk / NurtureSol (Zaid)</td>
+            <td>Dr. Foye / Front Desk / NurtureSol (Zaid)</td>
           </tr>
           <tr>
             <td><strong>Review Requested</strong></td>
@@ -2003,7 +2003,7 @@
         </div>
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Create user accounts: Dr. Faye (Admin), Front Desk (User), Zaid (Admin)</div>
+          <div class="check-text">Create user accounts: Dr. Foye (Admin), Front Desk (User), Zaid (Admin)</div>
           <div class="check-owner">NurtureSol</div>
         </div>
         <div class="checklist-item">
@@ -2069,7 +2069,7 @@
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
           <div class="check-text">Configure availability, buffers, and advance booking for each calendar</div>
-          <div class="check-owner owner-dual">Dr. Faye / Client</div>
+          <div class="check-owner owner-dual">Dr. Foye / Client</div>
         </div>
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
@@ -2193,7 +2193,7 @@
         </div>
         <div class="checklist-item">
           <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Record Loom walkthrough for Dr. Faye and front desk (pipeline, booking, manual tasks)</div>
+          <div class="check-text">Record Loom walkthrough for Dr. Foye and front desk (pipeline, booking, manual tasks)</div>
           <div class="check-owner">NurtureSol</div>
         </div>
         <div class="checklist-item">
@@ -2323,6 +2323,39 @@
       'IV Therapy'
     ]
   };
+  const serviceReplacements = {
+    injectables: [
+      ['Botox, filler, and facial balancing', 'wrinkle smoothing, enhancement, and facial balance'],
+      ['natural-looking Botox and filler plans', `natural-looking ${interestedInField} treatment plans`],
+      ['Whether you\'re considering Botox, filler, or a full-face balancing plan,', `Whether you're considering ${interestedInField} or exploring the right next step,`],
+      ['If you\'re still thinking about Botox or filler,', `If you're still thinking about ${interestedInField},`],
+      ['If you’re still thinking about Botox or filler,', `If you’re still thinking about ${interestedInField},`],
+      ['Botox, filler, lip enhancement, or facial balancing,', `${interestedInField} and the best option for your goals,`],
+      ['Botox or filler,', `${interestedInField},`],
+      ['Botox or filler', interestedInField],
+      ['injectables clients come in wanting subtle, polished results', `${interestedInField} clients come in wanting subtle, polished results`]
+    ],
+    facial: [
+      ['glow-focused treatments', 'skin-renewal and complexion treatments'],
+      ['glow treatments, hydration-focused facials, acne support, or anti-aging options,', `${interestedInField} and the right next step for your skin,`]
+    ],
+    'hair-removal': [
+      ['treatment areas, session timing, and what kind of results to expect.', `${interestedInField}, session timing, and what kind of results to expect.`]
+    ],
+    'hair-restoration': [
+      ['thinning, shedding, or regrowth support,', `${interestedInField} and the right next step for your hair goals,`]
+    ],
+    iv: [
+      ['choose the right drip for your goals', `choose the right IV plan for ${interestedInField}`],
+      ['help choosing the right drip', `help choosing the right IV plan for ${interestedInField}`],
+      ['after the right drip', `after the right IV treatment`]
+    ]
+  };
+
+  function normalizeForSubservice(serviceKey, text) {
+    const replacements = serviceReplacements[serviceKey] || [];
+    return replacements.reduce((current, [search, replacement]) => current.split(search).join(replacement), text);
+  }
 
   function getMessageContext(scriptTitle) {
     if (scriptTitle.includes('Post-Visit')) {
@@ -2364,13 +2397,13 @@
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! This is Houston Wellness Aesthetics. Thanks for reaching out about injectables. Dr. Faye specializes in natural-looking Botox and filler plans that keep you refreshed, never overdone. We’ll give you a quick call shortly, or you can book here: {{custom_values.booking_link__injectables}}`,
-          subject: 'Your injectables consultation with Dr. Faye',
+          sms: `Hey {{contact.first_name}}! This is Houston Wellness Aesthetics. Thanks for reaching out about injectables. Dr. Foye specializes in natural-looking Botox and filler plans that keep you refreshed, never overdone. We’ll give you a quick call shortly, or you can book here: {{custom_values.booking_link__injectables}}`,
+          subject: 'Your injectables consultation with Dr. Foye',
           email: `Hi {{contact.first_name}},
 
 Thank you for reaching out to Houston Wellness Aesthetics about injectables.
 
-Whether you're considering Botox, filler, or a full-face balancing plan, Dr. Faye takes a conservative, natural approach designed to enhance your features without making you look "done."
+Whether you're considering Botox, filler, or a full-face balancing plan, Dr. Foye takes a conservative, natural approach designed to enhance your features without making you look "done."
 
 Someone from our team will reach out shortly. If you want to lock in a time now, you can book your injectables consultation here:
 
@@ -2405,7 +2438,7 @@ Houston Wellness Aesthetics
           subject: 'Natural-looking injectables results our clients love',
           email: `Hi {{contact.first_name}},
 
-One of the biggest reasons clients choose Dr. Faye for injectables is her eye for balance, restraint, and natural beauty.
+One of the biggest reasons clients choose Dr. Foye for injectables is her eye for balance, restraint, and natural beauty.
 
 Our patients often tell us they still look like themselves, just more rested, lifted, and confident.
 
@@ -2475,7 +2508,7 @@ Houston Wellness Aesthetics`
 
 If injectables are still on your radar, we’d love to welcome you in.
 
-Dr. Faye creates personalized treatment plans based on movement, facial structure, and the kind of result you want, whether that’s smoothing, balancing, or subtle restoration.
+Dr. Foye creates personalized treatment plans based on movement, facial structure, and the kind of result you want, whether that’s smoothing, balancing, or subtle restoration.
 
 Book here whenever you're ready:
 
@@ -2487,11 +2520,11 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, we hope you’re loving your injectables results. If you have a quick minute, leaving a review would mean a lot to Dr. Faye and our team: [Google Review Link]`,
+          sms: `Hi {{contact.first_name}}, we hope you’re loving your injectables results. If you have a quick minute, leaving a review would mean a lot to Dr. Foye and our team: [Google Review Link]`,
           subject: 'How are you loving your injectables results?',
           email: `Hi {{contact.first_name}},
 
-Thank you again for trusting Dr. Faye with your injectables treatment.
+Thank you again for trusting Dr. Foye with your injectables treatment.
 
 We hope you’re loving how refreshed and confident you feel. If you have a minute, we’d be so grateful for a quick Google review:
 
@@ -2517,7 +2550,7 @@ Houston Wellness Aesthetics`
 
 Thank you for reaching out about facial care.
 
-Whether you're dealing with dullness, congestion, dehydration, or just want healthier, brighter skin, Dr. Faye and the team can recommend the right plan for your goals.
+Whether you're dealing with dullness, congestion, dehydration, or just want healthier, brighter skin, Dr. Foye and the team can recommend the right plan for your goals.
 
 You can book your consultation here:
 
@@ -2758,7 +2791,7 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hair restoration. We know hair thinning can feel personal, and we’d love to help you explore the right treatment options with Dr. Faye. Book here: {{custom_values.booking_link__hair_restoration}}`,
+          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hair restoration. We know hair thinning can feel personal, and we’d love to help you explore the right treatment options with Dr. Foye. Book here: {{custom_values.booking_link__hair_restoration}}`,
           subject: 'Your hair restoration consultation',
           email: `Hi {{contact.first_name}},
 
@@ -3655,8 +3688,9 @@ Houston Wellness Aesthetics`
 
     const cards = service.scripts.map((script) => {
       const shouldAddGallery = script.title.includes('Social Proof') || script.title.includes('Reactivation');
-      const personalizedSms = buildPersonalizedSms(script);
-      const personalizedEmail = buildPersonalizedEmail(script);
+      const personalizedSms = normalizeForSubservice(serviceKey, buildPersonalizedSms(script));
+      const personalizedEmail = normalizeForSubservice(serviceKey, buildPersonalizedEmail(script));
+      const personalizedSubject = normalizeForSubservice(serviceKey, script.subject);
       const smsText = shouldAddGallery ? `${personalizedSms}\nBefore/after gallery: ${beforeAfterGalleryLink}` : personalizedSms;
       const emailText = shouldAddGallery ? `${personalizedEmail}\n\nBefore/after gallery:\n${beforeAfterGalleryLink}` : personalizedEmail;
 
@@ -3673,7 +3707,7 @@ Houston Wellness Aesthetics`
           </div>
           <div class="msg-block email-block">
             <div class="msg-label">✉️ Email</div>
-            <div class="email-subject">Subject: <span>${script.subject}</span></div>
+            <div class="email-subject">Subject: <span>${personalizedSubject}</span></div>
             <pre>${emailText}</pre>
           </div>
         </div>
@@ -3684,7 +3718,7 @@ Houston Wellness Aesthetics`
     serviceScriptPanel.innerHTML = `
       <div class="info-card" style="margin-bottom:24px;">
         <div class="card-label">${service.label}</div>
-        <div class="card-title">${service.focus}</div>
+        <div class="card-title">${normalizeForSubservice(serviceKey, service.focus)}</div>
         <p>These messages are written specifically for <strong>${service.label}</strong> leads and use the matching booking link key: <span class="code-val">${service.bookingKey}</span></p>
         <p style="margin-top:10px;">Personalization merge fields used in every message: <span class="code-val">${interestedInField}</span> + <span class="code-val">${startTimingField}</span></p>
         <p style="margin-top:10px;"><strong>Sub-services captured under this category:</strong> ${subservices.join(' · ')}</p>
