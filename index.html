@@ -27,6 +27,9 @@
       --amber: #d6aa57;
       --amber-dim: rgba(214,170,87,0.12);
       --amber-border: rgba(214,170,87,0.24);
+      --red: #dc3545;
+      --red-dim: rgba(220,53,69,0.10);
+      --red-border: rgba(220,53,69,0.25);
       --white: #0f172a;
       --muted: #5f6c80;
       --muted2: #8b97aa;
@@ -217,9 +220,7 @@
       margin-bottom: 20px;
     }
 
-    .hero-copy {
-      max-width: 760px;
-    }
+    .hero-copy { max-width: 760px; }
 
     .hero-kicker {
       font-size: 14px;
@@ -447,8 +448,6 @@
     }
 
     /* ── CONTENT ELEMENTS ── */
-
-    /* Info blocks */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -533,6 +532,61 @@
       font-size: 15px;
       color: #7a5d22;
       line-height: 1.8;
+      font-weight: 500;
+    }
+
+    /* Action Required card */
+    .action-card {
+      background: var(--red-dim);
+      border: 1px solid var(--red-border);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-top: 20px;
+    }
+
+    .action-card .warn-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .action-icon {
+      width: 28px; height: 28px;
+      background: var(--red);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .action-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .action-card p {
+      font-size: 15px;
+      color: #8b1a24;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    .action-card ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    .action-card ul li {
+      font-size: 14.5px;
+      color: #8b1a24;
+      line-height: 1.9;
       font-weight: 500;
     }
 
@@ -968,9 +1022,7 @@
     }
 
     /* ── CHECKLIST ── */
-    .phase-block {
-      margin-bottom: 36px;
-    }
+    .phase-block { margin-bottom: 36px; }
 
     .phase-header {
       display: flex;
@@ -1094,6 +1146,12 @@
       background: rgba(104,142,69,0.08);
     }
 
+    .check-owner.owner-chris {
+      color: var(--red);
+      border-color: rgba(220,53,69,0.25);
+      background: rgba(220,53,69,0.06);
+    }
+
     /* ── SUBSECTION LABELS ── */
     .subsection-title {
       font-size: 18px;
@@ -1180,7 +1238,6 @@
       .section-watermark { left: 22px; }
     }
 
-    /* Mobile nav toggle */
     .mobile-nav-toggle { display: none; }
   </style>
 </head>
@@ -1194,58 +1251,20 @@
     <div class="brand-sub">GoHighLevel · 2026</div>
   </div>
   <ul class="nav-list">
-    <li>
-      <a href="#section-01" class="active">
-        <span class="nav-num">01</span>
-        Client Brief
-        <span class="nav-dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#section-02">
-        <span class="nav-num">02</span>
-        Pipeline
-        <span class="nav-dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#section-03">
-        <span class="nav-num">03</span>
-        Automations
-        <span class="nav-dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#section-04">
-        <span class="nav-num">04</span>
-        SMS + Email Scripts
-        <span class="nav-dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#section-05">
-        <span class="nav-num">05</span>
-        Custom Fields
-        <span class="nav-dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#section-06">
-        <span class="nav-num">06</span>
-        Build Checklist
-        <span class="nav-dot"></span>
-      </a>
-    </li>
+    <li><a href="#section-01" class="active"><span class="nav-num">01</span>Client Brief<span class="nav-dot"></span></a></li>
+    <li><a href="#section-02"><span class="nav-num">02</span>Pipeline<span class="nav-dot"></span></a></li>
+    <li><a href="#section-03"><span class="nav-num">03</span>Automations<span class="nav-dot"></span></a></li>
+    <li><a href="#section-04"><span class="nav-num">04</span>SMS + Email Scripts<span class="nav-dot"></span></a></li>
+    <li><a href="#section-05"><span class="nav-num">05</span>Custom Fields<span class="nav-dot"></span></a></li>
+    <li><a href="#section-06"><span class="nav-num">06</span>Build Checklist<span class="nav-dot"></span></a></li>
   </ul>
   <div class="sidebar-footer">
     <p>NurtureSol LLC<br>Confidential · 2026</p>
   </div>
 </nav>
 
-<!-- MOBILE NAV TOGGLE -->
 <button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
 
-<!-- MAIN -->
 <div class="main">
 
   <!-- PAGE HEADER -->
@@ -1257,26 +1276,11 @@
         <h1>Houston Wellness<br><span>Aesthetics</span></h1>
         <p class="hero-deck">A complete GoHighLevel CRM architecture document for a premium Houston med spa, covering pipeline design, automation logic, service-specific messaging, data architecture, and the exact build order for implementation.</p>
         <div class="header-meta">
-          <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">Houston Wellness Aesthetics</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Platform</span>
-            <span class="meta-value">GoHighLevel</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Built by</span>
-            <span class="meta-value">NurtureSol LLC (Zaid)</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Status</span>
-            <span class="meta-value" style="color:var(--amber);">Greenfield Build</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Year</span>
-            <span class="meta-value">2026</span>
-          </div>
+          <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Houston Wellness Aesthetics</span></div>
+          <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">GoHighLevel</span></div>
+          <div class="meta-item"><span class="meta-label">Built by</span><span class="meta-value">NurtureSol LLC (Zaid)</span></div>
+          <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value" style="color:var(--amber);">Greenfield Build</span></div>
+          <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2026</span></div>
         </div>
       </div>
       <aside class="hero-panel">
@@ -1284,22 +1288,10 @@
         <h2>One premium brief, six chapters, zero guesswork.</h2>
         <p>This page is structured to read like an implementation spec: high-context at the top, operational detail in the middle, and handoff-ready checklist at the end.</p>
         <div class="hero-stat-grid">
-          <div class="hero-stat">
-            <strong>12</strong>
-            <span>Pipeline Stages</span>
-          </div>
-          <div class="hero-stat">
-            <strong>8</strong>
-            <span>Core Workflows</span>
-          </div>
-          <div class="hero-stat">
-            <strong>11</strong>
-            <span>Service Tracks</span>
-          </div>
-          <div class="hero-stat">
-            <strong>6</strong>
-            <span>Build Sections</span>
-          </div>
+          <div class="hero-stat"><strong>12</strong><span>Pipeline Stages</span></div>
+          <div class="hero-stat"><strong>8</strong><span>Core Workflows</span></div>
+          <div class="hero-stat"><strong>11</strong><span>Service Tracks</span></div>
+          <div class="hero-stat"><strong>6</strong><span>Build Sections</span></div>
         </div>
         <ul class="mini-index">
           <li><span>01</span> Client context and lead journey</li>
@@ -1374,6 +1366,8 @@
           <li><strong>Dr. Foye</strong> — Owner, lead provider, face of the brand</li>
           <li><strong>Front Desk</strong> — Call handling, appointment confirmations, daily pipeline management</li>
           <li><strong>NurtureSol LLC (Zaid)</strong> — CRM architecture, automations, ongoing optimization</li>
+          <li><strong>Destini</strong> — Operations oversight, service verification, team coordination</li>
+          <li><strong>Chris</strong> — Media team, Facebook/Instagram Ad management</li>
         </ul>
       </div>
       <div class="info-card">
@@ -1408,7 +1402,7 @@
         </div>
         <div class="process-step">
           <div class="step-line"><div class="step-num">3</div><div class="step-connector"></div></div>
-          <div class="step-body"><p>If outreach starts, move to <strong>Contact Attempted</strong>; if unanswered, route to <strong>No Answer</strong></p></div>
+          <div class="step-body"><p>If outreach starts, move to <strong>Contact Attempted</strong>; team calls once per day for 5 days (morning, lunchtime, 5–7pm windows). Each call must be paired with a personalized text AND a voicemail left. After 5 days with no response, lead auto-moves to <strong>Follow Up Sequence Active</strong>. <strong>⚠ Known gap:</strong> voicemails are currently not being left — only texts are being sent. Front desk team must address this.</p></div>
         </div>
         <div class="process-step">
           <div class="step-line"><div class="step-num">4</div><div class="step-connector"></div></div>
@@ -1456,6 +1450,7 @@
       </div>
       <p>This is a <strong style="color:var(--amber);">trust-first business.</strong> Dr. Foye's reputation is everything. Every automated message must feel like it came from her team directly — warm, professional, and human. <strong style="color:var(--amber);">Speed matters:</strong> first SMS + email within 5 minutes of a new lead. <strong style="color:var(--amber);">Personalization matters:</strong> every service gets its own message set so a Botox inquiry never gets a Hair Removal email.</p>
     </div>
+
   </section>
 
   <!-- ══════════════════════════════════════════ -->
@@ -1474,19 +1469,19 @@
       <div class="stage-card">
         <div class="stage-num">STAGE 01</div>
         <div class="stage-name">New Lead</div>
-        <div class="stage-desc">Call attempt begins immediately</div>
+        <div class="stage-desc">Call attempt begins immediately. Team reaches out within 5 minutes of form submission.</div>
         <span class="stage-badge badge-manual">Manual</span>
       </div>
       <div class="stage-card">
         <div class="stage-num">STAGE 02</div>
         <div class="stage-name">Contact Attempted</div>
-        <div class="stage-desc">Initial manual outreach has been made</div>
+        <div class="stage-desc">Initial manual outreach has been made. Team calls once per day for 5 days (morning, lunchtime, 5–7pm windows). Each call must be paired with a personalized text AND a voicemail. Lead auto-moves to Stage 3 after 5 days with no response.</div>
         <span class="stage-badge badge-manual">Manual</span>
       </div>
       <div class="stage-card">
         <div class="stage-num">STAGE 03</div>
         <div class="stage-name">Follow Up Sequence Active</div>
-        <div class="stage-desc">Automated nurture sequence is actively running</div>
+        <div class="stage-desc">Automated nurture sequence running. Lead auto-moves here after 5 days with no reply in Contact Attempted. ⚠ Pipeline auto-move was reported as inconsistent — verify this trigger is working correctly.</div>
         <span class="stage-badge badge-auto">Auto</span>
       </div>
       <div class="stage-card">
@@ -1549,11 +1544,7 @@
     <div class="table-wrap">
       <table>
         <thead>
-          <tr>
-            <th>Transition</th>
-            <th>Trigger</th>
-            <th>Type</th>
-          </tr>
+          <tr><th>Transition</th><th>Trigger</th><th>Type</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -1563,7 +1554,7 @@
           </tr>
           <tr>
             <td><strong>2 → 3</strong></td>
-            <td>Auto — if no live pickup, follow-up sequence activates</td>
+            <td>Auto — after 5 days in Contact Attempted with no reply (5 call attempts completed), follow-up sequence activates and lead moves to Stage 3</td>
             <td><span class="stage-badge badge-auto">Auto</span></td>
           </tr>
           <tr>
@@ -1604,6 +1595,8 @@
         </tbody>
       </table>
     </div>
+  </section>
+
   </section>
 
   <!-- ══════════════════════════════════════════ -->
@@ -1660,24 +1653,25 @@
       </div>
     </div>
 
-    <!-- WF 3 -->
+    <!-- WF 3 — UPDATED: 3-day no answer then move to Stage 3 -->
     <div class="workflow-card">
       <div class="wf-header">
         <div class="wf-icon">🔁</div>
         <div class="wf-meta">
           <div class="wf-num">Workflow 03</div>
           <div class="wf-name">No Answer Follow-Up Sequence</div>
-          <div class="wf-trigger">Trigger: <span>Lead moved to Stage 2</span></div>
+          <div class="wf-trigger">Trigger: <span>Lead moved to Stage 2 (Contact Attempted)</span></div>
         </div>
       </div>
       <ul class="wf-steps">
-        <li><span class="wf-step-arrow">→</span>Immediately → SMS #2 + Email #2 (service-personalized, personal tone from Dr. Foye's team)</li>
-        <li><span class="wf-step-arrow">→</span>Wait 24 hours → SMS #3 + Email #3 (social proof message)</li>
-        <li><span class="wf-step-arrow">→</span>Wait 48 hours → SMS #4 + Email #4 (final attempt, booking link)</li>
-        <li><span class="wf-step-arrow">→</span>Wait 48 hours → no response → move to Stage 9, tag "No Response - [Service]"</li>
+        <li><span class="wf-step-arrow">→</span><strong>Day 0 (Immediately on Stage 2)</strong> → SMS #2 + Email #2 (service-personalized, personal tone from Dr. Foye's team)</li>
+        <li><span class="wf-step-arrow">→</span><strong>Day 2 (48 hrs later)</strong> → SMS #3 + Email #3 (social proof message with before/after gallery)</li>
+        <li><span class="wf-step-arrow">→</span><strong>Day 4 (48 hrs later)</strong> → SMS #4 + Email #4 (final gentle attempt with booking link)</li>
+        <li><span class="wf-step-arrow">→</span><strong>Day 5 (24 hrs — no response)</strong> → Auto-move lead to <strong>Stage 3: Follow Up Sequence Active</strong>, tag "No Response - [Service] - Moving to Follow Up"</li>
       </ul>
       <div class="wf-note">
-        <strong>Stop Condition:</strong> Any reply OR booking → pause sequence immediately → move to Stage 4.
+        <strong>Stop Condition:</strong> Any reply OR booking at any point → pause sequence immediately → move to Stage 4 (Appointment Requested/Pending).<br><br>
+        <strong>Calling cadence (human team — Stage 2):</strong> 5 calls over 5 days, once per day. Call in the morning, at lunchtime, and between 5–7pm to maximize pick-up rate. With each call, send a personalized text message AND leave a voicemail. <strong style="color:var(--red);">⚠ Currently voicemails are NOT being left — only texts are being sent. This gap needs to be closed by the front desk team.</strong>
       </div>
     </div>
 
@@ -1780,7 +1774,7 @@
     <div class="section-header">
       <div class="section-eyebrow">Section 04</div>
       <h2>Copy-Paste Ready — Load These Directly into GHL</h2>
-      <p class="section-subtitle">Select a service to view its fully written SMS + Email script set. Every message now uses the real GHL custom fields <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.interested_in }}</code> and <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.when_are_you_looking_to_get_started }}</code> so outreach stays personalized by sub-service and timing. Replace <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">[Google Review Link]</code> with your Google Business Profile review URL before loading.</p>
+      <p class="section-subtitle">Select a service to view its fully written SMS + Email script set. Every message uses the real GHL custom fields <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.interested_in }}</code> and <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">{{ contact.when_are_you_looking_to_get_started }}</code> so outreach stays personalized by sub-service and timing. All services reflect what is offered on the HWA website only. Replace <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:12px;">[Google Review Link]</code> with your Google Business Profile review URL before loading.</p>
       <div class="section-divider"></div>
     </div>
 
@@ -1798,9 +1792,7 @@
       <button class="service-tab-btn" data-service="body">🏋️ Body Contouring &amp; Chin</button>
     </div>
 
-    <!-- ═══ SERVICE PANELS ═══ -->
     <div class="service-panel active" id="service-script-panel"></div>
-
   </section>
 
   <!-- ══════════════════════════════════════════ -->
@@ -1819,73 +1811,23 @@
     <p class="subsection-sub">These are set up. Reference them in workflows using the keys shown.</p>
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>GHL Key</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Name</th><th>GHL Key</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Booking Link – Facial Care</td>
-            <td><span class="code-val">{{custom_values.booking_link__facial_care}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Hair Removal</td>
-            <td><span class="code-val">{{custom_values.booking_link__hair_removal}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Hair Restoration</td>
-            <td><span class="code-val">{{custom_values.booking_link__hair_restoration}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Injectables</td>
-            <td><span class="code-val">{{custom_values.booking_link__injectables}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Laser and Light Treatments</td>
-            <td><span class="code-val">{{custom_values.booking_link__laser_and_light_treatments}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Vein Treatment</td>
-            <td><span class="code-val">{{custom_values.booking_link__vein_treatment}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Weight Loss</td>
-            <td><span class="code-val">{{custom_values.booking_link__weight_loss}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Hormone Optimization</td>
-            <td><span class="code-val">{{custom_values.booking_link__hormone_optimization}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Sexual Health</td>
-            <td><span class="code-val">{{custom_values.booking_link__sexual_health}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – IV Therapy</td>
-            <td><span class="code-val">{{custom_values.booking_link__iv_therapy}}</span></td>
-          </tr>
-          <tr>
-            <td>Booking Link – Body Contouring and Chin</td>
-            <td><span class="code-val">{{custom_values.booking_link__body_contouring_and_chin}}</span></td>
-          </tr>
-          <tr>
-            <td>Houston Wellness &amp; Aesthetics (Brand Name)</td>
-            <td><span class="code-val">{{custom_values.houston_wellness__aesthetics}}</span></td>
-          </tr>
-          <tr>
-            <td>Meta Access Token</td>
-            <td><span class="code-val">{{custom_values.meta_access_token}}</span></td>
-          </tr>
-          <tr>
-            <td>Meta Pixel</td>
-            <td><span class="code-val">{{custom_values.meta_pixel}}</span></td>
-          </tr>
-          <tr>
-            <td>Phone No</td>
-            <td><span class="code-val">{{custom_values.phone_no}}</span></td>
-          </tr>
+          <tr><td>Booking Link – Facial Care</td><td><span class="code-val">{{custom_values.booking_link__facial_care}}</span></td></tr>
+          <tr><td>Booking Link – Hair Removal</td><td><span class="code-val">{{custom_values.booking_link__hair_removal}}</span></td></tr>
+          <tr><td>Booking Link – Hair Restoration</td><td><span class="code-val">{{custom_values.booking_link__hair_restoration}}</span></td></tr>
+          <tr><td>Booking Link – Injectables</td><td><span class="code-val">{{custom_values.booking_link__injectables}}</span></td></tr>
+          <tr><td>Booking Link – Laser and Light Treatments</td><td><span class="code-val">{{custom_values.booking_link__laser_and_light_treatments}}</span></td></tr>
+          <tr><td>Booking Link – Vein Treatment</td><td><span class="code-val">{{custom_values.booking_link__vein_treatment}}</span></td></tr>
+          <tr><td>Booking Link – Weight Loss</td><td><span class="code-val">{{custom_values.booking_link__weight_loss}}</span></td></tr>
+          <tr><td>Booking Link – Hormone Optimization</td><td><span class="code-val">{{custom_values.booking_link__hormone_optimization}}</span></td></tr>
+          <tr><td>Booking Link – Sexual Health</td><td><span class="code-val">{{custom_values.booking_link__sexual_health}}</span></td></tr>
+          <tr><td>Booking Link – IV Therapy</td><td><span class="code-val">{{custom_values.booking_link__iv_therapy}}</span></td></tr>
+          <tr><td>Booking Link – Body Contouring and Chin</td><td><span class="code-val">{{custom_values.booking_link__body_contouring_and_chin}}</span></td></tr>
+          <tr><td>Houston Wellness &amp; Aesthetics (Brand Name)</td><td><span class="code-val">{{custom_values.houston_wellness__aesthetics}}</span></td></tr>
+          <tr><td>Meta Access Token</td><td><span class="code-val">{{custom_values.meta_access_token}}</span></td></tr>
+          <tr><td>Meta Pixel</td><td><span class="code-val">{{custom_values.meta_pixel}}</span></td></tr>
+          <tr><td>Phone No</td><td><span class="code-val">{{custom_values.phone_no}}</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1894,18 +1836,12 @@
     <p class="subsection-sub">Create these in GHL Settings → Custom Fields before importing any leads.</p>
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Field Name</th>
-            <th>Type</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Field Name</th><th>Type</th><th>Purpose</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>Interested In</strong><br><span class="code-val">{{ contact.interested_in }}</span></td>
             <td>Text</td>
-            <td>Primary personalization field coming from the form. This stores the exact sub-service selected by the lead and should drive service routing and message personalization. Supported values include Botox, Dermal Fillers, Lip Enhancement, Hydrafacial, Dermaplaning, Chemical Peels, Microneedling And Collagen Remodeling, IPL Photofacial Using Cynosure Icon, Laser Hair Removal, PRP Therapy For Hair Restoration, Bioidentical Hormone Therapy, Sexual Health For Women, GLP-1 Weight Loss, Semaglutide, Tirzepatide Weight Loss, SculpSure, and all other sub-services listed in Section 04.</td>
+            <td>Primary personalization field from the form. Stores the exact sub-service selected by the lead. Drives service routing and message personalization. Supported values include Botox, Dermal Fillers, Lip Enhancement, Hydrafacial, Dermaplaning, Chemical Peels, Microneedling And Collagen Remodeling, IPL Photofacial Using Cynosure Icon, Laser Hair Removal, PRP Therapy For Hair Restoration, Bioidentical Hormone Therapy, Sexual Health For Women, GLP-1 Weight Loss, Semaglutide, Tirzepatide Weight Loss, SculpSure, Double Chin Treatment, Kybella, and all other sub-services listed in Section 04. <strong style="color:var(--red);">Note: CoolSculpting is NOT an offered service and must not appear as a value.</strong></td>
           </tr>
           <tr>
             <td><strong>When Are You Looking To Get Started?</strong><br><span class="code-val">{{ contact.when_are_you_looking_to_get_started }}</span></td>
@@ -1915,63 +1851,19 @@
           <tr>
             <td><strong>Main Service Category</strong></td>
             <td>Dropdown</td>
-            <td>Internal routing field for the top-level service bucket: Injectables / Facial Care / Laser &amp; Light Treatments / Body Contouring &amp; Chin / Vein Treatment / Hair Removal / Hair Restoration / Hormone Optimization / Sexual Health / Weight Loss / IV Therapy / Multiple / Not Sure</td>
+            <td>Internal routing field: Injectables / Facial Care / Laser &amp; Light Treatments / Body Contouring &amp; Chin / Vein Treatment / Hair Removal / Hair Restoration / Hormone Optimization / Sexual Health / Weight Loss / IV Therapy / Multiple / Not Sure</td>
           </tr>
-          <tr>
-            <td><strong>Lead Source</strong></td>
-            <td>Dropdown</td>
-            <td>Facebook Ad / Instagram Ad / Google Ad / Website Form / Referral / Walk-In / Other</td>
-          </tr>
-          <tr>
-            <td><strong>Consultation Type</strong></td>
-            <td>Dropdown</td>
-            <td>In-Person / Virtual</td>
-          </tr>
-          <tr>
-            <td><strong>Appointment Date</strong></td>
-            <td>Date</td>
-            <td>Actual appointment date for reporting accuracy</td>
-          </tr>
-          <tr>
-            <td><strong>Treatment Notes</strong></td>
-            <td>Text Area</td>
-            <td>Summary of service discussed or delivered</td>
-          </tr>
-          <tr>
-            <td><strong>Estimated Visit Value</strong></td>
-            <td>Currency</td>
-            <td>Expected revenue for the appointment</td>
-          </tr>
-          <tr>
-            <td><strong>Package Interest</strong></td>
-            <td>Dropdown</td>
-            <td>Single Visit / Monthly Membership / Treatment Package / Unknown</td>
-          </tr>
-          <tr>
-            <td><strong>Membership Status</strong></td>
-            <td>Dropdown</td>
-            <td>Not a Member / Active Member / Lapsed Member</td>
-          </tr>
-          <tr>
-            <td><strong>Assigned To</strong></td>
-            <td>Dropdown</td>
-            <td>Dr. Foye / Front Desk / NurtureSol (Zaid)</td>
-          </tr>
-          <tr>
-            <td><strong>Review Requested</strong></td>
-            <td>Checkbox</td>
-            <td>Prevents duplicate review SMS/email from firing</td>
-          </tr>
-          <tr>
-            <td><strong>Reactivation Sent</strong></td>
-            <td>Checkbox</td>
-            <td>Prevents duplicate reactivation sequence from triggering</td>
-          </tr>
-          <tr>
-            <td><strong>Referral Source Name</strong></td>
-            <td>Text</td>
-            <td>Name of referring client for thank-you outreach</td>
-          </tr>
+          <tr><td><strong>Lead Source</strong></td><td>Dropdown</td><td>Facebook Ad / Instagram Ad / Google Ad / Website Form / Referral / Walk-In / Other</td></tr>
+          <tr><td><strong>Consultation Type</strong></td><td>Dropdown</td><td>In-Person / Virtual</td></tr>
+          <tr><td><strong>Appointment Date</strong></td><td>Date</td><td>Actual appointment date for reporting accuracy</td></tr>
+          <tr><td><strong>Treatment Notes</strong></td><td>Text Area</td><td>Summary of service discussed or delivered</td></tr>
+          <tr><td><strong>Estimated Visit Value</strong></td><td>Currency</td><td>Expected revenue for the appointment</td></tr>
+          <tr><td><strong>Package Interest</strong></td><td>Dropdown</td><td>Single Visit / Monthly Membership / Treatment Package / Unknown</td></tr>
+          <tr><td><strong>Membership Status</strong></td><td>Dropdown</td><td>Not a Member / Active Member / Lapsed Member</td></tr>
+          <tr><td><strong>Assigned To</strong></td><td>Dropdown</td><td>Dr. Foye / Front Desk / NurtureSol (Zaid)</td></tr>
+          <tr><td><strong>Review Requested</strong></td><td>Checkbox</td><td>Prevents duplicate review SMS/email from firing</td></tr>
+          <tr><td><strong>Reactivation Sent</strong></td><td>Checkbox</td><td>Prevents duplicate reactivation sequence from triggering</td></tr>
+          <tr><td><strong>Referral Source Name</strong></td><td>Text</td><td>Name of referring client for thank-you outreach</td></tr>
         </tbody>
       </table>
     </div>
@@ -1991,216 +1883,77 @@
 
     <!-- Phase A -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">A</div>
-        <div class="phase-name">Account &amp; User Setup</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">A</div><div class="phase-name">Account &amp; User Setup</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Create GHL sub-account for Houston Wellness Aesthetics</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Create user accounts: Dr. Foye (Admin), Front Desk (User), Zaid (Admin)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Purchase Houston area code (713 or 832) for SMS sending</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Verify all 12 Custom Values are correctly populated with live URLs and data</div>
-          <div class="check-owner owner-dual">NurtureSol + Client</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Connect Meta Access Token and Meta Pixel in GHL Settings</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Connect business email domain for outbound emails</div>
-          <div class="check-owner owner-client">Client</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Create GHL sub-account for Houston Wellness Aesthetics</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Create user accounts: Dr. Foye (Admin), Front Desk (User), Zaid (Admin)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Purchase Houston area code (713 or 832) for SMS sending</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Verify all 11 Custom Values are correctly populated with live URLs and data</div><div class="check-owner owner-dual">NurtureSol + Client</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Connect Meta Access Token and Meta Pixel in GHL Settings</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Connect business email domain for outbound emails</div><div class="check-owner owner-client">Client</div></div>
       </div>
     </div>
 
     <!-- Phase B -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">B</div>
-        <div class="phase-name">Pipeline &amp; Custom Fields</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">B</div><div class="phase-name">Pipeline &amp; Custom Fields</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build all required custom contact fields from Section 05B, including Interested In and When Are You Looking To Get Started?</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Create the 12-stage pipeline with the exact names from the shared screenshot</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Pin priority fields to top of contact view: Name, Phone, Interested In, Main Service Category, When Are You Looking To Get Started?, Lead Source, Assigned To</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build all required custom contact fields from Section 05B, including Interested In and When Are You Looking To Get Started?</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Create the 12-stage pipeline with the exact names from the shared screenshot</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Pin priority fields to top of contact view: Name, Phone, Interested In, Main Service Category, When Are You Looking To Get Started?, Lead Source, Assigned To</div><div class="check-owner">NurtureSol</div></div>
       </div>
     </div>
 
     <!-- Phase C -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">C</div>
-        <div class="phase-name">Calendars (11 Service Calendars)</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">C</div><div class="phase-name">Calendars (11 Service Calendars)</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Create separate GHL calendar for each service: Injectables, Facial Care, Laser &amp; Light Treatments, Body Contouring &amp; Chin, Vein Treatment, Hair Removal, Hair Restoration, Hormone Optimization, Sexual Health, Weight Loss, IV Therapy</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Configure availability, buffers, and advance booking for each calendar</div>
-          <div class="check-owner owner-dual">Dr. Foye / Client</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Confirm each calendar's booking link matches the corresponding Custom Value</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Test each booking flow — confirm Stage 5 move + confirmation SMS + email fires</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Create separate GHL calendar for each service: Injectables, Facial Care, Laser &amp; Light Treatments, Body Contouring &amp; Chin, Vein Treatment, Hair Removal, Hair Restoration, Hormone Optimization, Sexual Health, Weight Loss, IV Therapy</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Configure availability, buffers, and advance booking for each calendar</div><div class="check-owner owner-dual">Dr. Foye / Client</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Confirm each calendar's booking link matches the corresponding Custom Value</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Test each booking flow — confirm Stage 5 move + confirmation SMS + email fires</div><div class="check-owner">NurtureSol</div></div>
       </div>
     </div>
 
     <!-- Phase D -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">D</div>
-        <div class="phase-name">Lead Source Integrations</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">D</div><div class="phase-name">Lead Source Integrations</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Connect Facebook &amp; Instagram Lead Ads via GHL native Meta integration (use saved Meta Access Token + Pixel)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Map all Meta form fields to GHL contact fields including service interest</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Connect Google Ads landing page form via webhook to GHL</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Embed GHL contact form on website with service interest dropdown</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Test all 3 lead sources with live test submissions — confirm tag, stage, and routing</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Connect Facebook &amp; Instagram Lead Ads via GHL native Meta integration (use saved Meta Access Token + Pixel)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Map all Meta form fields to GHL contact fields including service interest — confirm CoolSculpting has been removed before mapping</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Connect Google Ads landing page form via webhook to GHL</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Embed GHL contact form on website with service interest dropdown</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Test all 3 lead sources with live test submissions — confirm tag, stage, and routing</div><div class="check-owner">NurtureSol</div></div>
       </div>
     </div>
 
     <!-- Phase E -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">E</div>
-        <div class="phase-name">Workflows (8 Automations)</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">E</div><div class="phase-name">Workflows (8 Automations)</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 1 — New Lead Welcome (Facebook/Instagram) with service routing logic</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 2 — New Lead Welcome (Google/Website) with service routing logic</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 3 — No Answer Follow-Up Sequence (SMS + Email, service-personalized)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 4 — Appointment Reminder Sequence (SMS + Email for all 11 calendars)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 5 — No-Show Re-booking (SMS + Email, 2 attempts)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 6 — Post-Visit Review + Rebooking (SMS + Email)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 7 — 30-Day Reactivation Sequence (SMS + Email, service-personalized)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Build Workflow 8 — Monthly Broadcast (Email + SMS, segmented by client status)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 1 — New Lead Welcome (Facebook/Instagram) with service routing logic</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 2 — New Lead Welcome (Google/Website) with service routing logic</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 3 — No Answer Follow-Up Sequence (Day 0 / Day 2 / Day 4 → auto-move to Stage 3 on Day 5 after 5 call attempts)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 4 — Appointment Reminder Sequence (SMS + Email for all 11 calendars)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 5 — No-Show Re-booking (SMS + Email, 2 attempts)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 6 — Post-Visit Review + Rebooking (SMS + Email)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 7 — 30-Day Reactivation Sequence (SMS + Email, service-personalized)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Build Workflow 8 — Monthly Broadcast (Email + SMS, segmented by client status)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item" style="background:var(--red-dim);"><button class="check-box" type="button"></button><div class="check-text"><strong>🐛 BUG FIX:</strong> Investigate and fix Stage 2 → Stage 3 auto-transition not firing for all leads. Identify breaking point in the pipeline trigger. Confirm fix with Destini by end of day. Until fixed, front desk to manually review Stage 2 daily for leads older than 5 days.</div><div class="check-owner owner-chris" style="color:var(--red);border-color:rgba(220,53,69,0.25);background:rgba(220,53,69,0.06);">NurtureSol · URGENT</div></div>
+        <div class="checklist-item" style="background:var(--red-dim);"><button class="check-box" type="button"></button><div class="check-text"><strong>📞 GAP FIX:</strong> Resolve voicemail gap in Stage 2 — either set up automated voicemail drop (needs recorded or AI script) OR confirm front desk is leaving manual voicemails on each of the 5 daily call attempts. Destini to confirm preferred approach.</div><div class="check-owner owner-dual">NurtureSol + Destini</div></div>
       </div>
     </div>
 
     <!-- Phase F -->
     <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-letter">F</div>
-        <div class="phase-name">QA, Training &amp; Handoff</div>
-      </div>
+      <div class="phase-header"><div class="phase-letter">F</div><div class="phase-name">QA, Training &amp; Handoff</div></div>
       <div class="checklist-items">
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Full end-to-end test of every workflow using a test contact for each of the 11 services</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Confirm all Custom Values populate correctly in SMS and email previews</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Import existing leads — clean data, tag as "Pre-CRM Import", assign to correct service stage</div>
-          <div class="check-owner owner-client">Client</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Record Loom walkthrough for Dr. Foye and front desk (pipeline, booking, manual tasks)</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
-        <div class="checklist-item">
-          <button class="check-box" type="button" aria-label="Mark checklist item complete"></button>
-          <div class="check-text">Deliver final build documentation: workflow list, custom value keys, login credentials</div>
-          <div class="check-owner">NurtureSol</div>
-        </div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Full end-to-end test of every workflow using a test contact for each of the 11 services</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Confirm all Custom Values populate correctly in SMS and email previews</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Destini to review all 11 service script sets in Section 04 and confirm service names and messaging are accurate — provide feedback to Zaid as: "In [Service], change [SMS/Email #] to [new wording]"</div><div class="check-owner owner-dual">Destini</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Import existing leads — clean data, tag as "Pre-CRM Import", assign to correct service stage</div><div class="check-owner owner-client">Client</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Record Loom walkthrough for Dr. Foye and front desk (pipeline, booking, manual tasks, calling cadence)</div><div class="check-owner">NurtureSol</div></div>
+        <div class="checklist-item"><button class="check-box" type="button"></button><div class="check-text">Deliver final build documentation: workflow list, custom value keys, login credentials</div><div class="check-owner">NurtureSol</div></div>
       </div>
     </div>
 
@@ -2237,13 +1990,10 @@
   // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const sidebar = document.getElementById('sidebar');
-
   toggle.addEventListener('click', () => {
     sidebar.classList.toggle('mobile-open');
     toggle.textContent = sidebar.classList.contains('mobile-open') ? '✕' : '☰';
   });
-
-  // Close sidebar on nav link click (mobile)
   navLinks.forEach(a => {
     a.addEventListener('click', () => {
       if (window.innerWidth <= 900) {
@@ -2253,12 +2003,16 @@
     });
   });
 
-  // Service-specific script renderer
+  // ═══════════════════════════════════════════════════
+  // SERVICE SCRIPT RENDERER
+  // ═══════════════════════════════════════════════════
   const serviceTabButtons = document.querySelectorAll('.service-tab-btn');
   const serviceScriptPanel = document.getElementById('service-script-panel');
   const beforeAfterGalleryLink = 'https://drive.google.com/drive/u/0/folders/1CKNJq7EP4wPNlqH14L5Rxql3tRbxW6h_';
   const interestedInField = '{{ contact.interested_in }}';
   const startTimingField = '{{ contact.when_are_you_looking_to_get_started }}';
+
+  // ── Sub-services per category (website-accurate only) ──
   const serviceSubOptions = {
     injectables: [
       'Botox',
@@ -2279,10 +2033,11 @@
       'IPL Photofacial Using Cynosure Icon',
       'Laser Facials',
       'Hyperpigmentation Treatment',
-      'Acne And Acne Scarring Treatment',
-      'Vein Treatment (Spider Veins)'
+      'Acne And Acne Scarring Treatment'
     ],
+    // UPDATED: CoolSculpting removed. SculpSure + chin/kybella only.
     body: [
+      'SculpSure (Laser Body Contouring)',
       'Double Chin Treatment',
       'Kybella'
     ],
@@ -2292,8 +2047,8 @@
     ],
     'hair-removal': [
       'Laser Hair Removal',
-      'Hair Removal Areas We Treat',
-      'Pre And Post Care For Laser Hair Removal'
+      'Full Body Hair Removal',
+      'Targeted Area Hair Removal'
     ],
     'hair-restoration': [
       'Hair Loss Treatment',
@@ -2312,137 +2067,84 @@
       'Sexual Health For Women',
       'Sexual Health For Men'
     ],
+    // UPDATED: SculpSure removed from Weight Loss (belongs under Body Contouring only)
     weight: [
       'Medical Weight Loss Program',
       'GLP-1 Weight Loss',
       'Semaglutide',
-      'Tirzepatide Weight Loss',
-      'SculpSure'
+      'Tirzepatide Weight Loss'
     ],
     iv: [
-      'IV Therapy'
-    ]
-  };
-  const serviceReplacements = {
-    injectables: [
-      ['Botox, filler, and facial balancing', 'wrinkle smoothing, enhancement, and facial balance'],
-      ['natural-looking Botox and filler plans', `natural-looking ${interestedInField} treatment plans`],
-      ['Whether you\'re considering Botox, filler, or a full-face balancing plan,', `Whether you're considering ${interestedInField} or exploring the right next step,`],
-      ['If you\'re still thinking about Botox or filler,', `If you're still thinking about ${interestedInField},`],
-      ['If you’re still thinking about Botox or filler,', `If you’re still thinking about ${interestedInField},`],
-      ['Botox, filler, lip enhancement, or facial balancing,', `${interestedInField} and the best option for your goals,`],
-      ['Botox or filler,', `${interestedInField},`],
-      ['Botox or filler', interestedInField],
-      ['injectables clients come in wanting subtle, polished results', `${interestedInField} clients come in wanting subtle, polished results`]
-    ],
-    facial: [
-      ['glow-focused treatments', 'skin-renewal and complexion treatments'],
-      ['glow treatments, hydration-focused facials, acne support, or anti-aging options,', `${interestedInField} and the right next step for your skin,`]
-    ],
-    'hair-removal': [
-      ['treatment areas, session timing, and what kind of results to expect.', `${interestedInField}, session timing, and what kind of results to expect.`]
-    ],
-    'hair-restoration': [
-      ['thinning, shedding, or regrowth support,', `${interestedInField} and the right next step for your hair goals,`]
-    ],
-    iv: [
-      ['choose the right drip for your goals', `choose the right IV plan for ${interestedInField}`],
-      ['help choosing the right drip', `help choosing the right IV plan for ${interestedInField}`],
-      ['after the right drip', `after the right IV treatment`]
+      'IV Therapy',
+      'Hydration Drip',
+      'Immunity Boost',
+      'Recovery Drip',
+      'Energy &amp; Wellness Drip'
     ]
   };
 
-  function normalizeForSubservice(serviceKey, text) {
-    const replacements = serviceReplacements[serviceKey] || [];
-    return replacements.reduce((current, [search, replacement]) => current.split(search).join(replacement), text);
-  }
 
-  function getMessageContext(scriptTitle) {
-    if (scriptTitle.includes('Post-Visit')) {
-      return {
-        sms: `This note is tied to your ${interestedInField} visit.`,
-        email: `Your record shows you came in for ${interestedInField}.`
-      };
-    }
-
-    if (scriptTitle.includes('No-Show')) {
-      return {
-        sms: `I still have you down for ${interestedInField}.`,
-        email: `We still have your requested treatment listed as ${interestedInField}.`
-      };
-    }
-
-    return {
-      sms: `I saw you were interested in ${interestedInField} and wanted to get started ${startTimingField}.`,
-      email: `I saw that you were interested in ${interestedInField}, and that you wanted to get started ${startTimingField}.`
-    };
-  }
-
-  function buildPersonalizedSms(script) {
-    const context = getMessageContext(script.title);
-    return `${context.sms} ${script.sms}`;
-  }
-
-  function buildPersonalizedEmail(script) {
-    const context = getMessageContext(script.title);
-    return `${context.email}\n\n${script.email}`;
-  }
-
+  // ── All 11 service script sets ──
   const serviceScripts = {
     injectables: {
       label: 'Injectables',
-      focus: 'Botox, filler, and facial balancing',
+      focus: 'Botox, dermal fillers, and facial balancing',
       bookingKey: '{{custom_values.booking_link__injectables}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! This is Houston Wellness Aesthetics. Thanks for reaching out about injectables. Dr. Foye specializes in natural-looking Botox and filler plans that keep you refreshed, never overdone. We’ll give you a quick call shortly, or you can book here: {{custom_values.booking_link__injectables}}`,
-          subject: 'Your injectables consultation with Dr. Foye',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're so glad you reached out! 🌿 Dr. Foye specializes in natural-looking {{ contact.interested_in }} that keeps you refreshed, never overdone. We'll give you a quick call shortly, or feel free to book anytime: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out to Houston Wellness Aesthetics about injectables.
+Welcome, and thank you so much for reaching out to Houston Wellness Aesthetics! We're genuinely thrilled you're here. 💚
 
-Whether you're considering Botox, filler, or a full-face balancing plan, Dr. Foye takes a conservative, natural approach designed to enhance your features without making you look "done."
+Dr. Foye and our team specialize in {{ contact.interested_in }} Services, taking a warm, conservative, and natural approach that's designed to enhance your beauty without making you look "done."
 
-Someone from our team will reach out shortly. If you want to lock in a time now, you can book your injectables consultation here:
+Someone from our team will be reaching out to you shortly. In the meantime, if you'd like to go ahead and lock in a time, you're welcome to book your consultation right here:
 
 👉 {{custom_values.booking_link__injectables}}
+
+We can't wait to meet you!
+
+With warmth,
+Houston Wellness Aesthetics
+{{custom_values.phone_no}}`
+        },
+        {
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
+          timing: '⏱ Immediate on Stage 2',
+          sms: `Hi {{contact.first_name}}! We tried giving you a quick call — no worries at all, we know life gets busy! 😊 We'd love to connect with you about {{ contact.interested_in }} Services whenever you're ready. Feel free to reply here or grab a spot: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect with you!',
+          email: `Hi {{contact.first_name}},
+
+We tried giving you a quick call and didn't want to leave you hanging — we know how busy life can get! 😊
+
+Whenever you're ready to chat about {{ contact.interested_in }} Services, we're here for you. Dr. Foye loves helping each patient find the perfect, natural approach that feels just right.
+
+You can schedule here whenever it's convenient for you:
+
+👉 {{custom_values.booking_link__injectables}}
+
+Looking forward to connecting!
 
 Warmly,
 Houston Wellness Aesthetics
 {{custom_values.phone_no}}`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
-          timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried giving you a quick call about injectables. No worries at all. If you're still thinking about Botox or filler, reply here anytime or grab a consultation spot: {{custom_values.booking_link__injectables}}`,
-          subject: 'Still interested in injectables?',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients come in wanting subtle, polished results — and leave feeling like the absolute best version of themselves. We'd love that for you too! Book here: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — Results our clients absolutely love',
           email: `Hi {{contact.first_name}},
 
-We tried giving you a quick call regarding injectables and didn’t want to leave you hanging.
+We just wanted to share a little about what makes Dr. Foye's approach so special. 💚
 
-If you're still curious about Botox, filler, lip enhancement, or facial balancing, we’d be happy to guide you through the best option for your goals.
+Patients consistently tell us they still look completely like themselves after their {{ contact.interested_in }} Services — just more rested, lifted, and confident. That's the magic of thoughtful, natural care.
 
-You can schedule here whenever it’s convenient:
-
-👉 {{custom_values.booking_link__injectables}}
-
-Houston Wellness Aesthetics
-{{custom_values.phone_no}}`
-        },
-        {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many of our injectables clients come in wanting subtle, polished results and leave feeling like the best version of themselves. If that’s what you’re after, book here: {{custom_values.booking_link__injectables}}`,
-          subject: 'Natural-looking injectables results our clients love',
-          email: `Hi {{contact.first_name}},
-
-One of the biggest reasons clients choose Dr. Foye for injectables is her eye for balance, restraint, and natural beauty.
-
-Our patients often tell us they still look like themselves, just more rested, lifted, and confident.
-
-If that kind of result is what you're looking for, we'd love to meet you:
+If that's the kind of result you've been dreaming of, we would love to make it happen for you:
 
 👉 {{custom_values.booking_link__injectables}}
 
@@ -2450,33 +2152,31 @@ Talk soon,
 Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If injectables are still on your mind, we’d love to help you build the right plan. Here’s the booking link whenever you’re ready: {{custom_values.booking_link__injectables}}`,
-          subject: 'Whenever you’re ready for injectables',
+          sms: `Hi {{contact.first_name}}, one more warm note from us! 💌 Whenever you feel ready to explore {{ contact.interested_in }} Services, we'd be honored to help you build the perfect plan. Here's your booking link: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This will be our last follow-up for now.
+We don't want to overwhelm your inbox, so this will be our last note for now — but please know we're always here for you whenever the time feels right! 💚
 
-If you’re still considering injectables, we’d love to help you create a treatment plan that feels thoughtful, safe, and tailored to your features.
-
-Whenever the timing feels right, you can book here:
+We'd be honored to create a {{ contact.interested_in }} plan that's thoughtful, safe, and beautifully tailored to you.
 
 👉 {{custom_values.booking_link__injectables}}
 
-Take care,
+Wishing you a wonderful day,
 Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, looks like we missed you for your injectables visit today. No problem at all. Here’s the link to reschedule when you’re ready: {{custom_values.booking_link__injectables}}`,
-          subject: 'Let’s reschedule your injectables visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries at all — life happens. 💛 We'd love to find a better time for you: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-It looks like we missed you for your injectables appointment today.
+We missed you today! No worries at all — we completely understand that life gets busy. 💛
 
-No worries at all. If you’d like, you can pick a new time here and we’ll get you back on the calendar:
+We'd love to get you rescheduled at a time that works better for you. Just click below to pick a new time:
 
 👉 {{custom_values.booking_link__injectables}}
 
@@ -2485,179 +2185,191 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still happy to help whenever you’re ready, {{contact.first_name}}. If you’d like to rebook your injectables appointment, use this link: {{custom_values.booking_link__injectables}}`,
-          subject: 'Still here for your injectables appointment',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services appointment rescheduled at a time that works: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a gentle check-in in case you still want to come in for injectables.
+Just a warm check-in to let you know we're still here whenever you're ready! 🌿
 
-You can choose a new appointment time here:
+We'd love to welcome you in for your {{ contact.interested_in }} Services at a time that works best:
 
 👉 {{custom_values.booking_link__injectables}}
-
-We’d love to see you when the timing works better.
 
 Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if you’re still thinking about Botox or filler, this is a great time to come in. We’d love to create a personalized injectables plan for you: {{custom_values.booking_link__injectables}}`,
-          subject: 'A fresh chance to book your injectables consultation',
+          sms: `Hi {{contact.first_name}}! 💫 We've been thinking about you and wanted to reach out. If {{ contact.interested_in }} Services are still something you're dreaming about, we'd love to welcome you in and create a personalized plan just for you: {{custom_values.booking_link__injectables}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you in 💚',
           email: `Hi {{contact.first_name}},
 
-If injectables are still on your radar, we’d love to welcome you in.
+We've been thinking about you and just wanted to reach out with a warm hello! 💚
 
-Dr. Foye creates personalized treatment plans based on movement, facial structure, and the kind of result you want, whether that’s smoothing, balancing, or subtle restoration.
+If {{ contact.interested_in }} Services are still on your mind, we would absolutely love to welcome you in. Dr. Foye creates personalized plans based on your unique features and the result you're hoping for.
 
-Book here whenever you're ready:
+Book here whenever the time feels right:
 
 👉 {{custom_values.booking_link__injectables}}
 
-With care,
+With care and warmth,
 Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, we hope you’re loving your injectables results. If you have a quick minute, leaving a review would mean a lot to Dr. Foye and our team: [Google Review Link]`,
-          subject: 'How are you loving your injectables results?',
+          sms: `Hi {{contact.first_name}}, we hope you're absolutely loving your {{ contact.interested_in }} Services results! ✨ It was such a pleasure having you. If you have a quick moment, a review would mean the world to Dr. Foye and our team: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for trusting us with your care 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for trusting Dr. Foye with your injectables treatment.
+Thank you so much for trusting Dr. Foye and our team with your {{ contact.interested_in }} Services — it truly means the world to us! ✨
 
-We hope you’re loving how refreshed and confident you feel. If you have a minute, we’d be so grateful for a quick Google review:
+We hope you're feeling refreshed, beautiful, and completely confident. If you have just a minute, a quick Google review would mean so much:
 
 👉 [Google Review Link]
 
-It means a lot to our team.
-
+With so much warmth,
 Houston Wellness Aesthetics`
         }
       ]
     },
     facial: {
       label: 'Facial Care',
-      focus: 'custom facials, skin health, and glow-focused treatments',
+      focus: 'custom facials, skin health, and complexion renewal',
       bookingKey: '{{custom_values.booking_link__facial_care}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about facial care at Houston Wellness Aesthetics. We’d love to help you improve your skin, texture, and glow with the right treatment plan. Book here anytime: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Your facial care consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — so happy you're here! 🌿 We'd love to help you glow with the perfect {{ contact.interested_in }} plan. We'll call you shortly, or feel free to book anytime: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about facial care.
+Welcome, and thank you so much for reaching out to Houston Wellness Aesthetics! We're so excited to connect with you. 💚
 
-Whether you're dealing with dullness, congestion, dehydration, or just want healthier, brighter skin, Dr. Foye and the team can recommend the right plan for your goals.
+Our {{ contact.interested_in }} Services are designed to give your skin exactly what it needs — whether that's hydration, brightness, clarity, or a fresh-faced glow. Dr. Foye and the team will tailor everything specifically to you.
 
-You can book your consultation here:
+Someone from our team will be reaching out shortly. Or if you'd like, go ahead and book your consultation here:
 
 👉 {{custom_values.booking_link__facial_care}}
 
-Warm regards,
+Can't wait to help you shine!
+
+Warmly,
 Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about your facial care inquiry. No rush at all. If you’d like help choosing the best skin treatment, reply here or book here: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Still interested in facial care?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries at all, we know how busy life gets! 😊 We'd love to chat about {{ contact.interested_in }} Services whenever you're free. Reply here or book here: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about facial care and wanted to follow up.
+We tried reaching you and didn't want to leave you without a follow-up! 😊
 
-If you want help choosing between glow treatments, hydration-focused facials, acne support, or anti-aging options, we’d be happy to guide you.
+Whenever you're ready to chat about {{ contact.interested_in }} Services — whether it's glow treatments, hydration, acne support, or anti-aging — we're here to guide you to the perfect option.
 
-Book here whenever you’re ready:
-
-👉 {{custom_values.booking_link__facial_care}}`
-        },
-        {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, our facial care clients love how customized every visit feels. If you want healthier, smoother, more radiant skin, here’s the booking link: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Customized facial care that actually fits your skin',
-          email: `Hi {{contact.first_name}},
-
-One thing clients love most about our facial care treatments is that nothing feels one-size-fits-all.
-
-We tailor each visit to your skin condition, goals, and how you want your skin to look and feel after treatment.
-
-If that sounds like what you’re looking for, book here:
-
-👉 {{custom_values.booking_link__facial_care}}`
-        },
-        {
-          title: 'SMS #4 + Email #4 — Final Attempt',
-          timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If facial care is still on your list, we’d love to help you get started with the right treatment plan: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Whenever you’re ready for healthier skin',
-          email: `Hi {{contact.first_name}},
-
-This is our last check-in for now.
-
-If you still want support with your skin and would like a personalized facial care plan, you can book whenever it feels right:
+Book here whenever it suits you:
 
 👉 {{custom_values.booking_link__facial_care}}
 
+Warmly,
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients absolutely love how customized and personal every visit feels. Healthier, smoother, more radiant skin is waiting for you! Book here: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — Customized care your skin will love',
+          email: `Hi {{contact.first_name}},
+
+One thing our clients rave about is how personalized every {{ contact.interested_in }} visit feels here. 💚
+
+Nothing is one-size-fits-all — we tailor everything to your skin's unique needs, your goals, and how you want to look and feel when you leave.
+
+If that sounds like exactly what you've been looking for, we'd love to welcome you in:
+
+👉 {{custom_values.booking_link__facial_care}}
+
+Talk soon!
+Houston Wellness Aesthetics`
+        },
+        {
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
+          timing: '⏱ 48 hrs after SMS #3',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 If {{ contact.interested_in }} Services are still on your wishlist, we'd love to help you get started: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
+          email: `Hi {{contact.first_name}},
+
+This is our last note for now — but we truly hope to welcome you in someday soon! 💚
+
+Whenever you're ready to invest in your skin with {{ contact.interested_in }} Services, we'll be right here ready to create a plan just for you.
+
+👉 {{custom_values.booking_link__facial_care}}
+
+Wishing you a beautiful day,
 Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your facial care appointment today. No problem at all. You can reschedule here whenever you’re ready: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Let’s reschedule your facial care visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries at all — life happens. 💛 Let's find a time that works better for you: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you at your facial care appointment today.
+We missed you today and just wanted to check in! No worries at all — we completely understand. 💛
 
-If you'd like to get back on the calendar, use the link below to choose a new time:
+We'd love to get your {{ contact.interested_in }} Services visit rescheduled at a time that works perfectly:
 
-👉 {{custom_values.booking_link__facial_care}}`
+👉 {{custom_values.booking_link__facial_care}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. If you want to rebook your facial care visit, here’s the link: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Still here for your facial care visit',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services visit back on the calendar: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a friendly follow-up in case you still want to come in for facial care.
+Just a warm check-in to let you know we're still here! 🌿
 
-You can rebook here:
+Whenever you're ready to rebook your {{ contact.interested_in }} Services visit, we'd love to welcome you in:
 
-👉 {{custom_values.booking_link__facial_care}}`
+👉 {{custom_values.booking_link__facial_care}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if better skin is still a goal this season, we’d love to help with a facial care plan that fits you. Book here: {{custom_values.booking_link__facial_care}}`,
-          subject: 'Ready to get your skin back on track?',
+          sms: `Hi {{contact.first_name}}! 💚 We've been thinking about you! If glowing, healthier skin with {{ contact.interested_in }} Services is still a goal, we'd love to help make it happen: {{custom_values.booking_link__facial_care}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back!',
           email: `Hi {{contact.first_name}},
 
-If you’re still thinking about improving your skin, this is a great time to come in.
+We've been thinking about you and wanted to send a warm hello! 💚
 
-We can help with hydration, texture, brightness, and overall skin health through a customized facial care plan.
+If {{ contact.interested_in }} Services are still something you'd love to experience, this is a wonderful time to come in. We'd love to help you achieve that healthy, radiant skin you deserve.
 
-Book here:
+👉 {{custom_values.booking_link__facial_care}}
 
-👉 {{custom_values.booking_link__facial_care}}`
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, we hope your skin is feeling fresh and glowing after your facial care visit. If you have a minute, we’d love your review: [Google Review Link]`,
-          subject: 'How is your skin feeling after your visit?',
+          sms: `Hi {{contact.first_name}}, we hope your skin is absolutely glowing after your {{ contact.interested_in }} Services visit! ✨ It was so lovely having you. If you have a minute, a review would mean so much: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you for coming in for facial care with us.
+Thank you so much for coming in for {{ contact.interested_in }} Services — it was truly a pleasure having you with us! ✨
 
-We hope your skin is feeling refreshed, healthy, and radiant. If you’d be open to leaving a quick review, we’d truly appreciate it:
+We hope your skin is feeling absolutely radiant and refreshed. If you'd be open to leaving us a quick Google review, it would mean the world to our team:
 
 👉 [Google Review Link]
 
+With so much warmth,
 Houston Wellness Aesthetics`
         }
       ]
@@ -2670,345 +2382,413 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for your interest in hair removal at Houston Wellness Aesthetics. We’d love to help you simplify your routine with a treatment plan built around your skin and hair type. Book here: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Your hair removal consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — so glad you reached out! 🌿 We'd love to help you simplify your routine with the perfect {{ contact.interested_in }} plan, tailored just for you. We'll call shortly, or book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about hair removal.
+Welcome, and thank you so much for reaching out! We're so excited to connect with you. 💚
 
-If you’re tired of shaving, waxing, or dealing with irritation and ingrown hairs, we’d love to help you create a plan for smoother skin with less maintenance.
+Our {{ contact.interested_in }} Services are designed to give you smooth, beautiful skin with far less maintenance — no more shaving, no more waxing, no more irritation. Just freedom!
 
-Book here whenever you’re ready:
+Someone from our team will reach out to you shortly. Or feel free to book your consultation here anytime:
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+We can't wait to help you feel amazing!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about hair removal. No worries at all. If you want to talk through areas, sessions, or expected results, just reply here or book here: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Still interested in hair removal?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries at all! 😊 We'd love to answer any questions you have about {{ contact.interested_in }} Services and find the perfect plan for you. Reply here or book: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about hair removal and wanted to check back in.
+We tried reaching you and wanted to follow up with a warm hello! 😊
 
-We’d be happy to answer questions about treatment areas, session timing, and what kind of results to expect.
+Whenever you're ready, we'd love to walk you through everything about {{ contact.interested_in }} Services — treatment areas, how many sessions to expect, and the kind of results you can look forward to.
 
-You can book here:
+Book here whenever it works for you:
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many of our hair removal clients love how much time and hassle they save once they start treatment. If that sounds good to you, book here: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Less shaving, less hassle, smoother skin',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love how much time and hassle they save — and how confident they feel in their skin. We'd love that for you too! Book here: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — Freedom from the routine you\'ll love',
           email: `Hi {{contact.first_name}},
 
-Hair removal is one of those treatments clients wish they started sooner.
+You know what our {{ contact.interested_in }} clients tell us the most? That they wish they'd started sooner! 💚
 
-They love spending less time shaving, feeling more comfortable in their skin, and not having to plan around constant upkeep.
+Less shaving, less waxing, less irritation — and so much more confidence in their skin every single day. That kind of freedom is what we're here to give you.
 
-If that’s what you’re after, book here:
+We'd love to help you get there:
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+Talk soon!
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If you still want to start hair removal, we’d love to help. Here’s your booking link: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Whenever you’re ready for hair removal',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 If {{ contact.interested_in }} Services are still on your mind, we'd love to help you take that next step: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our last check-in for now.
+This is our last note for now — but please know we're always here for you! 💚
 
-If hair removal is still something you want to move forward with, you can book here any time:
+Whenever you're ready to move forward with {{ contact.interested_in }} Services, we'd love to build a plan that's perfectly designed for your skin, your goals, and your lifestyle.
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+Wishing you a beautiful day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your hair removal appointment today. No problem. You can pick a new time here: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Reschedule your hair removal appointment',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries at all — we'd love to find a better time for you 💛: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-It looks like we missed you for your hair removal appointment today.
+We missed you today! No worries at all — life gets busy and we completely understand. 💛
 
-If you'd like to reschedule, use the link below:
+We'd love to get your {{ contact.interested_in }} Services appointment rescheduled at a time that works perfectly for you:
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still happy to help, {{contact.first_name}}. If you’d like to rebook your hair removal visit, here’s the link: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Still here for your hair removal visit',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services visit rescheduled: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just checking in in case you still want to rebook your hair removal appointment.
+Just a warm check-in to let you know we're still thinking of you! 🌿
 
-You can choose a new time here:
+Whenever you're ready to rebook your {{ contact.interested_in }} Services visit, we'd love to welcome you in:
 
-👉 {{custom_values.booking_link__hair_removal}}`
+👉 {{custom_values.booking_link__hair_removal}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if smoother, lower-maintenance skin is still on your list, we’d love to help you start hair removal. Book here: {{custom_values.booking_link__hair_removal}}`,
-          subject: 'Ready to restart your hair removal plan?',
+          sms: `Hi {{contact.first_name}}! 💚 We've been thinking about you! If smoother, carefree skin with {{ contact.interested_in }} Services is still a goal, we'd love to help make it happen: {{custom_values.booking_link__hair_removal}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back!',
           email: `Hi {{contact.first_name}},
 
-If you’re still considering hair removal, we’d love to help you get started.
+Sending you a warm hello and thinking of you! 💚
 
-We can build a plan around your goals, treatment area, and schedule.
+If {{ contact.interested_in }} Services are still something you'd love to do for yourself, this is a wonderful time to come in. We'd love to build a plan just for you.
 
-Book here:
+👉 {{custom_values.booking_link__hair_removal}}
 
-👉 {{custom_values.booking_link__hair_removal}}`
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you again for trusting us with your hair removal treatment. If you have a minute, we’d love your review: [Google Review Link]`,
-          subject: 'Thank you for visiting us for hair removal',
+          sms: `Hi {{contact.first_name}}, thank you so much for visiting us for {{ contact.interested_in }} Services! ✨ It was a pleasure having you. If you have a quick moment, a review would mean the world to us: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you for coming in for hair removal with us.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — it was truly a pleasure having you here! ✨
 
-If you have a moment, we’d really appreciate a quick Google review about your experience:
+If you'd be open to leaving a quick Google review, it would mean so much to our team:
 
 👉 [Google Review Link]
 
+With warmth,
 Houston Wellness Aesthetics`
         }
       ]
     },
     'hair-restoration': {
       label: 'Hair Restoration',
-      focus: 'hair thinning, regrowth support, and confidence restoration',
+      focus: 'hair thinning, PRP therapy, and regrowth support',
       bookingKey: '{{custom_values.booking_link__hair_restoration}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hair restoration. We know hair thinning can feel personal, and we’d love to help you explore the right treatment options with Dr. Foye. Book here: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Your hair restoration consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're so glad you reached out! 🌿 We understand hair thinning can feel very personal, and we'd love to walk you through {{ contact.interested_in }} options with warmth and care. Book here: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about hair restoration.
+Welcome, and thank you so much for trusting us with something as personal as this. We're truly honored you reached out. 💚
 
-We know concerns around thinning or shedding can feel deeply personal, and our goal is to help you understand your options clearly and confidently.
+Our {{ contact.interested_in }} Services are designed to help you understand your options clearly and move forward with confidence — at your own pace, in a warm and supportive environment.
 
-You can book your consultation here:
+Someone from our team will be in touch shortly. Or feel free to book here:
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+👉 {{custom_values.booking_link__hair_restoration}}
+
+We're here for you every step of the way.
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about your hair restoration inquiry. If you’d still like help with thinning or regrowth options, reply here or book here: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Still interested in hair restoration?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries at all! 😊 We'd love to connect with you about {{ contact.interested_in }} Services whenever you're comfortable. Reply here or book: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect with you!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about hair restoration and wanted to follow up.
+We tried reaching you and just wanted to follow up with a warm hello! 😊
 
-If you still want help understanding your options for thinning, shedding, or regrowth support, we’d love to help.
+Whenever you're ready to explore {{ contact.interested_in }} Services, we're here to answer all your questions — with no pressure, just genuine care and support.
 
-Book here:
+Book here at your convenience:
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+👉 {{custom_values.booking_link__hair_restoration}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many hair restoration clients tell us the biggest win is feeling hopeful again. If you want a personalized plan, book here: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'A thoughtful plan for hair thinning and regrowth',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Many of our {{ contact.interested_in }} clients tell us the biggest win is feeling hopeful and confident again. We'd love that for you too! Book here: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — Hope, confidence, and a plan just for you',
           email: `Hi {{contact.first_name}},
 
-Hair restoration is about more than appearance. For many clients, it’s about confidence, hope, and finally taking action with a plan that makes sense.
+Something our {{ contact.interested_in }} clients share with us often is how much hope they feel once they have a real plan in place. 💚
 
-If you’d like a personalized consultation, you can book here:
+For many, it's not just about hair — it's about feeling like yourself again, with renewed confidence and a path forward.
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+If that's what you're looking for, we would love to be part of your journey:
+
+👉 {{custom_values.booking_link__hair_restoration}}
+
+With care,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last quick note, {{contact.first_name}}. If hair restoration is still something you want to explore, we’d be happy to help when the time feels right: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Whenever you’re ready to explore hair restoration',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 If {{ contact.interested_in }} Services are still something you'd like to explore, we'd be honored to help whenever you're ready: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our final follow-up for now.
+This will be our last note for now — but we truly hope to connect with you someday soon. 💚
 
-If you still want to explore hair restoration, you can schedule here any time:
+Whenever the time feels right to explore {{ contact.interested_in }} Services, we'll be right here, ready to support you with warmth and care.
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+👉 {{custom_values.booking_link__hair_restoration}}
+
+Wishing you all the best,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your hair restoration appointment today. No worries at all. Here’s the reschedule link: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Let’s reschedule your hair restoration visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries at all 💛 — we'd love to find a better time for you: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your hair restoration visit today.
+We missed you today and just wanted to check in with a warm hello! No worries at all. 💛
 
-If you’d like to rebook, you can choose a new time here:
+We'd love to get your {{ contact.interested_in }} Services visit rescheduled at a time that feels right for you:
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+👉 {{custom_values.booking_link__hair_restoration}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. If you’d like to rebook your hair restoration consultation, use this link: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Still here for your hair restoration consultation',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services visit back on the calendar: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just checking in one more time in case you still want to rebook your hair restoration consultation.
+Just a warm check-in to let you know we're still thinking of you! 🌿
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+Whenever you're ready to rebook your {{ contact.interested_in }} Services visit, we'd love to welcome you in:
+
+👉 {{custom_values.booking_link__hair_restoration}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if hair restoration is still on your mind, we’d love to help you take the next step with a personalized plan: {{custom_values.booking_link__hair_restoration}}`,
-          subject: 'Ready to revisit your hair restoration options?',
+          sms: `Hi {{contact.first_name}}! 💚 Just thinking of you and wanted to reach out. If {{ contact.interested_in }} Services are still on your mind, we'd be honored to help you take the next step: {{custom_values.booking_link__hair_restoration}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back 💚',
           email: `Hi {{contact.first_name}},
 
-If hair restoration is still something you’re thinking about, we’d love to reconnect.
+We've been thinking of you and just wanted to send a warm hello! 💚
 
-A personalized consultation can help you understand the right next step without pressure.
+If {{ contact.interested_in }} Services are still something you'd like to explore, we'd love to help. There's no pressure — just genuine care and a personalized plan designed around your goals.
 
-👉 {{custom_values.booking_link__hair_restoration}}`
+👉 {{custom_values.booking_link__hair_restoration}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your hair restoration care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
-          subject: 'Thank you for trusting us with your hair restoration care',
+          sms: `Hi {{contact.first_name}}, thank you so much for trusting us with your {{ contact.interested_in }} Services care! ✨ It was such a privilege. If you have a moment, a review would mean the world: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for trusting us 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for visiting us for hair restoration care.
+Thank you from the bottom of our hearts for trusting us with your {{ contact.interested_in }} Services care. It truly means so much to our entire team. ✨
 
-If you’d be open to sharing your experience, we’d truly appreciate a quick review:
+If you'd be open to sharing your experience in a quick Google review, we'd be incredibly grateful:
 
 👉 [Google Review Link]
 
+With warmth and care,
 Houston Wellness Aesthetics`
         }
       ]
     },
     laser: {
       label: 'Laser & Light Treatments',
-      focus: 'tone, texture, pigmentation, and advanced rejuvenation',
+      focus: 'tone, texture, pigmentation, and advanced skin rejuvenation',
       bookingKey: '{{custom_values.booking_link__laser_and_light_treatments}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for your interest in laser and light treatments. We’d love to help you improve tone, texture, sun damage, or redness with the right plan. Book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Your laser and light consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — so happy you're here! 🌿 We'd love to help you achieve beautiful, radiant skin with {{ contact.interested_in }}. We'll call you shortly, or book anytime: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about laser and light treatments.
+Welcome, and thank you so much for reaching out! We're thrilled to connect with you. 💚
 
-If you're looking to improve pigment, texture, redness, or overall skin quality, we’d love to help you choose the treatment that fits your goals best.
+Our {{ contact.interested_in }} Services are designed to help you achieve clearer, brighter, more radiant skin — whether you're dealing with pigmentation, texture, redness, or just want an overall glow-up.
 
-Book here:
+Someone from our team will be in touch shortly. Or feel free to book your consultation here:
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+We can't wait to help you look and feel your best!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried reaching you about laser and light treatments. If you still want help choosing the right option, reply here or book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Still interested in laser and light treatments?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries! 😊 We'd love to help you find the perfect {{ contact.interested_in }} option for your skin goals. Reply here or book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about laser and light treatments and wanted to follow up.
+We tried reaching you and wanted to follow up with a warm hello! 😊
 
-We’d be happy to walk you through the best option for concerns like sun damage, redness, uneven tone, or texture.
+Whenever you're ready, we'd love to walk you through the best {{ contact.interested_in }} Services option for your unique skin concerns and goals.
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+Book here at your convenience:
+
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, clients love what laser and light treatments can do for clarity, brightness, and smoother-looking skin. If you want to explore your options, book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Brighter, clearer skin with the right laser plan',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love the clarity, brightness, and confidence that come with their results. We'd love that for you! Book here: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — Brighter, more confident skin awaits!',
           email: `Hi {{contact.first_name}},
 
-Laser and light treatments can be incredibly effective when matched to the right skin concern.
+Our {{ contact.interested_in }} clients are always amazed at the difference a personalized treatment plan makes! 💚
 
-Clients often come in wanting brighter tone, less discoloration, smoother texture, or a more even complexion.
+Clearer tone, less discoloration, smoother texture, a more even complexion — and a confidence boost to match. You deserve to feel that way too.
 
-If that’s what you’re looking for, book here:
+We'd love to make it happen:
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+Talk soon,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If laser or light treatments are still on your list, we’d love to help you build the right treatment plan: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Whenever you’re ready for laser and light treatments',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 If {{ contact.interested_in }} Services are still on your wishlist, we'd love to help you build the perfect plan: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our final follow-up for now.
+This is our last note for now — but we're always here whenever the time feels right! 💚
 
-If you’d still like to explore laser and light treatments, you can book here whenever you’re ready:
+We'd love to help you achieve the skin goals you have in mind with {{ contact.interested_in }} Services.
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+Wishing you a beautiful day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your laser treatment appointment today. No worries. You can reschedule here: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Reschedule your laser and light visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries at all 💛 — let's find a better time: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your laser and light appointment today.
+We missed you today and wanted to check in! No worries at all — we'd love to find a time that works better for you. 💛
 
-If you’d like to pick a new time, you can do that here:
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here if you want to rebook, {{contact.first_name}}. Your laser and light booking link is here: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Still here for your laser and light visit',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services visit rescheduled: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a quick follow-up in case you still want to rebook your laser and light appointment.
+Just a warm check-in — we're still here whenever you're ready! 🌿
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if clearer, brighter skin is still your goal, we’d love to help you with a laser and light treatment plan: {{custom_values.booking_link__laser_and_light_treatments}}`,
-          subject: 'Ready to revisit laser and light treatments?',
+          sms: `Hi {{contact.first_name}}! 💚 We've been thinking of you! If radiant, glowing skin with {{ contact.interested_in }} Services is still a goal, we'd love to help make it happen: {{custom_values.booking_link__laser_and_light_treatments}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If laser and light treatments are still on your radar, we’d love to help you revisit the right option for your skin.
+Just thinking of you and wanted to send a warm hello! 💚
 
-Book here when you’re ready:
+If {{ contact.interested_in }} Services are still on your mind, we'd love to help you take that next step toward the radiant skin you deserve.
 
-👉 {{custom_values.booking_link__laser_and_light_treatments}}`
+👉 {{custom_values.booking_link__laser_and_light_treatments}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your laser and light treatment. If you have a moment, we’d love your review: [Google Review Link]`,
-          subject: 'Thank you for visiting us for laser and light care',
+          sms: `Hi {{contact.first_name}}, thank you so much for visiting us for {{ contact.interested_in }} Services! ✨ We loved having you. If you have a quick moment, a review would mean so much: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for coming in for your laser and light treatment.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — it was a genuine pleasure having you here! ✨
 
-If you’d be open to sharing your experience, we’d truly appreciate a review:
+If you'd be open to a quick Google review, we'd be so grateful:
 
 👉 [Google Review Link]
 
+With warmth,
 Houston Wellness Aesthetics`
         }
       ]
@@ -3021,107 +2801,129 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about vein treatment. We’d love to help you explore the best option for visible veins and smoother-looking skin. Book here: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Your vein treatment consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're so glad you reached out! 🌿 We'd love to help you feel confident and comfortable in your skin with {{ contact.interested_in }}. We'll call shortly, or book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about vein treatment.
+Welcome, and thank you so much for reaching out! We're so happy you're here. 💚
 
-If visible veins are bothering you, we’d love to help you explore the right treatment plan with clarity and confidence.
+Our {{ contact.interested_in }} Services are designed to help you feel more comfortable and confident in your skin — with caring, expert guidance every step of the way.
 
-Book here:
+Someone from our team will be in touch shortly, or feel free to book here:
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+We look forward to connecting with you!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about vein treatment. If you’d still like to talk through your options, reply here or book here: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Still interested in vein treatment?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries! 😊 We'd love to chat about {{ contact.interested_in }} Services whenever you're free. Reply here or book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about vein treatment and wanted to check back in.
+We tried reaching you and wanted to follow up warmly! 😊
 
-If you’d still like to talk through your options and what results to expect, we’d be happy to help.
+Whenever you're ready to explore {{ contact.interested_in }} Services and what results you can expect, we'd love to walk you through everything.
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many vein treatment clients come in wanting to feel more confident showing their legs or skin again. If that’s your goal, book here: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Feel more confident with a vein treatment plan',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love how much more confident they feel in their skin afterward. We'd love that feeling for you too! Book here: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — Confidence you\'ll absolutely love',
           email: `Hi {{contact.first_name}},
 
-For many clients, vein treatment is about feeling more comfortable and confident in their skin again.
+Our {{ contact.interested_in }} clients often tell us how much more comfortable and confident they feel after treatment — in their clothes, in photos, and in everyday life. 💚
 
-If that’s what you’re looking for, we’d love to help you build the right plan.
+That kind of confidence is something you deserve too. We'd love to help you get there:
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+Talk soon,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If vein treatment is still something you want to explore, here’s your booking link: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Whenever you’re ready for vein treatment',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 Whenever you feel ready to explore {{ contact.interested_in }} Services, we'd love to welcome you in: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our final follow-up for now.
+This is our last note for now — but please know we're here whenever you're ready! 💚
 
-If you still want to explore vein treatment, you can book here whenever you’re ready:
+We'd love to help you feel more confident in your skin with {{ contact.interested_in }} Services.
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+Wishing you a wonderful day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your vein treatment appointment today. No problem. You can reschedule here: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Let’s reschedule your vein treatment visit',
+          sms: `Hey {{contact.first_name}}, we missed you today! No worries at all 💛 — we'd love to find a better time for your {{ contact.interested_in }} Services visit: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your vein treatment appointment today.
+We missed you today and just wanted to check in! No worries at all. 💛
 
-If you’d like to choose a new time, use this link:
+We'd love to get your {{ contact.interested_in }} Services visit rescheduled at a time that works for you:
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still happy to help whenever you’re ready, {{contact.first_name}}. Here’s the vein treatment reschedule link: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Still here for your vein treatment visit',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to get your {{ contact.interested_in }} Services visit back on the calendar: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a gentle follow-up in case you still want to rebook your vein treatment visit.
+Just a warm check-in — we're still here whenever you're ready! 🌿
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if visible veins are still something you want to address, we’d love to help you take the next step: {{custom_values.booking_link__vein_treatment}}`,
-          subject: 'Ready to revisit vein treatment?',
+          sms: `Hi {{contact.first_name}}! 💚 Thinking of you and wanted to reach out. If {{ contact.interested_in }} Services are still something you'd like to explore, we'd love to help: {{custom_values.booking_link__vein_treatment}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If vein treatment is still on your mind, we’d love to help you revisit your options.
+Just sending a warm hello and thinking of you! 💚
 
-You can book here any time:
+If {{ contact.interested_in }} Services are still on your mind, we'd love to welcome you in and help you feel more confident and comfortable in your skin.
 
-👉 {{custom_values.booking_link__vein_treatment}}`
+👉 {{custom_values.booking_link__vein_treatment}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you again for trusting us with your vein treatment care. If you have a minute, we’d love your review: [Google Review Link]`,
-          subject: 'Thank you for visiting us for vein treatment',
+          sms: `Hi {{contact.first_name}}, thank you so much for trusting us with your {{ contact.interested_in }} Services care! ✨ It was a pleasure. A quick review would mean the world to us: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you for coming in for vein treatment with us.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — it was truly a pleasure! ✨
 
-If you’d be open to sharing your experience, we’d really appreciate a quick review:
+If you'd be open to a quick Google review, we'd be incredibly grateful:
 
 👉 [Google Review Link]
 
+With warmth,
 Houston Wellness Aesthetics`
         }
       ]
@@ -3134,104 +2936,136 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about hormone optimization. We’d love to help you feel more balanced, energized, and supported with a personalized consultation. Book here: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Your hormone optimization consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're so glad you reached out! 🌿 We'd love to help you feel balanced, energized, and like yourself again with {{ contact.interested_in }}. We'll call shortly, or book here: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about hormone optimization.
+Welcome, and thank you so much for reaching out to us! We're truly honored. 💚
 
-If you’ve been dealing with fatigue, low drive, mood shifts, or feeling unlike yourself, we’d love to help you explore a personalized path forward.
+Our {{ contact.interested_in }} Services are designed to help you feel like the best, most vibrant version of yourself — whether that means more energy, better sleep, improved mood, or just feeling balanced again.
 
-Book here:
+Someone from our team will be reaching out shortly. Or book your consultation here anytime:
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+We can't wait to support you on this journey!
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about hormone optimization. If you still want to explore your options, reply here or book here: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Still interested in hormone optimization?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries at all! 😊 We'd love to chat with you about {{ contact.interested_in }} Services and how we can help you feel your best. Reply here or book: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about hormone optimization and wanted to follow up.
+We tried reaching you and wanted to follow up with a warm hello! 😊
 
-If you still want support around energy, focus, metabolism, or hormonal balance, we’d love to help.
+Whenever you're ready to explore {{ contact.interested_in }} Services — whether it's energy, focus, metabolism, or overall balance — we're here with caring, expert support.
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+Book here whenever it works for you:
+
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many hormone optimization clients tell us they finally feel like themselves again once they have the right plan. Book here if you want to explore it: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'A hormone optimization plan built around how you feel',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients often tell us they finally feel like themselves again — with more energy, better mood, and a new sense of balance. We'd love that for you! Book here: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — Feel like yourself again 💚',
           email: `Hi {{contact.first_name}},
 
-Hormone optimization can have a meaningful impact on how clients feel day to day, from energy and sleep to motivation and overall wellbeing.
+Something we hear from our {{ contact.interested_in }} clients all the time is how transformative it feels to finally have the right plan. 💚
 
-If you’d like to explore a customized plan, book here:
+More energy, better sleep, improved mood, and a renewed sense of balance — that's what personalized {{ contact.interested_in }} Services can do for you.
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+We'd love to help you feel that way too:
+
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+Talk soon,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last quick note, {{contact.first_name}}. If hormone optimization is still on your mind, we’d be happy to help whenever you’re ready: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Whenever you’re ready for hormone optimization',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 Whenever you're ready to explore {{ contact.interested_in }} Services, we'd love to help you feel your absolute best: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our last follow-up for now.
+This is our last note for now — but we're always here whenever you feel ready! 💚
 
-If hormone optimization is still something you want to explore, you can book here any time:
+We'd love to support you with {{ contact.interested_in }} Services and help you feel truly vibrant again.
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+Wishing you a wonderful, energized day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your hormone optimization appointment today. No worries. You can reschedule here: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Let’s reschedule your hormone optimization consultation',
+          sms: `Hey {{contact.first_name}}, we missed you today! No worries at all 💛 — we'd love to find a better time for your {{ contact.interested_in }} Services visit: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your hormone optimization visit today.
+We missed you today and just wanted to send a warm hello! Life gets busy — we completely understand. 💛
 
-If you’d like to rebook, you can choose a new time here:
+We'd love to get your {{ contact.interested_in }} Services visit rescheduled:
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the hormone optimization rebooking link: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Still here for your hormone optimization visit',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to welcome you in for your {{ contact.interested_in }} Services: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just checking in one more time in case you still want to rebook your hormone optimization visit.
+Just a warm check-in to let you know we're still here! 🌿
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+Whenever you're ready, we'd love to welcome you in for your {{ contact.interested_in }} Services:
+
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if hormone optimization is still on your list, we’d love to help you feel better with a personalized plan: {{custom_values.booking_link__hormone_optimization}}`,
-          subject: 'Ready to revisit hormone optimization?',
+          sms: `Hi {{contact.first_name}}! 💚 Thinking of you and wanted to reach out. If feeling balanced and energized with {{ contact.interested_in }} Services is still a goal, we'd love to help make it happen: {{custom_values.booking_link__hormone_optimization}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If hormone optimization is still something you’re considering, we’d love to reconnect and help you take the next step.
+Just thinking of you and wanted to send a warm hello! 💚
 
-👉 {{custom_values.booking_link__hormone_optimization}}`
+If {{ contact.interested_in }} Services are still something you'd love to explore, we're here and ready to support you on that journey.
+
+👉 {{custom_values.booking_link__hormone_optimization}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your hormone optimization care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
-          subject: 'Thank you for trusting us with your care',
+          sms: `Hi {{contact.first_name}}, thank you so much for trusting us with your {{ contact.interested_in }} Services care! ✨ It was a pleasure. A quick review would mean so much to our team: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for trusting us 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for coming in for hormone optimization care.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — it truly means the world to our team! ✨
 
-If you’d be open to leaving a quick review, we’d really appreciate it:
+If you'd be open to a quick Google review, we'd be so grateful:
 
-👉 [Google Review Link]`
+👉 [Google Review Link]
+
+With warmth,
+Houston Wellness Aesthetics`
         }
       ]
     },
@@ -3243,216 +3077,270 @@ If you’d be open to leaving a quick review, we’d really appreciate it:
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about sexual health services. We know this can feel personal, and our team is here to make the process comfortable and private. Book here: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Your private sexual health consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're truly glad you reached out. 🌿 We know {{ contact.interested_in }} can feel personal, and we want you to know you're in a safe, caring space. We'll call shortly, or book here: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome, we\'re here for you',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about sexual health services.
+Welcome, and thank you so much for reaching out. We know this takes courage, and we truly want you to know you've come to the right place. 💚
 
-We know this topic can feel personal, and our goal is to provide a private, respectful, and supportive experience from the very beginning.
+Our {{ contact.interested_in }} Services are provided with the utmost privacy, respect, and care — from your very first contact with us.
 
-Book here whenever you’re ready:
+Someone from our team will be in touch shortly. Or feel free to book your private consultation here:
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+You're in wonderful hands.
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried reaching you about sexual health services. If you still want to talk through your options privately, reply here or book here: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Still interested in sexual health support?',
+          sms: `Hi {{contact.first_name}}, we tried calling — no worries at all! 😊 Whenever you're comfortable, we'd love to connect with you about {{ contact.interested_in }} Services privately and with care. Reply here or book: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here when you\'re ready',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about sexual health support and wanted to follow up.
+We tried reaching you and just wanted to follow up warmly. 😊
 
-If you still want to explore your options in a private, judgment-free setting, we’d be happy to help.
+There's absolutely no pressure — whenever you feel comfortable to connect about {{ contact.interested_in }} Services, we're here with a judgment-free, private, and supportive approach.
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many clients tell us the biggest relief is finally having a private space to talk openly and get real options. If that’s what you need, book here: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Private, respectful support for sexual health concerns',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Many of our {{ contact.interested_in }} clients tell us the biggest relief is finally having a safe, private space to ask questions and get real answers. We'd love that for you: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — A safe, private space just for you',
           email: `Hi {{contact.first_name}},
 
-For many clients, the biggest step is simply having a trusted place to ask questions and understand the right options.
+Something our {{ contact.interested_in }} clients share with us often is how much of a relief it is to finally have a trusted, private place to ask questions openly and explore real solutions. 💚
 
-If that kind of support would help, we’d love to meet you.
+If that's what you're looking for, we'd be honored to be that space for you:
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+With care,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If sexual health support is still something you want to explore, here’s the booking link whenever you’re ready: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Whenever you’re ready for private support',
+          sms: `Hi {{contact.first_name}}, one last warm note from us 💌 — whenever you feel ready to explore {{ contact.interested_in }} Services, we'll be right here for you with care and privacy: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our last follow-up for now.
+This will be our last note for now — but please know our door is always open. 💚
 
-If you still want to explore sexual health support, you can book here whenever it feels right:
+Whenever the time feels right to explore {{ contact.interested_in }} Services, we'll be here with warmth, privacy, and genuine care.
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+Wishing you all the best,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your sexual health consultation today. No worries at all. You can reschedule privately here: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Let’s reschedule your private consultation',
+          sms: `Hey {{contact.first_name}}, we missed you today! No worries at all 💛 — we'd love to find a better time for your {{ contact.interested_in }} Services consultation: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you',
           email: `Hi {{contact.first_name}},
 
-We missed you for your sexual health consultation today.
+We missed you today and just wanted to check in with a warm note! No worries at all. 💛
 
-If you’d like to choose a new time, you can do that here:
+We'd love to find a time that works better for your private {{ contact.interested_in }} Services consultation:
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the private rebooking link: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Still here for your private consultation',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to welcome you in for your {{ contact.interested_in }} Services: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you',
           email: `Hi {{contact.first_name}},
 
-Just a gentle follow-up in case you still want to rebook your private consultation.
+Just a warm, gentle check-in to let you know we're still here whenever you're ready. 🌿
 
-👉 {{custom_values.booking_link__sexual_health}}`
+👉 {{custom_values.booking_link__sexual_health}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if sexual health support is still something you want to explore, we’re here whenever you’re ready: {{custom_values.booking_link__sexual_health}}`,
-          subject: 'Ready to revisit your sexual health options?',
+          sms: `Hi {{contact.first_name}}! 💚 Just thinking of you and wanted to reach out. If {{ contact.interested_in }} Services are still something you'd like to explore, we'd love to welcome you in: {{custom_values.booking_link__sexual_health}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you 💚',
           email: `Hi {{contact.first_name}},
 
-If sexual health support is still on your mind, we’d love to offer a private, respectful space to revisit your options.
+Just thinking of you and wanted to send a warm hello! 💚
 
-👉 {{custom_values.booking_link__sexual_health}}`
+If {{ contact.interested_in }} Services are still something you'd like to explore, we're here with the same warmth, privacy, and care as always.
+
+👉 {{custom_values.booking_link__sexual_health}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your care. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
-          subject: 'Thank you for trusting us',
+          sms: `Hi {{contact.first_name}}, thank you so much for trusting us with your care. 💚 ✨ It was truly a privilege. If you're comfortable, a review would mean so much to us: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for trusting us 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for trusting us with your care.
+Thank you so much for trusting us — it truly means everything to our team. ✨
 
-If you’d be open to leaving a quick review about your experience, we’d truly appreciate it:
+If you feel comfortable sharing your experience in a quick Google review, we'd be deeply grateful:
 
-👉 [Google Review Link]`
+👉 [Google Review Link]
+
+With warmth and care,
+Houston Wellness Aesthetics`
         }
       ]
     },
     weight: {
       label: 'Weight Loss',
-      focus: 'medical weight loss, accountability, and sustainable progress',
+      focus: 'medical weight loss, GLP-1 therapy, and sustainable progress',
       bookingKey: '{{custom_values.booking_link__weight_loss}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about weight loss support. We’d love to help you create a realistic, medically guided plan that fits your goals. Book here: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Your weight loss consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — we're so glad you're here! 🌿 We'd love to help you build a realistic, supportive {{ contact.interested_in }} plan that's made just for you. We'll call shortly, or book here: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about weight loss support.
+Welcome, and thank you so much for reaching out! Taking this step takes courage, and we're genuinely proud of you. 💚
 
-We know this journey is personal, and our goal is to help you build a plan that feels realistic, supportive, and sustainable.
+Our {{ contact.interested_in }} Services are designed to be realistic, supportive, and sustainable — because we believe everyone deserves a plan that actually works for their life.
 
-You can book your consultation here:
+Someone from our team will be in touch shortly. Or feel free to book your consultation here:
 
-👉 {{custom_values.booking_link__weight_loss}}`
+👉 {{custom_values.booking_link__weight_loss}}
+
+We're cheering you on every step of the way!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about weight loss support. If you’re still interested, reply here anytime or book here: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Still interested in weight loss support?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries! 😊 We'd love to chat with you about {{ contact.interested_in }} Services and build a plan that feels right for you. Reply here or book: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about weight loss support and wanted to check back in.
+We tried reaching you and wanted to follow up with a warm hello! 😊
 
-If you still want help creating a structured plan with medical guidance and accountability, we’d love to help.
+Whenever you're ready, we'd love to chat about {{ contact.interested_in }} Services and how we can create a plan with the right medical guidance, support, and accountability for you.
 
-👉 {{custom_values.booking_link__weight_loss}}`
+Book here whenever it feels right:
+
+👉 {{custom_values.booking_link__weight_loss}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many of our weight loss clients tell us the biggest difference is finally having a plan they can stick with. If that sounds right for you, book here: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'A weight loss plan built to be realistic and sustainable',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love saying the biggest difference is finally having a plan they can actually stick with. We'd love that for you! Book here: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — A plan you can actually stick with 💚',
           email: `Hi {{contact.first_name}},
 
-One of the biggest reasons clients succeed is because they finally have structure, support, and a plan that feels doable.
+You know what our {{ contact.interested_in }} clients tell us the most? That they finally feel like they have a plan that's actually doable — and someone genuinely in their corner. 💚
 
-If you want that kind of weight loss guidance, we’d love to meet you.
+That's what we're here to give you: structure, support, and a path that feels real.
 
-👉 {{custom_values.booking_link__weight_loss}}`
+We'd love to be part of your journey:
+
+👉 {{custom_values.booking_link__weight_loss}}
+
+Talk soon!
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last quick note, {{contact.first_name}}. If weight loss support is still something you want, here’s the booking link whenever you’re ready: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Whenever you’re ready for weight loss support',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 Whenever you feel ready to take that next step with {{ contact.interested_in }} Services, we'd be honored to support you: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our last follow-up for now.
+This is our last note for now — but we want you to know we're always here, cheering you on! 💚
 
-If you still want support with weight loss, you can schedule here whenever the time feels right:
+Whenever the time feels right to take that next step with {{ contact.interested_in }} Services, we'd be honored to support you.
 
-👉 {{custom_values.booking_link__weight_loss}}`
+👉 {{custom_values.booking_link__weight_loss}}
+
+Wishing you all the best,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your weight loss consultation today. No worries. You can rebook here: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Let’s reschedule your weight loss consultation',
+          sms: `Hey {{contact.first_name}}, we missed you today! No worries at all 💛 — we'd love to find a better time for your {{ contact.interested_in }} Services consultation: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your weight loss consultation today.
+We missed you today and just wanted to check in! No worries at all — life gets busy and we get it. 💛
 
-If you’d like to choose a new time, you can do that here:
+We'd love to get your {{ contact.interested_in }} Services consultation rescheduled at a time that works for you:
 
-👉 {{custom_values.booking_link__weight_loss}}`
+👉 {{custom_values.booking_link__weight_loss}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. If you want to rebook your weight loss consultation, here’s the link: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Still here for your weight loss consultation',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to welcome you in for your {{ contact.interested_in }} Services: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a friendly follow-up in case you still want to rebook your weight loss consultation.
+Just a warm check-in to let you know we're still here rooting for you! 🌿
 
-👉 {{custom_values.booking_link__weight_loss}}`
+Whenever you're ready to rebook your {{ contact.interested_in }} Services consultation, we'd love to welcome you in:
+
+👉 {{custom_values.booking_link__weight_loss}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if you’re ready to restart your weight loss goals with a plan and real support, we’d love to help: {{custom_values.booking_link__weight_loss}}`,
-          subject: 'Ready to restart your weight loss goals?',
+          sms: `Hi {{contact.first_name}}! 💚 We've been thinking about you and wanted to reach out. If {{ contact.interested_in }} Services are still a goal, we'd love to help you take that next step: {{custom_values.booking_link__weight_loss}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If your weight loss goals are still important to you, we’d love to help you restart with the right support and structure.
+We've been thinking about you and just wanted to send a warm hello! 💚
 
-Book here whenever you're ready:
+If {{ contact.interested_in }} Services are still something you'd like to pursue, we're here and we'd be so honored to support you on that journey.
 
-👉 {{custom_values.booking_link__weight_loss}}`
+👉 {{custom_values.booking_link__weight_loss}}
+
+With warmth and encouragement,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your weight loss journey. If you have a minute, we’d really appreciate your review: [Google Review Link]`,
-          subject: 'Thank you for trusting us with your journey',
+          sms: `Hi {{contact.first_name}}, thank you so much for trusting us with your {{ contact.interested_in }} Services journey! ✨ We're so proud of you. A quick review would mean so much: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for trusting us 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for trusting us with your weight loss care.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — we're so proud of you and truly honored to be part of your journey. ✨
 
-If you’d be open to leaving a quick review about your experience, we’d truly appreciate it:
+If you'd be open to a quick Google review, it would mean the world to our team:
 
 👉 [Google Review Link]
 
+With so much warmth,
 Houston Wellness Aesthetics`
         }
       ]
@@ -3465,221 +3353,274 @@ Houston Wellness Aesthetics`
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about IV therapy. We’d love to help you feel better, recover faster, and choose the right drip for your goals. Book here: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Your IV therapy consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — so happy you're here! 🌿 We'd love to help you feel refreshed, recharged, and amazing with {{ contact.interested_in }}. We'll call shortly, or book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about IV therapy.
+Welcome, and thank you so much for reaching out! We're so excited to connect with you. 💚
 
-Whether you’re looking for hydration, recovery, immune support, or an overall wellness boost, we’d love to help you choose the right option.
+Our {{ contact.interested_in }} Services are the perfect way to hydrate, recover, boost your immunity, and give your wellness a beautiful reset — all in a relaxing, comfortable setting.
 
-Book here:
+Someone from our team will be in touch shortly, or feel free to book your session here:
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+👉 {{custom_values.booking_link__iv_therapy}}
+
+We can't wait to help you feel your absolute best!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about IV therapy. If you still want help choosing the right drip, reply here or book here: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Still interested in IV therapy?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries! 😊 We'd love to help you find the perfect {{ contact.interested_in }} plan for your goals. Reply here or book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about IV therapy and wanted to follow up.
+We tried reaching you and just wanted to follow up with a warm hello! 😊
 
-If you still want help choosing the right IV option for your goals, we’d be happy to help.
+Whenever you're ready, we'd love to help you find the perfect {{ contact.interested_in }} Services option for your wellness goals.
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+👉 {{custom_values.booking_link__iv_therapy}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, many IV therapy clients love how quickly they feel refreshed and recharged after the right drip. If you want to explore it, book here: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Feel refreshed and supported with IV therapy',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love how quickly they feel refreshed, recharged, and ready to take on the world. We'd love that feeling for you! Book here: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — Feel refreshed and amazing',
           email: `Hi {{contact.first_name}},
 
-IV therapy is a great fit for clients who want hydration, recovery support, and a fast wellness reset.
+Our {{ contact.interested_in }} clients love how fast and dramatically they feel the difference — hydrated, energized, and ready to take on anything! 💚
 
-If that sounds like what you need, book here:
+If that kind of wellness reset sounds amazing to you, we'd love to make it happen:
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+👉 {{custom_values.booking_link__iv_therapy}}
+
+Talk soon!
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If IV therapy is still on your list, here’s the booking link whenever you’re ready: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Whenever you’re ready for IV therapy',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 Whenever you're ready to treat yourself to {{ contact.interested_in }} Services, we'd love to welcome you in: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our last follow-up for now.
+This is our last note for now — but we'd love to welcome you in whenever you're ready! 💚
 
-If IV therapy is still something you want to book, you can do that here whenever you’re ready:
+{{ contact.interested_in }} Services are a wonderful gift you can give yourself, and we'd love to be the ones to provide it.
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+👉 {{custom_values.booking_link__iv_therapy}}
+
+Wishing you a wonderful, energized day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your IV therapy visit today. No worries. You can reschedule here: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Let’s reschedule your IV therapy visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries 💛 — we'd love to find a better time for you: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your IV therapy appointment today.
+We missed you today and just wanted to check in! No worries at all — life gets busy. 💛
 
-If you’d like to choose a new time, use the link below:
+We'd love to get your {{ contact.interested_in }} Services visit rescheduled at a time that works:
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+👉 {{custom_values.booking_link__iv_therapy}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still here when you’re ready, {{contact.first_name}}. Here’s the IV therapy rebooking link: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Still here for your IV therapy visit',
+          sms: `Hi {{contact.first_name}}, still here for you! 🌿 We'd love to get your {{ contact.interested_in }} Services visit rescheduled whenever you're ready: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just a quick follow-up in case you still want to rebook your IV therapy visit.
+Just a warm check-in to let you know we're still here! 🌿
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+Whenever you're ready to rebook your {{ contact.interested_in }} Services visit, we'd love to welcome you in:
+
+👉 {{custom_values.booking_link__iv_therapy}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if IV therapy is still something you want to try, we’d love to help you get scheduled: {{custom_values.booking_link__iv_therapy}}`,
-          subject: 'Ready to revisit IV therapy?',
+          sms: `Hi {{contact.first_name}}! 💚 Thinking of you! If feeling refreshed and recharged with {{ contact.interested_in }} Services is still a goal, we'd love to help: {{custom_values.booking_link__iv_therapy}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If IV therapy is still on your list, we’d love to help you revisit the best option for your goals.
+Just thinking of you and sending a warm hello! 💚
 
-👉 {{custom_values.booking_link__iv_therapy}}`
+If {{ contact.interested_in }} Services are still on your wellness wishlist, we'd love to welcome you in for a beautiful, refreshing session.
+
+👉 {{custom_values.booking_link__iv_therapy}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for visiting us for IV therapy. If you have a moment, we’d love your review: [Google Review Link]`,
-          subject: 'Thank you for visiting us for IV therapy',
+          sms: `Hi {{contact.first_name}}, thank you so much for visiting us for {{ contact.interested_in }} Services! ✨ We loved having you. A quick review would mean so much: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for coming in for IV therapy.
+Thank you so much for visiting us for {{ contact.interested_in }} Services — it was an absolute pleasure having you here! ✨
 
-If you’d be open to leaving a quick review, we’d truly appreciate it:
+If you'd be open to a quick Google review, we'd be incredibly grateful:
 
-👉 [Google Review Link]`
+👉 [Google Review Link]
+
+With warmth,
+Houston Wellness Aesthetics`
         }
       ]
     },
     body: {
       label: 'Body Contouring & Chin',
-      focus: 'sculpting, contour refinement, and profile confidence',
+      focus: 'SculpSure laser contouring, double chin treatment, and profile confidence',
       bookingKey: '{{custom_values.booking_link__body_contouring_and_chin}}',
       scripts: [
         {
           title: 'SMS #1 + Email #1 — Instant Welcome',
           timing: '⏱ 2 min after form submit',
-          sms: `Hey {{contact.first_name}}! Thanks for reaching out about body contouring and chin treatments. We’d love to help you refine shape, definition, and confidence with the right plan. Book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Your body contouring consultation',
+          sms: `Hey {{contact.first_name}}! Welcome to Houston Wellness Aesthetics — so glad you're here! 🌿 We'd love to help you feel confident and sculpted with {{ contact.interested_in }}. We'll call shortly, or feel free to book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — Welcome to Houston Wellness Aesthetics!',
           email: `Hi {{contact.first_name}},
 
-Thank you for reaching out about body contouring and chin treatments.
+Welcome, and thank you so much for reaching out! We're genuinely excited to connect with you. 💚
 
-If you want more definition, better contour, or a treatment plan tailored to your goals, we’d love to help you explore the right option.
+Our {{ contact.interested_in }} Services — including SculpSure laser contouring and Kybella for double chin — are designed to help you feel more confident and sculpted in a way that feels completely natural to you.
 
-Book here:
+Someone from our team will be reaching out shortly. Or book your consultation here:
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+We can't wait to help you feel amazing!
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #2 + Email #2 — No Answer Follow-Up',
+          title: 'SMS #2 + Email #2 — No Answer (Day 0)',
           timing: '⏱ Immediate on Stage 2',
-          sms: `Hey {{contact.first_name}}, we tried calling about body contouring and chin treatments. If you still want to explore your options, reply here or book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Still interested in body contouring?',
+          sms: `Hi {{contact.first_name}}! We tried calling — no worries! 😊 We'd love to chat with you about {{ contact.interested_in }} Services — including SculpSure and Kybella — whenever you're free. Reply or book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to connect!',
           email: `Hi {{contact.first_name}},
 
-We tried reaching you about body contouring and chin treatments and wanted to check back in.
+We tried reaching you and wanted to follow up with a warm hello! 😊
 
-If you’d still like help understanding your options and what kind of contouring result may be possible, we’d be happy to help.
+Whenever you're ready, we'd love to walk you through our {{ contact.interested_in }} Services — including SculpSure laser body contouring and Kybella for double chin reduction.
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+Book here at your convenience:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+Warmly,
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #3 + Email #3 — Social Proof Follow-Up',
-          timing: '⏱ 24 hrs after SMS #2',
-          sms: `{{contact.first_name}}, clients love how body contouring can help them feel more confident in photos, clothes, and everyday life. If you want to explore it, book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'A more sculpted, confident look starts with the right plan',
+          title: 'SMS #3 + Email #3 — Social Proof (Day 2)',
+          timing: '⏱ 48 hrs after SMS #2',
+          sms: `Hi {{contact.first_name}}! 💫 Our {{ contact.interested_in }} clients love how confident they feel in their photos, clothes, and everyday life afterward. We'd love that for you! Book here: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — Confidence that transforms how you feel',
           email: `Hi {{contact.first_name}},
 
-Body contouring is often about those subtle changes that make you feel more confident in your shape and profile.
+Our {{ contact.interested_in }} clients often tell us it's the subtle changes that make the biggest difference — more confidence in their shape, their profile, and how they carry themselves every day. 💚
 
-If you want to explore what’s possible, we’d love to guide you through it.
+That kind of confidence is something you deserve. We'd love to help you feel it:
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+Talk soon!
+Houston Wellness Aesthetics`
         },
         {
-          title: 'SMS #4 + Email #4 — Final Attempt',
+          title: 'SMS #4 + Email #4 — Final Attempt (Day 4)',
           timing: '⏱ 48 hrs after SMS #3',
-          sms: `Last note from us, {{contact.first_name}}. If body contouring is still something you want to explore, here’s your booking link: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Whenever you’re ready for body contouring',
+          sms: `Hi {{contact.first_name}}, one last warm note from us! 💌 If {{ contact.interested_in }} Services are still a goal, we'd love to help you take that next step: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — We\'re here whenever you\'re ready 💚',
           email: `Hi {{contact.first_name}},
 
-This is our final follow-up for now.
+This is our last note for now — but we're always here whenever you feel ready! 💚
 
-If body contouring or chin refinement is still on your list, you can book here whenever you’re ready:
+We'd love to help you achieve the sculpted, confident look you're dreaming of with {{ contact.interested_in }} Services.
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+Wishing you a beautiful day,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #5 + Email #5 — No-Show Re-book',
           timing: '⏱ 60 min after missed appointment',
-          sms: `Hey {{contact.first_name}}, we missed you for your contouring appointment today. No problem at all. You can reschedule here: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Let’s reschedule your contouring visit',
+          sms: `Hey {{contact.first_name}}, we missed you today for your {{ contact.interested_in }} Services visit! No worries 💛 — let's find a better time for you: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — Let\'s find a better time for you!',
           email: `Hi {{contact.first_name}},
 
-We missed you for your body contouring and chin consultation today.
+We missed you today! No worries at all — we'd love to find a time that works better for you. 💛
 
-If you’d like to choose a new time, use the link below:
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #6 + Email #6 — Second No-Show Attempt',
           timing: '⏱ 24 hrs after SMS #5',
-          sms: `Still happy to help when you’re ready, {{contact.first_name}}. Here’s the link to rebook your contouring visit: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Still here for your contouring consultation',
+          sms: `Hi {{contact.first_name}}, still here for you whenever you're ready! 🌿 We'd love to welcome you in for your {{ contact.interested_in }} Services visit: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — Still here for you!',
           email: `Hi {{contact.first_name}},
 
-Just checking in one more time in case you still want to rebook your body contouring consultation.
+Just a warm check-in to let you know we're still here! 🌿
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+Whenever you're ready to rebook your {{ contact.interested_in }} Services visit, we'd love to welcome you in:
+
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #7 + Email #7 — Reactivation (30-Day)',
           timing: '⏱ Day 30 in Lost / Archived',
-          sms: `Hey {{contact.first_name}}, if body contouring is still one of your goals, we’d love to help you take the next step with a personalized plan: {{custom_values.booking_link__body_contouring_and_chin}}`,
-          subject: 'Ready to revisit body contouring?',
+          sms: `Hi {{contact.first_name}}! 💚 Thinking of you! If feeling sculpted and confident with {{ contact.interested_in }} Services is still a goal, we'd love to help you make it happen: {{custom_values.booking_link__body_contouring_and_chin}}`,
+          subject: '{{ contact.interested_in }} Services — We\'d love to welcome you back! 💚',
           email: `Hi {{contact.first_name}},
 
-If body contouring or chin refinement is still something you’re considering, we’d love to help you revisit your options.
+Just thinking of you and sending a warm hello! 💚
 
-Book here whenever the time feels right:
+If {{ contact.interested_in }} Services are still something you'd love to experience, we'd be so excited to help you achieve that confident, sculpted look you deserve.
 
-👉 {{custom_values.booking_link__body_contouring_and_chin}}`
+👉 {{custom_values.booking_link__body_contouring_and_chin}}
+
+With warmth,
+Houston Wellness Aesthetics`
         },
         {
           title: 'SMS #8 + Email #8 — Post-Visit Thank You + Review Request',
           timing: '⏱ 3 days after Stage 8 (Won)',
-          sms: `Hi {{contact.first_name}}, thank you for trusting us with your contouring treatment. If you have a moment, we’d be grateful for your review: [Google Review Link]`,
-          subject: 'Thank you for visiting us for contouring care',
+          sms: `Hi {{contact.first_name}}, thank you so much for visiting us for {{ contact.interested_in }} Services! ✨ We loved having you. A quick review would mean so much to us: [Google Review Link]`,
+          subject: '{{ contact.interested_in }} Services — Thank you for visiting us! 💚',
           email: `Hi {{contact.first_name}},
 
-Thank you again for coming in for body contouring care.
+Thank you so much for trusting us with your {{ contact.interested_in }} Services — it was a genuine pleasure having you here! ✨
 
-If you’d be open to leaving a quick review, we’d truly appreciate it:
+If you'd be open to a quick Google review, we'd be incredibly grateful:
 
 👉 [Google Review Link]
 
+With warmth,
 Houston Wellness Aesthetics`
         }
       ]
     }
   };
+
 
   function renderServiceScripts(serviceKey) {
     const service = serviceScripts[serviceKey];
@@ -3688,11 +3629,12 @@ Houston Wellness Aesthetics`
 
     const cards = service.scripts.map((script) => {
       const shouldAddGallery = script.title.includes('Social Proof') || script.title.includes('Reactivation');
-      const personalizedSms = normalizeForSubservice(serviceKey, buildPersonalizedSms(script));
-      const personalizedEmail = normalizeForSubservice(serviceKey, buildPersonalizedEmail(script));
-      const personalizedSubject = normalizeForSubservice(serviceKey, script.subject);
-      const smsText = shouldAddGallery ? `${personalizedSms}\nBefore/after gallery: ${beforeAfterGalleryLink}` : personalizedSms;
-      const emailText = shouldAddGallery ? `${personalizedEmail}\n\nBefore/after gallery:\n${beforeAfterGalleryLink}` : personalizedEmail;
+      let smsText = script.sms;
+      let emailText = script.email;
+      if (shouldAddGallery) {
+        smsText += `\nBefore/after gallery: ${beforeAfterGalleryLink}`;
+        emailText += `\n\nBefore/after gallery:\n${beforeAfterGalleryLink}`;
+      }
 
       return `
       <div class="script-card">
@@ -3707,25 +3649,23 @@ Houston Wellness Aesthetics`
           </div>
           <div class="msg-block email-block">
             <div class="msg-label">✉️ Email</div>
-            <div class="email-subject">Subject: <span>${personalizedSubject}</span></div>
+            <div class="email-subject">Subject: <span>${script.subject}</span></div>
             <pre>${emailText}</pre>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
     }).join('');
 
     serviceScriptPanel.innerHTML = `
       <div class="info-card" style="margin-bottom:24px;">
         <div class="card-label">${service.label}</div>
-        <div class="card-title">${normalizeForSubservice(serviceKey, service.focus)}</div>
+        <div class="card-title">${service.focus}</div>
         <p>These messages are written specifically for <strong>${service.label}</strong> leads and use the matching booking link key: <span class="code-val">${service.bookingKey}</span></p>
-        <p style="margin-top:10px;">Personalization merge fields used in every message: <span class="code-val">${interestedInField}</span> + <span class="code-val">${startTimingField}</span></p>
+        <p style="margin-top:10px;">Personalization merge fields: <span class="code-val">${interestedInField}</span> + <span class="code-val">${startTimingField}</span></p>
         <p style="margin-top:10px;"><strong>Sub-services captured under this category:</strong> ${subservices.join(' · ')}</p>
         <p style="margin-top:10px;">Before/after gallery used in social proof and reactivation messages: <a href="${beforeAfterGalleryLink}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">${beforeAfterGalleryLink}</a></p>
       </div>
-      ${cards}
-    `;
+      ${cards}`;
   }
 
   serviceTabButtons.forEach((button) => {
